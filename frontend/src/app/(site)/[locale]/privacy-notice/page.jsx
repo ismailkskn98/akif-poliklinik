@@ -22,7 +22,7 @@ export default async function PrivacyNoticePage({ params }) {
   const settings = await getPublicSiteSettings();
 
   return (
-    <article className="bg-surface py-10 sm:py-14">
+    <article className="py-10 sm:py-14">
       <div className="grid-container max-w-5xl">
         <header data-motion-intro className="border-b border-ink/14 pb-8 sm:pb-10">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">

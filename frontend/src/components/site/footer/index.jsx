@@ -26,11 +26,21 @@ export default async function Footer({ locale }) {
         <div className="grid gap-10 py-11 sm:py-13 lg:grid-cols-[1.2fr_.8fr] lg:gap-16">
           <div>
             <p className="text-[0.66rem] font-semibold tracking-[0.16em] text-white/42 uppercase">{content.ui.contact}</p>
-            <div className="mt-4 flex items-end gap-4 sm:gap-5">
-              <Image alt={siteConfig.name} className="size-20 shrink-0 object-cover sm:size-24" height={96} sizes="(min-width: 640px) 96px, 80px" src="/images/logo/main-logo.png" width={96} />
-              <p className="max-w-xl text-[clamp(2.2rem,4.6vw,4rem)] leading-[0.9] font-medium tracking-[-0.06em]">{siteConfig.name}</p>
-            </div>
-            <address className="mt-7 max-w-md text-[0.82rem] leading-5.5 not-italic text-white/54">{settings.address}</address>
+            <Link
+              href="/"
+              aria-label={siteConfig.name}
+              className="mt-5 inline-flex transition-opacity duration-200 ease-[cubic-bezier(.22,1,.36,1)] hover:opacity-72"
+            >
+              <Image
+                alt=""
+                className="h-auto w-48 object-contain sm:w-56"
+                height={468}
+                sizes="(min-width: 640px) 224px, 192px"
+                src="/images/logo/akif-wordmark-white.png"
+                width={953}
+              />
+            </Link>
+            <address className="mt-6 max-w-md text-[0.82rem] leading-5.5 not-italic text-white/54">{settings.address}</address>
           </div>
 
           <div className="grid content-start gap-8 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">

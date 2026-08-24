@@ -2,7 +2,6 @@ import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 
 import ContactDetails from "@/components/site/contactDetails";
 import ContactForm from "@/components/site/contactForm";
-import { siteConfig } from "@/config/site";
 import { getTreatmentCopy } from "@/content/treatmentCopy";
 import { Link } from "@/i18n/navigation";
 
@@ -10,45 +9,37 @@ export default function Contact({ translations, locale, settings }) {
   const content = getTreatmentCopy(locale);
 
   return (
-    <section id="contact" className=" px-3 pb-3 pt-3 sm:px-5 sm:pb-5 sm:pt-5">
-      <div className="mx-auto max-w-[76rem] border border-ink/14 bg-surface">
-        <header data-motion-intro className="flex min-h-12 items-center border-b border-ink/12 px-5 sm:px-7">
-          <p className="text-[0.65rem] font-semibold tracking-[0.16em] text-ink/46 uppercase">{siteConfig.name}</p>
-        </header>
+    <section id="contact" className="grid-container py-10 sm:py-14 lg:py-16 xl:py-18">
+      <div className="grid gap-12 lg:grid-cols-[.88fr_1.11fr] lg:gap-0">
+        <div data-motion-intro className="lg:pe-14 xl:pe-18">
+          <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-primary uppercase">01 · {content.ui.contactEyebrow}</p>
+          <h1 className="mt-5 max-w-2xl text-balance text-[clamp(2.25rem,4.1vw,3.8rem)] leading-[0.96] font-medium tracking-[-0.055em] text-ink">{content.ui.contactTitle}</h1>
+          <p className="mt-4 max-w-md text-sm leading-6 text-ink/54">{content.ui.homeIntro}</p>
 
-        <div className="grid lg:grid-cols-[.92fr_1.08fr]">
-          <div data-motion-intro className="flex flex-col bg-ink-deep p-6 text-white sm:p-8 lg:p-10 xl:p-12">
-            <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-white/40 uppercase">01 · {content.ui.contactEyebrow}</p>
-            <h1 className="mt-7 max-w-xl text-balance text-[clamp(2.5rem,4.8vw,4.35rem)] leading-[0.94] font-medium tracking-[-0.06em]">{content.ui.contactTitle}</h1>
-            <p className="mt-5 max-w-md text-sm leading-6 text-white/52">{content.ui.homeIntro}</p>
-
-            <div className="mt-9 lg:mt-12">
-              <p className="text-[0.65rem] font-semibold tracking-[0.16em] text-white/36 uppercase">{translations.callTitle}</p>
-              <ContactDetails labels={{ addressTitle: translations.addressTitle }} settings={settings} tone="dark" />
-              <Link
-                href="/treatments"
-                className="group mt-7 flex min-h-11 items-center justify-between border-t border-white/16 pt-4 text-[0.82rem] text-white/62 transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:text-white"
-              >
-                <span>{content.ui.treatmentsTeaser}</span>
-                <ArrowUpRight
-                  aria-hidden="true"
-                  className="size-4 shrink-0 transition-transform duration-200 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  weight="light"
-                />
-              </Link>
-            </div>
+          <div className="mt-9 lg:mt-11">
+            <p className="text-[0.65rem] font-semibold tracking-[0.16em] text-ink/38 uppercase">{translations.callTitle}</p>
+            <ContactDetails labels={{ addressTitle: translations.addressTitle }} settings={settings} />
+            <Link
+              href="/treatments"
+              className="group mt-7 flex min-h-11 items-center justify-between border-t border-ink/12 pt-4 text-[0.82rem] text-ink/58 transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:text-primary"
+            >
+              <span>{content.ui.treatmentsTeaser}</span>
+              <ArrowUpRight
+                aria-hidden="true"
+                className="size-4 shrink-0 transition-transform duration-200 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                weight="light"
+              />
+            </Link>
           </div>
+        </div>
 
-          <div data-motion-intro className="flex flex-col border-t border-ink/12 p-6 sm:p-8 lg:border-s lg:border-t-0 lg:p-10 xl:p-12">
-            <div className="border-b border-ink/12 pb-4">
-              <div>
-                <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-primary uppercase">02 · {translations.writeTitle}</p>
-                <h2 className="mt-3 max-w-xl text-[1.65rem] leading-[1.04] font-medium tracking-[-0.04em] text-ink sm:text-[2.15rem]">{content.ui.homeIntro}</h2>
-              </div>
-            </div>
-            <div className="mt-7 lg:mt-9">
-              <ContactForm labels={translations.form} locale={locale} />
-            </div>
+        <div data-motion-intro className="border-t border-ink/12 pt-10 lg:border-s lg:border-t-0 lg:ps-14 lg:pt-0 xl:ps-18">
+          <div className="border-b border-ink/12 pb-5">
+            <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-primary uppercase">02 · {translations.writeTitle}</p>
+            <h2 className="mt-3 max-w-xl text-[clamp(1.55rem,2.7vw,2rem)] leading-[1.08] font-medium tracking-[-0.04em] text-ink">{content.ui.homeIntro}</h2>
+          </div>
+          <div className="mt-7 lg:mt-8">
+            <ContactForm labels={translations.form} locale={locale} />
           </div>
         </div>
       </div>

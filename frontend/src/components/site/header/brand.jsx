@@ -7,17 +7,24 @@ export default function Brand({ variant = "compact" }) {
   const isDisplay = variant === "display";
 
   return (
-    <Link href="/" aria-label={siteConfig.name} className={isDisplay ? "group block" : "group flex items-center gap-2.5 text-[0.82rem] font-medium tracking-[-0.025em] text-ink"}>
+    <Link
+      href="/"
+      aria-label={siteConfig.name}
+      className="group inline-flex items-center"
+    >
       <Image
         alt=""
-        className={`object-cover transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-0.5 ${isDisplay ? "size-22 xl:size-24" : "size-9"}`}
-        height={isDisplay ? 96 : 36}
+        className={`h-auto object-contain transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-0.5 ${
+          isDisplay
+            ? "w-[10.5rem] sm:w-48 xl:w-[13.5rem]"
+            : "w-[7.5rem] sm:w-[8.5rem]"
+        }`}
+        height={468}
         priority
-        sizes={isDisplay ? "96px" : "36px"}
-        src="/images/logo/main-logo.png"
-        width={isDisplay ? 96 : 36}
+        sizes={isDisplay ? "(min-width: 1280px) 216px, 192px" : "136px"}
+        src="/images/logo/akif-wordmark-primary.png"
+        width={953}
       />
-      {isDisplay ? null : <span>{siteConfig.name}</span>}
     </Link>
   );
 }

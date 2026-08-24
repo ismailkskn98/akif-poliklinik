@@ -178,7 +178,7 @@
   font-weight: 600;
   letter-spacing: 0.055em;
   text-transform: uppercase;
-  color: rgb(39 35 31 / 0.68);
+  color: rgb(23 32 56 / 0.64);
   transition: color 180ms cubic-bezier(0.22, 1, 0.36, 1),
     border-color 180ms cubic-bezier(0.22, 1, 0.36, 1);
 }

@@ -10,7 +10,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { siteConfig } from "@/config/site";
 import { Link } from "@/i18n/navigation";
 
 import Brand from "./brand";
@@ -33,7 +32,7 @@ function MenuGlyph({ open }) {
   );
 }
 
-export default function MobileNavbar({ currentLocale, groups, labels }) {
+export default function MobileNavbar({ currentLocale, groups, labels, phone }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -148,7 +147,7 @@ export default function MobileNavbar({ currentLocale, groups, labels }) {
                 variant="mobile"
               />
               <a
-                href={siteConfig.phones[0].href}
+                href={phone.href}
                 className="group inline-flex min-h-11 items-center gap-3 bg-primary px-4 text-sm font-medium text-white"
               >
                 {labels.call}

@@ -1,0 +1,22 @@
+{
+  "health": { "ready": "Die API der Akif Klinik ist bereit." },
+  "errors": { "notFound": "Die angeforderte API-Ressource wurde nicht gefunden.", "serverError": "Ein unerwarteter Serverfehler ist aufgetreten." },
+  "contact": {
+    "created": "Ihre Kontaktanfrage ist eingegangen.",
+    "listed": "Kontaktanfragen wurden aufgelistet.",
+    "updated": "Die Kontaktanfrage wurde aktualisiert.",
+    "notFound": "Die Kontaktanfrage wurde nicht gefunden.",
+    "invalidFields": "Prüfen Sie Name und Telefonnummer.",
+    "invalidEmail": "Geben Sie eine gültige E-Mail-Adresse ein.",
+    "invalidUpdate": "Anfragenummer oder Status ist ungültig.",
+    "rateLimited": "Zu viele Anfragen. Bitte versuchen Sie es später erneut."
+  },
+  "auth": {
+    "loggedIn": "Anmeldung erfolgreich.",
+    "missingCredentials": "E-Mail und Passwort sind erforderlich.",
+    "invalidCredentials": "E-Mail oder Passwort ist falsch.",
+    "unauthorized": "Für diese Aktion müssen Sie angemeldet sein.",
+    "invalidToken": "Die Sitzung ist ungültig oder abgelaufen.",
+    "rateLimited": "Zu viele Anmeldeversuche. Bitte versuchen Sie es später erneut."
+  }
+}

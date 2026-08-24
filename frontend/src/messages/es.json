@@ -1,0 +1,85 @@
+{
+  "Metadata": {
+    "brand": "Akif Poliklinik",
+    "title": "Akif Poliklinik | Salud y estética",
+    "description": "Consulta los datos de contacto de Akif Poliklinik y envía tu solicitud de consulta médica."
+  },
+  "Navigation": {
+    "ariaLabel": "Navegación principal",
+    "home": "Inicio",
+    "privacy": "Información de privacidad",
+    "aftercare": "Información posterior al procedimiento",
+    "authorization": "Documento de autorización",
+    "languages": "Elegir idioma",
+    "menu": "Menú",
+    "externalLink": "Se abre en un sitio informativo externo",
+    "aftercareItems": {
+      "botox": "Botox",
+      "filler": "Relleno dérmico",
+      "mesotherapy": "Mesoterapia y vacuna de juventud",
+      "rhinoplasty": "Rinoplastia",
+      "thighLift": "Lifting de muslos",
+      "bblLiposuction": "BBL y liposucción",
+      "tummyTuck": "Abdominoplastia",
+      "tummyTuckLiposuction": "Abdominoplastia y liposucción",
+      "armLift": "Lifting de brazos",
+      "liposuction": "Liposucción",
+      "breastLift": "Elevación de senos",
+      "breastLiftImplant": "Elevación de senos con implantes",
+      "breastImplant": "Implantes mamarios",
+      "breastReduction": "Reducción mamaria",
+      "upperEyelid": "Cirugía del párpado superior"
+    }
+  },
+  "Home": {
+    "highlights": {
+      "label": "Nuestro enfoque de servicio",
+      "experiencedDoctors": "Equipo médico experimentado",
+      "professionalTeam": "Equipo profesional",
+      "qualityService": "Servicio de calidad"
+    },
+    "contact": {
+      "callTitle": "Llámanos",
+      "addressTitle": "Dirección",
+      "writeTitle": "Escríbenos",
+      "form": {
+        "fullName": "Tu nombre*",
+        "phone": "Teléfono móvil*",
+        "email": "Tu correo electrónico",
+        "message": "Tu mensaje",
+        "submit": "Enviar",
+        "sending": "Enviando...",
+        "success": "Hemos recibido tu solicitud. Nos pondremos en contacto contigo pronto.",
+        "error": "No se pudo enviar tu solicitud. Inténtalo de nuevo o llámanos.",
+        "validation": {
+          "required": "Este campo es obligatorio.",
+          "invalidEmail": "Introduce un correo electrónico válido."
+        }
+      }
+    },
+    "mapTitle": "Ubicación de Akif Poliklinik en Nişantaşı"
+  },
+  "Footer": {
+    "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
+    "updatedAt": "Última actualización: abril de 2026",
+    "legalTitle": "Enlaces legales",
+    "privacy": "Información de privacidad",
+    "authorization": "Documento de autorización",
+    "rights": "Todos los derechos reservados."
+  },
+  "Pages": {
+    "privacy": {
+      "eyebrow": "Protección de datos personales",
+      "title": "Información de privacidad",
+      "description": "Información sobre las finalidades y bases legales del tratamiento de tus datos personales.",
+      "setupNotice": "El aviso se adapta para Akif Poliklinik a partir del texto existente de British Estetik. La denominación legal completa y los datos de contacto del responsable deben verificarse antes de la publicación."
+    },
+    "authorization": {
+      "eyebrow": "Documentos corporativos",
+      "title": "Autorización de turismo sanitario internacional",
+      "description": "El documento AK-0995 fue emitido para Akif Özgüller Turizm Seyahat Acentası (British Esthetic Sağlık A.Ş.).",
+      "openDocument": "Abrir el documento en una pestaña nueva",
+      "imageAlt": "Autorización de turismo sanitario internacional, documento AK-0995"
+    }
+  }
+}

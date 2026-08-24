@@ -1,0 +1,13 @@
+{
+  "name": "akif-poliklinik",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev:backend": "npm run dev --prefix backend",
+    "install:all": "npm install --prefix frontend && npm install --prefix backend",
+    "lint": "npm run lint --prefix frontend && npm run lint --prefix backend",
+    "build": "npm run build --prefix frontend"
+  }
+}

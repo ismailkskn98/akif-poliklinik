@@ -1,0 +1,85 @@
+{
+  "Metadata": {
+    "brand": "Akif Poliklinik",
+    "title": "Akif Poliklinik | 健康与医美服务",
+    "description": "查看 Akif Poliklinik 的联系方式并提交医疗咨询申请。"
+  },
+  "Navigation": {
+    "ariaLabel": "主导航",
+    "home": "首页",
+    "privacy": "隐私信息",
+    "aftercare": "术后须知",
+    "authorization": "授权证书",
+    "languages": "选择语言",
+    "menu": "菜单",
+    "externalLink": "在外部信息网站打开",
+    "aftercareItems": {
+      "botox": "肉毒素",
+      "filler": "填充剂",
+      "mesotherapy": "中胚层疗法与青春针",
+      "rhinoplasty": "鼻整形",
+      "thighLift": "大腿提升",
+      "bblLiposuction": "巴西提臀与吸脂",
+      "tummyTuck": "腹壁整形",
+      "tummyTuckLiposuction": "腹壁整形与吸脂",
+      "armLift": "手臂提升",
+      "liposuction": "吸脂",
+      "breastLift": "乳房提升",
+      "breastLiftImplant": "乳房提升与假体",
+      "breastImplant": "乳房假体",
+      "breastReduction": "乳房缩小",
+      "upperEyelid": "上眼睑手术"
+    }
+  },
+  "Home": {
+    "highlights": {
+      "label": "我们的服务理念",
+      "experiencedDoctors": "经验丰富的医生团队",
+      "professionalTeam": "专业团队",
+      "qualityService": "优质服务"
+    },
+    "contact": {
+      "callTitle": "致电我们",
+      "addressTitle": "地址",
+      "writeTitle": "给我们留言",
+      "form": {
+        "fullName": "您的姓名*",
+        "phone": "手机号码*",
+        "email": "您的电子邮箱",
+        "message": "您的留言",
+        "submit": "发送",
+        "sending": "正在发送...",
+        "success": "我们已收到您的申请，将尽快与您联系。",
+        "error": "申请发送失败，请重试或致电我们。",
+        "validation": {
+          "required": "此项为必填项。",
+          "invalidEmail": "请输入有效的电子邮箱地址。"
+        }
+      }
+    },
+    "mapTitle": "Akif Poliklinik Nişantaşı 位置"
+  },
+  "Footer": {
+    "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
+    "updatedAt": "最后更新：2026年4月",
+    "legalTitle": "法律链接",
+    "privacy": "隐私信息",
+    "authorization": "授权证书",
+    "rights": "版权所有。"
+  },
+  "Pages": {
+    "privacy": {
+      "eyebrow": "个人数据保护",
+      "title": "隐私信息",
+      "description": "关于处理您个人数据的目的和法律依据的信息。",
+      "setupNotice": "本声明根据 British Estetik 的现有文本为 Akif Poliklinik 进行调整。正式发布前须核实数据负责人的完整法定名称和联系方式。"
+    },
+    "authorization": {
+      "eyebrow": "机构文件",
+      "title": "国际健康旅游授权证书",
+      "description": "AK-0995 授权证书签发给 Akif Özgüller Turizm Seyahat Acentası（British Esthetic Sağlık A.Ş.）。",
+      "openDocument": "在新标签页打开文件",
+      "imageAlt": "国际健康旅游授权证书，文件编号 AK-0995"
+    }
+  }
+}

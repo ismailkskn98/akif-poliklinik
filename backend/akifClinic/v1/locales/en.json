@@ -1,0 +1,22 @@
+{
+  "health": { "ready": "Akif Clinic API is ready." },
+  "errors": { "notFound": "The requested API resource was not found.", "serverError": "An unexpected server error occurred." },
+  "contact": {
+    "created": "Your contact request has been received.",
+    "listed": "Contact requests were listed.",
+    "updated": "The contact request was updated.",
+    "notFound": "The contact request was not found.",
+    "invalidFields": "Check the full name and phone fields.",
+    "invalidEmail": "Enter a valid email address.",
+    "invalidUpdate": "The request number or status is invalid.",
+    "rateLimited": "Too many requests were sent. Please try again later."
+  },
+  "auth": {
+    "loggedIn": "Login successful.",
+    "missingCredentials": "Email and password are required.",
+    "invalidCredentials": "The email or password is incorrect.",
+    "unauthorized": "You must sign in to perform this action.",
+    "invalidToken": "The session is invalid or has expired.",
+    "rateLimited": "Too many login attempts. Please try again later."
+  }
+}

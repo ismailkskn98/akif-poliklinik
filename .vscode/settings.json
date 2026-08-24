@@ -1,0 +1,7 @@
+{
+    "i18n-ally.localesPaths": [
+        "frontend/src/i18n",
+        "frontend/src/messages",
+        "backend/akifClinic/v1/locales"
+    ]
+}

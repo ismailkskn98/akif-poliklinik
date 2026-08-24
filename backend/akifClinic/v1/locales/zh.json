@@ -1,0 +1,22 @@
+{
+  "health": { "ready": "Akif 诊所 API 已就绪。" },
+  "errors": { "notFound": "未找到请求的 API 资源。", "serverError": "服务器发生意外错误。" },
+  "contact": {
+    "created": "您的联系请求已收到。",
+    "listed": "联系请求已列出。",
+    "updated": "联系请求已更新。",
+    "notFound": "未找到联系请求。",
+    "invalidFields": "请检查姓名和电话字段。",
+    "invalidEmail": "请输入有效的电子邮箱地址。",
+    "invalidUpdate": "请求编号或状态无效。",
+    "rateLimited": "提交次数过多，请稍后再试。"
+  },
+  "auth": {
+    "loggedIn": "登录成功。",
+    "missingCredentials": "电子邮箱和密码为必填项。",
+    "invalidCredentials": "电子邮箱或密码不正确。",
+    "unauthorized": "您必须登录才能执行此操作。",
+    "invalidToken": "会话无效或已过期。",
+    "rateLimited": "登录尝试次数过多，请稍后再试。"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "Metadata": {
+    "brand": "Akif Poliklinik",
+    "title": "Akif Poliklinik | Sağlık ve Estetik Hizmetleri",
+    "description": "Akif Poliklinik iletişim bilgilerine ulaşın ve sağlık danışmanlığı talebinizi iletin."
+  },
+  "Navigation": {
+    "ariaLabel": "Ana navigasyon",
+    "home": "Anasayfa",
+    "privacy": "KVKK Hakkında Bilgilendirme",
+    "aftercare": "İşlem Sonrası Bilgilendirme",
+    "authorization": "Yetki Belgesi",
+    "languages": "Dil seçimi",
+    "menu": "Menü",
+    "externalLink": "Harici bilgilendirme sitesinde açılır",
+    "aftercareItems": {
+      "botox": "Botox",
+      "filler": "Dolgu",
+      "mesotherapy": "Mezoterapi Gençlik Aşısı",
+      "rhinoplasty": "Burun Estetiği",
+      "thighLift": "Bacak (Uyluk) Germe",
+      "bblLiposuction": "BBL Popo ve Liposuction",
+      "tummyTuck": "Karın Germe",
+      "tummyTuckLiposuction": "Karın Germe ve Liposuction",
+      "armLift": "Kol Germe",
+      "liposuction": "Liposuction",
+      "breastLift": "Meme Dikleştirme",
+      "breastLiftImplant": "Meme Dikleştirme ve Protez",
+      "breastImplant": "Meme Protezi",
+      "breastReduction": "Meme Küçültme",
+      "upperEyelid": "Üst Göz Kapağı"
+    }
+  },
+  "Home": {
+    "highlights": {
+      "label": "Hizmet yaklaşımımız",
+      "experiencedDoctors": "Tecrübeli Doktor Kadrosu",
+      "professionalTeam": "Profesyonel Ekip",
+      "qualityService": "Kaliteli Hizmet"
+    },
+    "contact": {
+      "callTitle": "Bizi Arayın",
+      "addressTitle": "Adres",
+      "writeTitle": "Bize Yazın",
+      "form": {
+        "fullName": "Adınız*",
+        "phone": "Cep Telefonu*",
+        "email": "E-posta adresiniz",
+        "message": "İletiniz",
+        "submit": "Gönder",
+        "sending": "Gönderiliyor...",
+        "success": "Talebiniz alındı. En kısa sürede sizinle iletişime geçeceğiz.",
+        "error": "Talep gönderilemedi. Lütfen tekrar deneyin veya bizi arayın.",
+        "validation": {
+          "required": "Bu alan zorunludur.",
+          "invalidEmail": "Geçerli bir e-posta adresi girin."
+        }
+      }
+    },
+    "mapTitle": "Akif Poliklinik Nişantaşı konumu"
+  },
+  "Footer": {
+    "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
+    "updatedAt": "Güncellenme Tarihi: Nisan 2026",
+    "legalTitle": "Yasal bağlantılar",
+    "privacy": "KVKK Hakkında Bilgilendirme",
+    "authorization": "Yetki Belgesi",
+    "rights": "Tüm hakları saklıdır."
+  },
+  "Pages": {
+    "privacy": {
+      "eyebrow": "Kişisel verilerin korunması",
+      "title": "KVKK Hakkında Bilgilendirme",
+      "description": "Kişisel verilerinizin hangi amaçlarla ve hangi hukuki dayanaklarla işlendiğine ilişkin bilgilendirme.",
+      "setupNotice": "Aydınlatma metni, British Estetik'teki mevcut metin esas alınarak Akif Poliklinik adına uyarlanmaktadır. Üretim yayını öncesinde veri sorumlusunun eksiksiz ticari unvanı ve iletişim bilgilerinin doğrulanması gerekir."
+    },
+    "authorization": {
+      "eyebrow": "Kurumsal belgeler",
+      "title": "Uluslararası Sağlık Turizmi Yetki Belgesi",
+      "description": "AK-0995 belge numaralı yetki belgesi, Akif Özgüller Turizm Seyahat Acentası (British Esthetic Sağlık A.Ş.) adına düzenlenmiştir.",
+      "openDocument": "Belgeyi yeni sekmede aç",
+      "imageAlt": "Uluslararası Sağlık Turizmi Yetki Belgesi, belge numarası AK-0995"
+    }
+  }
+}

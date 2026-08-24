@@ -1,0 +1,22 @@
+{
+  "health": { "ready": "Akif Poliklinik API kullanıma hazır." },
+  "errors": { "notFound": "İstenen API kaynağı bulunamadı.", "serverError": "Beklenmeyen bir sunucu hatası oluştu." },
+  "contact": {
+    "created": "İletişim talebiniz alındı.",
+    "listed": "İletişim talepleri listelendi.",
+    "updated": "İletişim talebi güncellendi.",
+    "notFound": "İletişim talebi bulunamadı.",
+    "invalidFields": "Ad soyad ve telefon alanlarını kontrol edin.",
+    "invalidEmail": "Geçerli bir e-posta adresi girin.",
+    "invalidUpdate": "Talep numarası veya durum bilgisi geçersiz.",
+    "rateLimited": "Çok fazla talep gönderdiniz. Lütfen daha sonra tekrar deneyin."
+  },
+  "auth": {
+    "loggedIn": "Giriş başarılı.",
+    "missingCredentials": "E-posta ve parola zorunludur.",
+    "invalidCredentials": "E-posta veya parola hatalı.",
+    "unauthorized": "Bu işlem için giriş yapmalısınız.",
+    "invalidToken": "Oturum geçersiz veya süresi dolmuş.",
+    "rateLimited": "Çok fazla giriş denemesi yaptınız. Lütfen daha sonra tekrar deneyin."
+  }
+}

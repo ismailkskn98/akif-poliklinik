@@ -1,0 +1,85 @@
+{
+  "Metadata": {
+    "brand": "Akif Poliklinik",
+    "title": "Akif Poliklinik | שירותי בריאות ואסתטיקה",
+    "description": "מצאו את פרטי הקשר של Akif Poliklinik ושלחו בקשה לייעוץ רפואי."
+  },
+  "Navigation": {
+    "ariaLabel": "ניווט ראשי",
+    "home": "דף הבית",
+    "privacy": "מידע על פרטיות",
+    "aftercare": "מידע לאחר ההליך",
+    "authorization": "תעודת הרשאה",
+    "languages": "בחירת שפה",
+    "menu": "תפריט",
+    "externalLink": "נפתח באתר מידע חיצוני",
+    "aftercareItems": {
+      "botox": "בוטוקס",
+      "filler": "חומרי מילוי",
+      "mesotherapy": "מזותרפיה וחיסון נעורים",
+      "rhinoplasty": "ניתוח אף",
+      "thighLift": "מתיחת ירכיים",
+      "bblLiposuction": "BBL ושאיבת שומן",
+      "tummyTuck": "מתיחת בטן",
+      "tummyTuckLiposuction": "מתיחת בטן ושאיבת שומן",
+      "armLift": "מתיחת זרועות",
+      "liposuction": "שאיבת שומן",
+      "breastLift": "הרמת חזה",
+      "breastLiftImplant": "הרמת חזה עם שתלים",
+      "breastImplant": "שתלי חזה",
+      "breastReduction": "הקטנת חזה",
+      "upperEyelid": "ניתוח עפעף עליון"
+    }
+  },
+  "Home": {
+    "highlights": {
+      "label": "גישת השירות שלנו",
+      "experiencedDoctors": "צוות רופאים מנוסה",
+      "professionalTeam": "צוות מקצועי",
+      "qualityService": "שירות איכותי"
+    },
+    "contact": {
+      "callTitle": "התקשרו אלינו",
+      "addressTitle": "כתובת",
+      "writeTitle": "כתבו לנו",
+      "form": {
+        "fullName": "השם שלך*",
+        "phone": "טלפון נייד*",
+        "email": "כתובת האימייל שלך",
+        "message": "ההודעה שלך",
+        "submit": "שליחה",
+        "sending": "שולח...",
+        "success": "הבקשה התקבלה. ניצור איתך קשר בהקדם.",
+        "error": "לא ניתן לשלוח את הבקשה. נסו שוב או התקשרו אלינו.",
+        "validation": {
+          "required": "שדה זה הוא חובה.",
+          "invalidEmail": "יש להזין כתובת אימייל תקינה."
+        }
+      }
+    },
+    "mapTitle": "מיקום Akif Poliklinik בנישאנטאשי"
+  },
+  "Footer": {
+    "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
+    "updatedAt": "עודכן לאחרונה: אפריל 2026",
+    "legalTitle": "קישורים משפטיים",
+    "privacy": "מידע על פרטיות",
+    "authorization": "תעודת הרשאה",
+    "rights": "כל הזכויות שמורות."
+  },
+  "Pages": {
+    "privacy": {
+      "eyebrow": "הגנה על מידע אישי",
+      "title": "מידע על פרטיות",
+      "description": "מידע על המטרות והבסיסים המשפטיים לעיבוד המידע האישי שלך.",
+      "setupNotice": "ההודעה מותאמת ל-Akif Poliklinik על בסיס הטקסט הקיים של British Estetik. יש לאמת את השם המשפטי המלא ואת פרטי הקשר של בעל מאגר המידע לפני העלייה לייצור."
+    },
+    "authorization": {
+      "eyebrow": "מסמכים ארגוניים",
+      "title": "הרשאה לתיירות בריאות בינלאומית",
+      "description": "מסמך ההרשאה AK-0995 הונפק עבור Akif Özgüller Turizm Seyahat Acentası (British Esthetic Sağlık A.Ş.).",
+      "openDocument": "פתיחת המסמך בלשונית חדשה",
+      "imageAlt": "הרשאה לתיירות בריאות בינלאומית, מספר מסמך AK-0995"
+    }
+  }
+}

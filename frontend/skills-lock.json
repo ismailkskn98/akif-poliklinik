@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "animation-systems": {
+      "source": "MengTo/Skills",
+      "sourceType": "github",
+      "skillPath": "agent-skills/web-design/animation-systems/SKILL.md",
+      "computedHash": "3b1538b9b7d54531ed0d83745d7748347b0285be6146b50af74b92224301eb3f"
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "Metadata": {
+    "brand": "Akif Poliklinik",
+    "title": "Akif Poliklinik | خدمات الصحة والتجميل",
+    "description": "اطّلع على بيانات التواصل مع Akif Poliklinik وأرسل طلب الاستشارة الصحية."
+  },
+  "Navigation": {
+    "ariaLabel": "التنقل الرئيسي",
+    "home": "الرئيسية",
+    "privacy": "معلومات الخصوصية",
+    "aftercare": "معلومات ما بعد الإجراء",
+    "authorization": "وثيقة الترخيص",
+    "languages": "اختيار اللغة",
+    "menu": "القائمة",
+    "externalLink": "يفتح في موقع معلومات خارجي",
+    "aftercareItems": {
+      "botox": "البوتوكس",
+      "filler": "الفيلر",
+      "mesotherapy": "الميزوثيرابي وحقنة الشباب",
+      "rhinoplasty": "تجميل الأنف",
+      "thighLift": "شد الفخذين",
+      "bblLiposuction": "شد المؤخرة البرازيلي وشفط الدهون",
+      "tummyTuck": "شد البطن",
+      "tummyTuckLiposuction": "شد البطن وشفط الدهون",
+      "armLift": "شد الذراعين",
+      "liposuction": "شفط الدهون",
+      "breastLift": "رفع الثدي",
+      "breastLiftImplant": "رفع الثدي مع الحشوات",
+      "breastImplant": "حشوات الثدي",
+      "breastReduction": "تصغير الثدي",
+      "upperEyelid": "جراحة الجفن العلوي"
+    }
+  },
+  "Home": {
+    "highlights": {
+      "label": "نهجنا في الخدمة",
+      "experiencedDoctors": "طاقم أطباء ذوو خبرة",
+      "professionalTeam": "فريق محترف",
+      "qualityService": "خدمة عالية الجودة"
+    },
+    "contact": {
+      "callTitle": "اتصلوا بنا",
+      "addressTitle": "العنوان",
+      "writeTitle": "راسلونا",
+      "form": {
+        "fullName": "اسمك*",
+        "phone": "رقم الهاتف المحمول*",
+        "email": "بريدك الإلكتروني",
+        "message": "رسالتك",
+        "submit": "إرسال",
+        "sending": "جارٍ الإرسال...",
+        "success": "تم استلام طلبك وسنتواصل معك قريبًا.",
+        "error": "تعذر إرسال طلبك. حاول مرة أخرى أو اتصل بنا.",
+        "validation": {
+          "required": "هذا الحقل مطلوب.",
+          "invalidEmail": "أدخل عنوان بريد إلكتروني صالحًا."
+        }
+      }
+    },
+    "mapTitle": "موقع Akif Poliklinik في نيشانتاشي"
+  },
+  "Footer": {
+    "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
+    "updatedAt": "آخر تحديث: أبريل 2026",
+    "legalTitle": "الروابط القانونية",
+    "privacy": "معلومات الخصوصية",
+    "authorization": "وثيقة الترخيص",
+    "rights": "جميع الحقوق محفوظة."
+  },
+  "Pages": {
+    "privacy": {
+      "eyebrow": "حماية البيانات الشخصية",
+      "title": "معلومات الخصوصية",
+      "description": "معلومات حول أغراض والأسس القانونية لمعالجة بياناتك الشخصية.",
+      "setupNotice": "يُكيّف الإشعار لصالح Akif Poliklinik استنادًا إلى النص الحالي لدى British Estetik. يجب التحقق من الاسم القانوني الكامل وبيانات الاتصال بمسؤول البيانات قبل النشر الإنتاجي."
+    },
+    "authorization": {
+      "eyebrow": "وثائق المؤسسة",
+      "title": "ترخيص السياحة الصحية الدولية",
+      "description": "صدرت وثيقة الترخيص AK-0995 لصالح Akif Özgüller Turizm Seyahat Acentası (British Esthetic Sağlık A.Ş.).",
+      "openDocument": "فتح الوثيقة في علامة تبويب جديدة",
+      "imageAlt": "ترخيص السياحة الصحية الدولية، رقم الوثيقة AK-0995"
+    }
+  }
+}

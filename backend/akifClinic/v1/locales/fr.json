@@ -1,0 +1,22 @@
+{
+  "health": { "ready": "L'API de la Clinique Akif est prête." },
+  "errors": { "notFound": "La ressource API demandée est introuvable.", "serverError": "Une erreur serveur inattendue s'est produite." },
+  "contact": {
+    "created": "Votre demande de contact a été reçue.",
+    "listed": "Les demandes de contact ont été listées.",
+    "updated": "La demande de contact a été mise à jour.",
+    "notFound": "La demande de contact est introuvable.",
+    "invalidFields": "Vérifiez le nom complet et le numéro de téléphone.",
+    "invalidEmail": "Saisissez une adresse e-mail valide.",
+    "invalidUpdate": "Le numéro ou le statut de la demande est invalide.",
+    "rateLimited": "Trop de demandes ont été envoyées. Réessayez plus tard."
+  },
+  "auth": {
+    "loggedIn": "Connexion réussie.",
+    "missingCredentials": "L'e-mail et le mot de passe sont obligatoires.",
+    "invalidCredentials": "L'e-mail ou le mot de passe est incorrect.",
+    "unauthorized": "Vous devez vous connecter pour effectuer cette action.",
+    "invalidToken": "La session est invalide ou a expiré.",
+    "rateLimited": "Trop de tentatives de connexion. Réessayez plus tard."
+  }
+}

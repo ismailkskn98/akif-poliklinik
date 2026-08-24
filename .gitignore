@@ -15,3 +15,8 @@ coverage/
 *.log
 .DS_Store
 .vercel/
+
+# Local agent configuration
+.agents/
+skills-lock.json
+skills.lock.json

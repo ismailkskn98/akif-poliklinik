@@ -44,15 +44,12 @@ export default async function PrivacyNoticePage({ params }) {
         </header>
 
         <div className="divide-y divide-ink/12">
-          {notice.sections.map((section, index) => (
+          {notice.sections.map((section) => (
             <section
               data-motion-reveal
-              className="grid gap-5 py-8 sm:grid-cols-[2.2rem_15rem_1fr] sm:gap-6 sm:py-10"
+              className="grid gap-5 py-8 sm:grid-cols-[15rem_1fr] sm:gap-6 sm:py-10"
               key={section.title}
             >
-              <p className="text-xs font-semibold text-primary">
-                {String(index + 1).padStart(2, "0")}
-              </p>
               <h2 className="text-xl font-medium tracking-[-0.025em] text-ink">
                 {section.title}
               </h2>
@@ -77,10 +74,7 @@ export default async function PrivacyNoticePage({ params }) {
           className="grid gap-6 border-t border-ink/14 bg-ink-deep p-6 text-white sm:p-8 lg:grid-cols-[.72fr_1.28fr] lg:p-10"
         >
           <div>
-            <p className="text-xs font-semibold tracking-[0.16em] text-white/42 uppercase">
-              {String(notice.sections.length + 1).padStart(2, "0")}
-            </p>
-            <h2 className="mt-4 text-2xl font-medium tracking-[-0.035em]">
+            <h2 className="text-2xl font-medium tracking-[-0.035em]">
               {notice.application.title}
             </h2>
           </div>

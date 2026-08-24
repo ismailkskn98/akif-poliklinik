@@ -58,7 +58,7 @@ export default function DesktopNavbar({ groups, labels }) {
             </figure>
 
             <div className="flex min-w-0 flex-col">
-              <div className="flex min-h-16 items-center justify-between gap-6 border-b border-ink/12 px-6">
+              <div className="flex min-h-16 items-center border-b border-ink/12 px-6">
                 <div>
                   <p className="text-[0.65rem] font-semibold tracking-[0.16em] text-primary uppercase">
                     {labels.treatments}
@@ -67,21 +67,15 @@ export default function DesktopNavbar({ groups, labels }) {
                     {labels.treatmentsTeaser}
                   </p>
                 </div>
-                <span className="text-[0.62rem] tracking-[0.16em] text-ink/28 uppercase">
-                  {String(groups.reduce((total, group) => total + group.items.length, 0)).padStart(2, "0")}
-                </span>
               </div>
 
               <div className="grid flex-1 grid-cols-4 divide-x divide-ink/10 rtl:divide-x-reverse">
-                {groups.map((group, groupIndex) => (
+                {groups.map((group) => (
                   <section key={group.key} className="p-4 xl:p-5">
-                    <div className="flex min-h-10 items-start justify-between gap-3 border-b border-ink/10 pb-3">
+                    <div className="flex min-h-10 items-start border-b border-ink/10 pb-3">
                       <h2 className="text-[0.64rem] leading-4 font-semibold tracking-[0.14em] text-primary uppercase">
                         {group.label}
                       </h2>
-                      <span className="text-[0.58rem] text-ink/26">
-                        {String(groupIndex + 1).padStart(2, "0")}
-                      </span>
                     </div>
                     <div className="mt-2 grid">
                       {group.items.map((item) => {

@@ -29,7 +29,7 @@ export default async function TreatmentsPage({ params }) {
     <div className="pb-16 sm:pb-20">
       <header data-motion-intro className="grid-container grid gap-6 pb-12 pt-10 sm:pb-16 sm:pt-14 lg:grid-cols-[.45fr_1.55fr] lg:pt-18">
         <p className="text-[0.68rem] font-semibold tracking-[0.18em] text-primary uppercase">
-          02 · {content.ui.treatmentsEyebrow}
+          {content.ui.treatmentsEyebrow}
         </p>
         <div>
           <h1 className="max-w-5xl text-balance text-[clamp(2.75rem,6vw,5.4rem)] leading-[0.93] font-medium tracking-[-0.064em] text-[#172038]">

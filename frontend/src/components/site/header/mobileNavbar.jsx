@@ -56,11 +56,10 @@ export default function MobileNavbar({ currentLocale, groups, labels, phone }) {
         <nav aria-label={labels.menu} className="px-5 pb-10 pt-6 sm:px-7 sm:pt-8">
           <div
             data-mobile-nav-item
-            className="mb-4 flex items-center justify-between text-[0.62rem] font-semibold tracking-[0.16em] text-ink/40 uppercase"
+            className="mb-4 text-[0.62rem] font-semibold tracking-[0.16em] text-ink/40 uppercase"
             style={{ "--mobile-nav-delay": "80ms" }}
           >
             <span>{labels.menu}</span>
-            <span>{String(groups.reduce((total, group) => total + group.items.length, 0)).padStart(2, "0")}</span>
           </div>
 
           <div

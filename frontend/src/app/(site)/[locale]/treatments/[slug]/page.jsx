@@ -181,7 +181,7 @@ export default async function TreatmentPage({ params }) {
         </div>
 
         <ol className="border-t border-[#172038]/12">
-          {content.profiles[treatment.profile].map((point, index) => (
+          {content.profiles[treatment.profile].map((point) => (
             <li
               key={point}
               className="grid grid-cols-[auto_1fr] gap-5 border-b border-[#172038]/12 py-5 sm:gap-7 sm:py-6"
@@ -189,14 +189,9 @@ export default async function TreatmentPage({ params }) {
               <span className="grid size-8 place-items-center border border-primary/24 text-primary">
                 <Check aria-hidden="true" className="size-4" weight="light" />
               </span>
-              <div>
-                <span className="text-[0.62rem] font-medium tracking-[0.15em] text-[#172038]/35 uppercase">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <p className="mt-2 max-w-2xl text-sm leading-6 text-[#172038]/68 sm:text-base sm:leading-7">
-                  {point}
-                </p>
-              </div>
+              <p className="max-w-2xl text-sm leading-6 text-[#172038]/68 sm:text-base sm:leading-7">
+                {point}
+              </p>
             </li>
           ))}
         </ol>

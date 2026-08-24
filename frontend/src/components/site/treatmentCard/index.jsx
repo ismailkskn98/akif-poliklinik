@@ -26,10 +26,7 @@ export default function TreatmentCard({
             width={1672}
           />
         </div>
-        <div className="grid grid-cols-[auto_1fr_auto] gap-4 py-4">
-          <span className="pt-1 text-[0.65rem] font-medium text-primary">
-            {String(index + 1).padStart(2, "0")}
-          </span>
+        <div className="grid grid-cols-[1fr_auto] gap-4 py-4">
           <div>
             <h3 className="text-lg font-medium tracking-[-0.03em] text-[#172038] sm:text-xl">
               {title}

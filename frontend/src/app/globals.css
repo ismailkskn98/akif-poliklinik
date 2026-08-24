@@ -202,7 +202,7 @@
 }
 
 .mobile-nav-panel[data-open] [data-mobile-nav-item] {
-  animation: mobile-nav-item-in 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: mobile-nav-item-in 360ms cubic-bezier(0.33, 1, 0.68, 1) both;
   animation-delay: var(--mobile-nav-delay, 0ms);
 }
 
@@ -221,7 +221,7 @@
 @keyframes mobile-nav-item-in {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(8px);
   }
 
   to {

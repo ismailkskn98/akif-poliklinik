@@ -35,6 +35,12 @@
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-surface-soft: var(--surface-soft);
+  --color-surface: var(--surface);
+  --color-media: var(--media);
+  --color-ink: var(--ink);
+  --color-ink-deep: var(--ink-deep);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
@@ -49,13 +55,19 @@
 }
 
 :root {
-  --background: #f7f7f3;
+  --background: #f5f7fc;
   --foreground: #172038;
+  --surface: #fafbfe;
+  --surface-soft: #eef2fa;
+  --media: #e6ebf6;
+  --ink: #202943;
+  --ink-deep: #252d46;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #435eb7;
+  --primary: #516fc9;
+  --primary-dark: #405db0;
   --primary-foreground: #ffffff;
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -66,7 +78,7 @@
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: #435eb7;
+  --ring: #516fc9;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -121,14 +133,17 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground antialiased;
     min-width: 320px;
   }
+
   html {
     @apply font-sans;
     scroll-behavior: smooth;
   }
+
   button,
   a {
     @apply cursor-pointer;
@@ -170,8 +185,8 @@
 
 @utility nav-link {
   &:hover {
-    color: #435eb7;
-    border-bottom-color: #435eb7;
+    color: #516fc9;
+    border-bottom-color: #516fc9;
   }
 }
 
@@ -195,6 +210,7 @@
     opacity: 0.55;
     transform: scale(1.018);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -206,6 +222,7 @@
     opacity: 0;
     transform: translateY(12px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

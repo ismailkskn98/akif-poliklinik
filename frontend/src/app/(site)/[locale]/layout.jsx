@@ -6,11 +6,23 @@ import { notFound } from "next/navigation";
 import Footer from "@/components/site/footer";
 import Header from "@/components/site/header";
 import SiteMotion from "@/components/site/siteMotion";
+import { siteConfig } from "@/config/site";
 import { routing } from "@/i18n/routing";
 
 import "../../globals.css";
 
 const rtlLocales = new Set(["ar", "he"]);
+const openGraphLocales = {
+  tr: "tr_TR",
+  en: "en_US",
+  de: "de_DE",
+  he: "he_IL",
+  fr: "fr_FR",
+  ar: "ar_SA",
+  it: "it_IT",
+  es: "es_ES",
+  zh: "zh_CN",
+};
 const geistSans = localFont({
   src: "../../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
   variable: "--font-geist-sans",
@@ -24,24 +36,38 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+export const viewport = {
+  colorScheme: "light",
+  themeColor: siteConfig.primaryColor,
+};
+
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const translations = await getTranslations({ locale, namespace: "Metadata" });
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  const siteUrl = siteConfig.siteUrl.replace(/\/$/, "");
   const canonical = locale === routing.defaultLocale ? siteUrl : `${siteUrl}/${locale}`;
+  const socialImageUrl = new URL(
+    "/images/social/akif-poliklinik-og.png",
+    siteUrl,
+  ).toString();
   const languages = Object.fromEntries(
     routing.locales.map((language) => [
       language,
       language === routing.defaultLocale ? siteUrl : `${siteUrl}/${language}`,
     ]),
   );
+  const title = translations("title");
+  const description = translations("description");
 
   return {
+    metadataBase: new URL(siteUrl),
+    applicationName: translations("brand"),
     title: {
-      default: translations("title"),
+      default: title,
       template: `%s | ${translations("brand")}`,
     },
-    description: translations("description"),
+    description,
+    manifest: "/manifest.webmanifest",
     alternates: {
       canonical,
       languages: {
@@ -49,6 +75,37 @@ export async function generateMetadata({ params }) {
         "x-default": siteUrl,
       },
     },
+    openGraph: {
+      type: "website",
+      siteName: translations("brand"),
+      title,
+      description,
+      url: canonical,
+      locale: openGraphLocales[locale],
+      alternateLocale: routing.locales
+        .filter((language) => language !== locale)
+        .map((language) => openGraphLocales[language]),
+      images: [
+        {
+          url: socialImageUrl,
+          width: 1200,
+          height: 630,
+          alt: translations("brand"),
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [
+        {
+          url: socialImageUrl,
+          alt: translations("brand"),
+        },
+      ],
+    },
+    category: "health",
   };
 }
 
@@ -62,18 +119,32 @@ export default async function SiteLayout({ children, params }) {
   setRequestLocale(locale);
 
   return (
-    <html
-      lang={locale}
-      dir={rtlLocales.has(locale) ? "rtl" : "ltr"}
-      className={geistSans.variable}
-    >
-      <body>
-        <NextIntlClientProvider locale={locale} messages={null}>
-          <SiteMotion />
-          <Header locale={locale} />
-          <main>{children}</main>
-          <Footer locale={locale} />
-        </NextIntlClientProvider>
+    <html lang={locale} dir={rtlLocales.has(locale) ? "rtl" : "ltr"} className={geistSans.variable} data-scroll-behavior="smooth">
+      <body
+        className="
+    relative
+    min-h-dvh
+    bg-[#f4f6fd]
+    before:content-['']
+    before:absolute
+    before:inset-0
+    before:bg-[url('/images/footer-bg-pattern.png')]
+    before:bg-center
+    before:bg-repeat
+    before:opacity-[0.02]
+    before:pointer-events-none
+    before:select-none
+  "
+      >
+        <div className="relative z-10">
+          <NextIntlClientProvider locale={locale} messages={null}>
+            <SiteMotion>
+              <Header locale={locale} />
+              <main>{children}</main>
+              <Footer locale={locale} />
+            </SiteMotion>
+          </NextIntlClientProvider>
+        </div>
       </body>
     </html>
   );

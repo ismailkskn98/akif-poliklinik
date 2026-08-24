@@ -11,6 +11,13 @@
     "invalidUpdate": "Il numero o lo stato della richiesta non è valido.",
     "rateLimited": "Hai inviato troppe richieste. Riprova più tardi."
   },
+  "settings": {
+    "retrieved": "Le impostazioni del sito sono state caricate.",
+    "updated": "Le impostazioni del sito sono state aggiornate.",
+    "invalidFields": "Alcuni campi delle impostazioni sono mancanti o non validi.",
+    "invalidDocument": "Il documento di autorizzazione deve essere un’immagine JPG, PNG o WebP di massimo 8 MB.",
+    "documentUploaded": "Il documento di autorizzazione è stato aggiornato."
+  },
   "auth": {
     "loggedIn": "Accesso effettuato.",
     "missingCredentials": "E-mail e password sono obbligatorie.",

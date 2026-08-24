@@ -157,7 +157,7 @@ export default async function TreatmentPage({ params }) {
       </header>
 
       <div data-motion-intro className="grid-container">
-        <div className="overflow-hidden border border-[#27231f]/12 bg-[#e8e4dc] p-1.5 sm:p-2">
+        <div className="overflow-hidden border border-ink/12 bg-media p-1.5 sm:p-2">
           <Image
             alt={title}
             className="aspect-[16/9] w-full object-cover"
@@ -203,8 +203,8 @@ export default async function TreatmentPage({ params }) {
       </section>
 
       <aside data-motion-reveal className="grid-container">
-        <div className="border border-[#27231f]/12 bg-[#e8e4dc] p-1.5">
-          <div className="grid gap-6 bg-[#f7f5ef] p-6 sm:p-8 lg:grid-cols-[.55fr_1.45fr]">
+        <div className="border border-ink/12 bg-media p-1.5">
+          <div className="grid gap-6 bg-surface p-6 sm:p-8 lg:grid-cols-[.55fr_1.45fr]">
             <h2 className="text-xl font-medium tracking-[-0.035em]">
               {content.ui.disclaimerTitle}
             </h2>
@@ -219,7 +219,7 @@ export default async function TreatmentPage({ params }) {
                 href={treatment.sourceUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-[#354ea5]"
+                className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-dark"
               >
                 {content.ui.source}
                 <ArrowUpRight aria-hidden="true" className="size-4" weight="light" />

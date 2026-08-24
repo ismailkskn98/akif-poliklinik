@@ -4,11 +4,14 @@ import Contact from "@/components/site/contact";
 import JsonLd from "@/components/site/jsonLd";
 import LocationMap from "@/components/site/locationMap";
 import { siteConfig } from "@/config/site";
+import { getPublicSiteSettings } from "@/lib/siteSettings";
 
 export default async function HomePage({ params }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const translations = await getTranslations({ locale, namespace: "Home" });
+  const settings = await getPublicSiteSettings();
+  const logoUrl = new URL("/images/logo/main-logo.png", siteConfig.siteUrl).toString();
 
   const contact = {
     callTitle: translations("contact.callTitle"),
@@ -39,14 +42,16 @@ export default async function HomePage({ params }) {
           "@id": `${siteConfig.siteUrl}/#clinic`,
           name: siteConfig.name,
           url: siteConfig.siteUrl,
-          telephone: siteConfig.phones.map((phone) => phone.label),
-          address: siteConfig.address,
-          sameAs: [siteConfig.instagramUrl],
+          logo: logoUrl,
+          image: logoUrl,
+          telephone: settings.phones.map((phone) => phone.label),
+          address: settings.address,
+          sameAs: [settings.instagramUrl],
         }}
       />
 
-      <Contact translations={contact} locale={locale} />
-      <LocationMap title={translations("mapTitle")} />
+      <Contact translations={contact} locale={locale} settings={settings} />
+      <LocationMap title={translations("mapTitle")} settings={settings} />
     </>
   );
 }

@@ -4,11 +4,13 @@ import {
   getTreatmentsByCategory,
   treatmentCategories,
 } from "@/content/treatments";
+import { getPublicSiteSettings } from "@/lib/siteSettings";
 
 import NavigationShell from "./navigationShell";
 
-export default function Header({ locale }) {
+export default async function Header({ locale }) {
   const content = getTreatmentCopy(locale);
+  const settings = await getPublicSiteSettings();
   const groups = treatmentCategories.map((category) => ({
     key: category,
     label: content.categories[category][0],
@@ -25,6 +27,7 @@ export default function Header({ locale }) {
       currentLocale={locale}
       groups={groups}
       labels={content.ui}
+      settings={settings}
     />
   );
 }

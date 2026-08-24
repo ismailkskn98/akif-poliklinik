@@ -38,15 +38,15 @@ export default function MobileNavbar({ currentLocale, groups, labels }) {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger className="grid size-11 place-items-center border-s border-[#27231f]/12 text-[#27231f] lg:hidden">
+      <DialogTrigger className="grid size-11 place-items-center border-s border-ink/12 text-ink lg:hidden">
         <MenuGlyph open={open} />
         <span className="sr-only">{labels.menu}</span>
       </DialogTrigger>
 
       <DialogContent className="mobile-nav-panel sm:max-w-[32rem]">
-        <div className="flex min-h-17 items-center justify-between border-b border-[#27231f]/12 px-5 sm:px-7">
+        <div className="flex min-h-17 items-center justify-between border-b border-ink/12 px-5 sm:px-7">
           <Brand />
-          <DialogClose className="grid size-11 place-items-center text-[#27231f] transition-colors duration-200 hover:text-primary">
+          <DialogClose className="grid size-11 place-items-center text-ink transition-colors duration-200 hover:text-primary">
             <MenuGlyph open />
             <span className="sr-only">{labels.close}</span>
           </DialogClose>
@@ -57,7 +57,7 @@ export default function MobileNavbar({ currentLocale, groups, labels }) {
         <nav aria-label={labels.menu} className="px-5 pb-10 pt-6 sm:px-7 sm:pt-8">
           <div
             data-mobile-nav-item
-            className="mb-4 flex items-center justify-between text-[0.62rem] font-semibold tracking-[0.16em] text-[#27231f]/40 uppercase"
+            className="mb-4 flex items-center justify-between text-[0.62rem] font-semibold tracking-[0.16em] text-ink/40 uppercase"
             style={{ "--mobile-nav-delay": "80ms" }}
           >
             <span>{labels.menu}</span>
@@ -66,44 +66,44 @@ export default function MobileNavbar({ currentLocale, groups, labels }) {
 
           <div
             data-mobile-nav-item
-            className="border-t border-[#27231f]/12"
+            className="border-t border-ink/12"
             style={{ "--mobile-nav-delay": "120ms" }}
           >
             <Link
               href="/"
               onClick={() => setOpen(false)}
-              className="group flex min-h-14 items-center justify-between border-b border-[#27231f]/12 text-xl font-medium tracking-[-0.04em] transition-colors duration-200 hover:text-primary sm:text-2xl"
+              className="group flex min-h-14 items-center justify-between border-b border-ink/12 text-xl font-medium tracking-[-0.04em] transition-colors duration-200 hover:text-primary sm:text-2xl"
             >
               {labels.home}
               <ArrowUpRight
                 aria-hidden="true"
-                className="size-4 text-[#27231f]/30 transition-[transform,color] duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
+                className="size-4 text-ink/30 transition-[transform,color] duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
                 weight="light"
               />
             </Link>
             <Link
               href="/treatments"
               onClick={() => setOpen(false)}
-              className="group flex min-h-14 items-center justify-between border-b border-[#27231f]/12 text-xl font-medium tracking-[-0.04em] transition-colors duration-200 hover:text-primary sm:text-2xl"
+              className="group flex min-h-14 items-center justify-between border-b border-ink/12 text-xl font-medium tracking-[-0.04em] transition-colors duration-200 hover:text-primary sm:text-2xl"
             >
               {labels.treatments}
               <ArrowUpRight
                 aria-hidden="true"
-                className="size-4 text-[#27231f]/30 transition-[transform,color] duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
+                className="size-4 text-ink/30 transition-[transform,color] duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
                 weight="light"
               />
             </Link>
           </div>
 
-          <div className="border-b border-[#27231f]/12 py-4">
+          <div className="border-b border-ink/12 py-4">
             {groups.map((group, groupIndex) => (
               <details
                 key={group.key}
                 data-mobile-nav-item
-                className="group border-t border-[#27231f]/10 first:border-t-0"
+                className="group border-t border-ink/10 first:border-t-0"
                 style={{ "--mobile-nav-delay": `${170 + groupIndex * 45}ms` }}
               >
-                <summary className="flex min-h-12 list-none items-center justify-between gap-4 text-[0.68rem] font-semibold tracking-[0.14em] text-[#27231f]/66 uppercase transition-colors duration-180 hover:text-primary">
+                <summary className="flex min-h-12 list-none items-center justify-between gap-4 text-[0.68rem] font-semibold tracking-[0.14em] text-ink/66 uppercase transition-colors duration-180 hover:text-primary">
                   <span>{group.label}</span>
                   <CaretDown
                     aria-hidden="true"
@@ -117,7 +117,7 @@ export default function MobileNavbar({ currentLocale, groups, labels }) {
                       key={item.key}
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className="border-s border-[#27231f]/10 py-1.5 ps-4 text-[0.86rem] leading-5 text-[#27231f]/58 transition-[border-color,color] duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:border-primary hover:text-[#27231f]"
+                      className="border-s border-ink/10 py-1.5 ps-4 text-[0.86rem] leading-5 text-ink/58 transition-[border-color,color] duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:border-primary hover:text-ink"
                     >
                       {item.label}
                     </Link>
@@ -132,7 +132,7 @@ export default function MobileNavbar({ currentLocale, groups, labels }) {
             className="grid gap-6 pt-6"
             style={{ "--mobile-nav-delay": "360ms" }}
           >
-            <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-[#27231f]/58">
+            <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-ink/58">
               <Link href="/privacy-notice" onClick={() => setOpen(false)}>
                 {labels.privacy}
               </Link>
@@ -145,6 +145,7 @@ export default function MobileNavbar({ currentLocale, groups, labels }) {
                 currentLocale={currentLocale}
                 label={labels.languages}
                 align="start"
+                variant="mobile"
               />
               <a
                 href={siteConfig.phones[0].href}

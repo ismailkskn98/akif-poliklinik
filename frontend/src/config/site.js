@@ -1,20 +1,38 @@
+export function createPhoneHref(phoneNumber) {
+  const digits = phoneNumber.replace(/\D/g, "");
+  const internationalNumber = digits.startsWith("0")
+    ? `90${digits.slice(1)}`
+    : digits;
+
+  return `tel:+${internationalNumber}`;
+}
+
+export function createMapEmbedUrl(address) {
+  return `https://maps.google.com/maps?q=${encodeURIComponent(address)}&t=m&z=14&output=embed&iwloc=near`;
+}
+
+const address =
+  "Lotus Walk Nişantaşı, Halaskargazi Cd. No:38/66 Kat:6 Daire:109, 34371 Şişli/İstanbul";
+const phoneNumbers = [
+  "0532 446 90 39",
+  "0533 152 38 93",
+  "0532 352 43 88",
+  "0533 151 32 89",
+];
+
 export const siteConfig = {
   name: "Akif Poliklinik",
-  primaryColor: "#435EB7",
+  primaryColor: "#516FC9",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-  address:
-    "Lotus Walk Nişantaşı, Halaskargazi Cd. No:38/66 Kat:6 Daire:109, 34371 Şişli/İstanbul",
-  phones: [
-    { label: "0532 446 90 39", href: "tel:+905324469039" },
-    { label: "0533 152 38 93", href: "tel:+905331523893" },
-    { label: "0532 352 43 88", href: "tel:+905323524388" },
-    { label: "0533 151 32 89", href: "tel:+905331513289" },
-  ],
+  address,
+  phones: phoneNumbers.map((phoneNumber) => ({
+    label: phoneNumber,
+    href: createPhoneHref(phoneNumber),
+  })),
   instagramUrl: "https://www.instagram.com/akif_poliklinik/",
   authorizationDocumentPath:
     "/documents/international-health-tourism-authorization.jpg",
-  mapEmbedUrl:
-    "https://maps.google.com/maps?q=Lotus%20Walk%20Ni%C5%9Fanta%C5%9F%C4%B1%20Halaskargazi%20Cd.%20No%3A38%2F66&t=m&z=14&output=embed&iwloc=near",
+  mapEmbedUrl: createMapEmbedUrl(address),
 };
 
 export const localeLabels = {

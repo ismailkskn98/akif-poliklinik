@@ -11,6 +11,13 @@
     "invalidUpdate": "Anfragenummer oder Status ist ungültig.",
     "rateLimited": "Zu viele Anfragen. Bitte versuchen Sie es später erneut."
   },
+  "settings": {
+    "retrieved": "Die Website-Einstellungen wurden geladen.",
+    "updated": "Die Website-Einstellungen wurden aktualisiert.",
+    "invalidFields": "Einige Website-Einstellungen fehlen oder sind ungültig.",
+    "invalidDocument": "Das Berechtigungsdokument muss ein JPG-, PNG- oder WebP-Bild mit maximal 8 MB sein.",
+    "documentUploaded": "Das Berechtigungsdokument wurde aktualisiert."
+  },
   "auth": {
     "loggedIn": "Anmeldung erfolgreich.",
     "missingCredentials": "E-Mail und Passwort sind erforderlich.",

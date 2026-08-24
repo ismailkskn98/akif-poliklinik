@@ -24,9 +24,14 @@ function readEnvironmentFile(filePath) {
   );
 }
 
-const fileEnvironment = readEnvironmentFile(path.join(projectRoot, ".env"));
-const frontendPort = fileEnvironment.FRONTEND_PORT || process.env.FRONTEND_PORT || "3000";
-const backendPort = fileEnvironment.BACKEND_PORT || process.env.BACKEND_PORT || "4000";
+const frontendEnvironment = readEnvironmentFile(
+  path.join(projectRoot, "frontend", ".env.development"),
+);
+const backendEnvironment = readEnvironmentFile(
+  path.join(projectRoot, "backend", ".env.development"),
+);
+const frontendPort = frontendEnvironment.PORT || process.env.FRONTEND_PORT || "3000";
+const backendPort = backendEnvironment.PORT || process.env.BACKEND_PORT || "4000";
 const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
 const children = [];
 let isStopping = false;
@@ -48,7 +53,7 @@ function stopApplications(exitCode = 0) {
 function startApplication(name, workingDirectory, environment) {
   const child = spawn(npmCommand, ["run", "dev"], {
     cwd: path.join(projectRoot, workingDirectory),
-    env: { ...process.env, ...fileEnvironment, ...environment },
+    env: { ...process.env, ...environment },
     stdio: "inherit",
   });
 
@@ -71,17 +76,19 @@ console.log(`Frontend: http://localhost:${frontendPort}`);
 console.log(`Backend:  http://localhost:${backendPort}`);
 
 startApplication("Frontend", "frontend", {
+  ...frontendEnvironment,
   PORT: frontendPort,
   NEXT_PUBLIC_SITE_URL:
-    fileEnvironment.NEXT_PUBLIC_SITE_URL || `http://localhost:${frontendPort}`,
+    frontendEnvironment.NEXT_PUBLIC_SITE_URL || `http://localhost:${frontendPort}`,
   NEXT_PUBLIC_API_BASE_URL:
-    fileEnvironment.NEXT_PUBLIC_API_BASE_URL ||
+    frontendEnvironment.NEXT_PUBLIC_API_BASE_URL ||
     `http://localhost:${backendPort}/api/akifclinic/v1`,
 });
 startApplication("Backend", "backend", {
+  ...backendEnvironment,
   PORT: backendPort,
   CORS_ORIGINS:
-    fileEnvironment.CORS_ORIGINS || `http://localhost:${frontendPort}`,
+    backendEnvironment.CORS_ORIGINS || `http://localhost:${frontendPort}`,
 });
 
 process.on("SIGINT", () => stopApplications());

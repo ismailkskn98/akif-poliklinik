@@ -10,7 +10,12 @@ import { getTreatmentByAnySlug, getTreatmentHref } from "@/content/treatments";
 import { Link, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 
-export default function LanguageMenu({ currentLocale, label, align = "end" }) {
+export default function LanguageMenu({
+  currentLocale,
+  label,
+  align = "end",
+  variant = "default",
+}) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const params = useParams();
@@ -28,7 +33,13 @@ export default function LanguageMenu({ currentLocale, label, align = "end" }) {
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger className="group flex h-full min-h-10 items-center gap-2 border-s border-[#27231f]/12 px-3 text-[0.68rem] font-medium tracking-[0.08em] text-[#27231f]/62 uppercase transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:text-[#27231f] data-[popup-open]:text-primary">
+      <PopoverTrigger
+        className={`group flex min-h-10 items-center gap-2 text-[0.68rem] font-medium tracking-[0.08em] text-ink/62 uppercase transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:text-ink data-[popup-open]:text-primary ${
+          variant === "mobile"
+            ? "h-11 px-0"
+            : "h-full border-s border-ink/12 px-3"
+        }`}
+      >
         <GlobeHemisphereWest aria-hidden="true" className="size-4" weight="light" />
         <span>{currentLocale}</span>
         <CaretDown
@@ -43,8 +54,8 @@ export default function LanguageMenu({ currentLocale, label, align = "end" }) {
         align={align}
         className="w-[min(22rem,calc(100vw-2rem))] p-0"
       >
-        <div className="flex items-center justify-between border-b border-[#27231f]/12 px-5 py-4">
-          <p className="text-[0.66rem] font-semibold tracking-[0.16em] text-[#27231f]/48 uppercase">
+        <div className="flex items-center justify-between border-b border-ink/12 px-5 py-4">
+          <p className="text-[0.66rem] font-semibold tracking-[0.16em] text-ink/48 uppercase">
             {label}
           </p>
           <span className="text-[0.62rem] tracking-[0.12em] text-primary uppercase">
@@ -60,7 +71,7 @@ export default function LanguageMenu({ currentLocale, label, align = "end" }) {
               hrefLang={locale}
               aria-current={locale === currentLocale ? "page" : undefined}
               onClick={() => setOpen(false)}
-              className="flex min-h-11 items-center justify-between border-b border-transparent px-3 text-sm text-[#27231f]/62 transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:border-primary/40 hover:text-[#27231f] aria-[current=page]:border-primary aria-[current=page]:text-primary"
+              className="flex min-h-11 items-center justify-between border-b border-transparent px-3 text-sm text-ink/62 transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:border-primary/40 hover:text-ink aria-[current=page]:border-primary aria-[current=page]:text-primary"
             >
               <span>{localeLabels[locale]}</span>
               {locale === currentLocale ? (

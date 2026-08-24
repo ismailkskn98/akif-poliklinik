@@ -11,6 +11,13 @@
     "invalidUpdate": "מספר הבקשה או הסטטוס אינם תקינים.",
     "rateLimited": "נשלחו יותר מדי בקשות. נסו שוב מאוחר יותר."
   },
+  "settings": {
+    "retrieved": "הגדרות האתר נטענו.",
+    "updated": "הגדרות האתר עודכנו.",
+    "invalidFields": "חלק משדות הגדרות האתר חסרים או אינם תקינים.",
+    "invalidDocument": "מסמך ההרשאה חייב להיות תמונת JPG, PNG או WebP בגודל של עד 8 MB.",
+    "documentUploaded": "מסמך ההרשאה עודכן."
+  },
   "auth": {
     "loggedIn": "ההתחברות הצליחה.",
     "missingCredentials": "דוא״ל וסיסמה הם שדות חובה.",

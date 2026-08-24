@@ -1,3 +1,5 @@
+import AdminLoginForm from "@/components/admin/loginForm";
+
 export default function AdminLoginPage() {
   return (
     <main className="grid min-h-screen place-items-center px-5 py-12">
@@ -7,8 +9,9 @@ export default function AdminLoginPage() {
         </p>
         <h1 className="mt-3 text-2xl font-semibold tracking-tight">Admin girişi</h1>
         <p className="mt-2 text-sm leading-6 text-black/50">
-          Kimlik doğrulama ekranı backend auth modülüyle bağlanacak.
+          Site ayarlarını yönetmek için hesabınızla giriş yapın.
         </p>
+        <AdminLoginForm />
       </section>
     </main>
   );

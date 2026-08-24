@@ -1,4 +1,5 @@
 const { sendError, sendSuccess } = require("../../../general_helpers/response");
+const mailService = require("../../../general_services/mail");
 const validateContactRequest = require("../helpers/contactRequestValidation");
 const contactRequestService = require("../services/contactRequestService");
 
@@ -27,6 +28,10 @@ async function create(request, response) {
     ipAddress: request.ip?.slice(0, 45) || null,
     userAgent: request.get("user-agent")?.slice(0, 500) || null,
   });
+
+  mailService
+    .sendContactRequestNotification({ id, ...validation.values })
+    .catch((error) => console.error("İletişim bildirimi gönderilemedi:", error.message));
 
   return sendSuccess(response, {
     statusCode: 201,

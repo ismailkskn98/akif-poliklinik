@@ -3,6 +3,7 @@
 Complete JSON-LD examples for common schema types.
 
 ## Contents
+
 - Organization
 - WebSite (with SearchAction)
 - Article / BlogPosting
@@ -27,11 +28,7 @@ For company/brand homepage or about page.
   "name": "Example Company",
   "url": "https://example.com",
   "logo": "https://example.com/logo.png",
-  "sameAs": [
-    "https://twitter.com/example",
-    "https://linkedin.com/company/example",
-    "https://facebook.com/example"
-  ],
+  "sameAs": ["https://twitter.com/example", "https://linkedin.com/company/example", "https://facebook.com/example"],
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+1-555-555-5555",
@@ -386,10 +383,7 @@ export default function ProductPage({ product }) {
   return (
     <>
       <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </Head>
       {/* Page content */}
     </>

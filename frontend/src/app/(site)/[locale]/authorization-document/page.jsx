@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import { siteConfig } from "@/config/site";
 import { createPageMetadata } from "@/lib/seo";
+import { getPublicSiteSettings } from "@/lib/siteSettings";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -21,6 +21,7 @@ export default async function AuthorizationDocumentPage({ params }) {
     locale,
     namespace: "Pages.authorization",
   });
+  const settings = await getPublicSiteSettings();
 
   return (
     <article data-motion-intro className="grid-container max-w-5xl py-12 sm:py-16">
@@ -35,19 +36,19 @@ export default async function AuthorizationDocumentPage({ params }) {
       </p>
       <a
         className="mt-8 inline-flex min-h-11 items-center border border-primary bg-primary px-5 text-sm font-semibold text-white transition-colors duration-200 ease-[cubic-bezier(.22,1,.36,1)] hover:bg-transparent hover:text-primary"
-        href={siteConfig.authorizationDocumentPath}
+        href={settings.authorizationDocumentUrl}
         target="_blank"
         rel="noreferrer"
       >
         {translations("openDocument")}
       </a>
-      <div className="mt-8 overflow-hidden border border-[#27231f]/12 bg-[#e8e4dc] p-2">
+      <div className="mt-8 overflow-hidden border border-ink/12 bg-media p-2">
         <Image
           alt={translations("imageAlt")}
           className="h-auto w-full"
           height={1126}
           priority
-          src={siteConfig.authorizationDocumentPath}
+          src={settings.authorizationDocumentUrl}
           width={1500}
         />
       </div>

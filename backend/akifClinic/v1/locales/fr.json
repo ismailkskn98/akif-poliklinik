@@ -11,6 +11,13 @@
     "invalidUpdate": "Le numéro ou le statut de la demande est invalide.",
     "rateLimited": "Trop de demandes ont été envoyées. Réessayez plus tard."
   },
+  "settings": {
+    "retrieved": "Les paramètres du site ont été chargés.",
+    "updated": "Les paramètres du site ont été mis à jour.",
+    "invalidFields": "Certains paramètres du site sont manquants ou invalides.",
+    "invalidDocument": "Le document d’autorisation doit être une image JPG, PNG ou WebP de 8 Mo maximum.",
+    "documentUploaded": "Le document d’autorisation a été mis à jour."
+  },
   "auth": {
     "loggedIn": "Connexion réussie.",
     "missingCredentials": "L'e-mail et le mot de passe sont obligatoires.",

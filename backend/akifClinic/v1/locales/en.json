@@ -11,6 +11,13 @@
     "invalidUpdate": "The request number or status is invalid.",
     "rateLimited": "Too many requests were sent. Please try again later."
   },
+  "settings": {
+    "retrieved": "Site settings were retrieved.",
+    "updated": "Site settings were updated.",
+    "invalidFields": "Some site setting fields are missing or invalid.",
+    "invalidDocument": "The authorization document must be a JPG, PNG or WebP image up to 8 MB.",
+    "documentUploaded": "The authorization document was updated."
+  },
   "auth": {
     "loggedIn": "Login successful.",
     "missingCredentials": "Email and password are required.",

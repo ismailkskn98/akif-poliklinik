@@ -16,7 +16,7 @@ export default function TreatmentCard({
       className={`group ${index % 3 === 0 ? "md:col-span-7" : "md:col-span-5"}`}
     >
       <Link href={{ pathname: "/treatments/[slug]", params: { slug: treatment.slugs[locale] } }}>
-        <div className="overflow-hidden border border-[#27231f]/12 bg-[#e9e6df] p-1.5">
+        <div className="overflow-hidden border border-ink/12 bg-media p-1.5">
           <Image
             alt={title}
             className="aspect-[16/10] w-full object-cover transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.018]"
@@ -41,7 +41,7 @@ export default function TreatmentCard({
               {action}
             </span>
           </div>
-          <span className="grid size-9 place-items-center border border-[#27231f]/14 transition-colors duration-200 ease-[cubic-bezier(.22,1,.36,1)] group-hover:border-primary group-hover:bg-primary group-hover:text-white">
+          <span className="grid size-9 place-items-center border border-ink/14 transition-colors duration-200 ease-[cubic-bezier(.22,1,.36,1)] group-hover:border-primary group-hover:bg-primary group-hover:text-white">
             <ArrowUpRight aria-hidden="true" className="size-4" weight="light" />
           </span>
         </div>

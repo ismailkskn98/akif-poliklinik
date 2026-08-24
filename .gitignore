@@ -1,13 +1,17 @@
 node_modules/
 frontend/.next/
 frontend/out/
-backend/uploads/
+backend/uploads/*
+!backend/uploads/authorization/
+backend/uploads/authorization/*
+!backend/uploads/authorization/.gitkeep
 coverage/
 
 .env
 .env.*
-!.env.example
 !frontend/.env.example
+!frontend/.env.development.example
+!frontend/.env.production.example
 !backend/.env.development.example
 !backend/.env.production.example
 

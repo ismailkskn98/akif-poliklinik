@@ -99,7 +99,7 @@ export default function ContactForm({ labels, locale }) {
       </div>
 
       <button
-        className="mt-2 min-h-11 border border-primary bg-primary px-5 text-[0.82rem] font-medium text-white transition-[transform,background-color] duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:bg-[#354ea5] active:scale-[.99] disabled:cursor-not-allowed disabled:opacity-60"
+        className="mt-2 min-h-11 border border-primary bg-primary px-5 text-[0.82rem] font-medium text-white transition-[transform,background-color] duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:bg-primary-dark active:scale-[.99] disabled:cursor-not-allowed disabled:opacity-60"
         disabled={submissionState === "loading"}
         type="submit"
       >

@@ -36,7 +36,7 @@ export default function DesktopNavbar({ groups, labels }) {
           className="w-[min(76rem,calc(100vw-2.5rem))] overflow-hidden p-0"
         >
           <div className="grid min-h-[23rem] grid-cols-[17rem_1fr]">
-            <figure className="relative overflow-hidden bg-[#37332e] text-white">
+            <figure className="relative overflow-hidden bg-ink-deep text-white">
               <Image
                 key={preview.key}
                 alt={preview.label}
@@ -45,7 +45,7 @@ export default function DesktopNavbar({ groups, labels }) {
                 sizes="17rem"
                 src={preview.image}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#27231f] via-[#27231f]/18 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/18 to-transparent" />
               <div aria-hidden="true" className="dot-texture absolute inset-0 opacity-[0.14]" />
               <figcaption className="absolute inset-x-0 bottom-0 p-6">
                 <span className="text-[0.62rem] font-semibold tracking-[0.17em] text-white/52 uppercase">
@@ -58,28 +58,28 @@ export default function DesktopNavbar({ groups, labels }) {
             </figure>
 
             <div className="flex min-w-0 flex-col">
-              <div className="flex min-h-16 items-center justify-between gap-6 border-b border-[#27231f]/12 px-6">
+              <div className="flex min-h-16 items-center justify-between gap-6 border-b border-ink/12 px-6">
                 <div>
                   <p className="text-[0.65rem] font-semibold tracking-[0.16em] text-primary uppercase">
                     {labels.treatments}
                   </p>
-                  <p className="mt-1 text-xs text-[#27231f]/45">
+                  <p className="mt-1 text-xs text-ink/45">
                     {labels.treatmentsTeaser}
                   </p>
                 </div>
-                <span className="text-[0.62rem] tracking-[0.16em] text-[#27231f]/28 uppercase">
+                <span className="text-[0.62rem] tracking-[0.16em] text-ink/28 uppercase">
                   {String(groups.reduce((total, group) => total + group.items.length, 0)).padStart(2, "0")}
                 </span>
               </div>
 
-              <div className="grid flex-1 grid-cols-4 divide-x divide-[#27231f]/10 rtl:divide-x-reverse">
+              <div className="grid flex-1 grid-cols-4 divide-x divide-ink/10 rtl:divide-x-reverse">
                 {groups.map((group, groupIndex) => (
                   <section key={group.key} className="p-4 xl:p-5">
-                    <div className="flex min-h-10 items-start justify-between gap-3 border-b border-[#27231f]/10 pb-3">
+                    <div className="flex min-h-10 items-start justify-between gap-3 border-b border-ink/10 pb-3">
                       <h2 className="text-[0.64rem] leading-4 font-semibold tracking-[0.14em] text-primary uppercase">
                         {group.label}
                       </h2>
-                      <span className="text-[0.58rem] text-[#27231f]/26">
+                      <span className="text-[0.58rem] text-ink/26">
                         {String(groupIndex + 1).padStart(2, "0")}
                       </span>
                     </div>
@@ -96,8 +96,8 @@ export default function DesktopNavbar({ groups, labels }) {
                             onPointerEnter={() => setPreview(item)}
                             className={`group/item flex min-h-9 items-center justify-between gap-2 px-2 text-[0.76rem] leading-4 transition-[background-color,color] duration-180 ease-[cubic-bezier(.22,1,.36,1)] ${
                               isActive
-                                ? "bg-[#ebe6de] text-[#27231f]"
-                                : "text-[#27231f]/56 hover:bg-[#ebe6de]/70 hover:text-[#27231f]"
+                                ? "bg-surface-soft text-ink"
+                                : "text-ink/56 hover:bg-surface-soft/70 hover:text-ink"
                             }`}
                           >
                             <span>{item.label}</span>
@@ -121,7 +121,7 @@ export default function DesktopNavbar({ groups, labels }) {
               <Link
                 href="/treatments"
                 onClick={() => setOpen(false)}
-                className="group flex min-h-14 items-center justify-between border-t border-[#27231f]/12 px-6 text-sm font-medium text-[#27231f] transition-colors duration-200 ease-[cubic-bezier(.22,1,.36,1)] hover:bg-primary hover:text-white"
+                className="group flex min-h-14 items-center justify-between border-t border-ink/12 px-6 text-sm font-medium text-ink transition-colors duration-200 ease-[cubic-bezier(.22,1,.36,1)] hover:bg-primary hover:text-white"
               >
                 {labels.viewAll}
                 <ArrowUpRight

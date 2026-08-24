@@ -11,6 +11,13 @@
     "invalidUpdate": "Talep numarası veya durum bilgisi geçersiz.",
     "rateLimited": "Çok fazla talep gönderdiniz. Lütfen daha sonra tekrar deneyin."
   },
+  "settings": {
+    "retrieved": "Site ayarları getirildi.",
+    "updated": "Site ayarları güncellendi.",
+    "invalidFields": "Site ayarlarında geçersiz veya eksik alanlar var.",
+    "invalidDocument": "Yetki belgesi JPG, PNG veya WebP biçiminde ve en fazla 8 MB olmalıdır.",
+    "documentUploaded": "Yetki belgesi güncellendi."
+  },
   "auth": {
     "loggedIn": "Giriş başarılı.",
     "missingCredentials": "E-posta ve parola zorunludur.",

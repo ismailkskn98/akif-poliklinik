@@ -1,4 +1,5 @@
 const { sendSuccess } = require("../../../general_helpers/response");
+const siteSettingsService = require("../services/siteSettingsService");
 
 function getHealth(request, response) {
   return sendSuccess(response, {
@@ -10,4 +11,13 @@ function getHealth(request, response) {
   });
 }
 
-module.exports = { getHealth };
+async function getSiteSettings(request, response) {
+  const settings = await siteSettingsService.getSiteSettings();
+
+  return sendSuccess(response, {
+    message: request.t("settings.retrieved"),
+    data: settings,
+  });
+}
+
+module.exports = { getHealth, getSiteSettings };

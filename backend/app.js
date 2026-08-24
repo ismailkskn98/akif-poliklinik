@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("node:path");
 
 const loadEnvironment = require("./general_helpers/loadEnvironment");
 
@@ -33,6 +34,13 @@ app.use(
   }),
 );
 app.use(express.json({ limit: "250kb" }));
+app.use(
+  "/uploads",
+  express.static(path.resolve(process.cwd(), process.env.UPLOAD_DIR || "uploads"), {
+    immutable: true,
+    maxAge: "30d",
+  }),
+);
 
 app.use("/api/akifclinic/v1", apiRouter);
 

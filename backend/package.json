@@ -5,8 +5,12 @@
   "description": "Akif Poliklinik Express.js API",
   "main": "app.js",
   "scripts": {
-    "dev": "node --watch app.js",
-    "start": "node app.js",
+    "dev": "node --watch --env-file=.env.development app.js",
+    "start": "node --env-file=.env.production app.js",
+    "db:migrate": "node --env-file=.env.development scripts/migrate.js",
+    "db:migrate:production": "node --env-file=.env.production scripts/migrate.js",
+    "admin:create": "node --env-file=.env.development scripts/createAdmin.js",
+    "admin:create:production": "node --env-file=.env.production scripts/createAdmin.js",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -18,7 +22,9 @@
     "i18next": "^26.4.0",
     "i18next-http-middleware": "^3.9.8",
     "jsonwebtoken": "^9.0.3",
-    "mysql2": "^3.24.1"
+    "multer": "^2.2.0",
+    "mysql2": "^3.24.1",
+    "nodemailer": "^9.0.5"
   },
   "devDependencies": {
     "eslint": "^10.9.0"

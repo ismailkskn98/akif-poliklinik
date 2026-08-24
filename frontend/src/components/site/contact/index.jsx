@@ -10,7 +10,7 @@ export default function Contact({ translations, locale, settings }) {
 
   return (
     <section id="contact" className="grid-container py-10 sm:py-14 lg:py-16 xl:py-18">
-      <div className="grid gap-12 lg:grid-cols-[.88fr_1.11fr] lg:gap-0">
+      <div className="grid gap-6 sm:gap-8 md:gap-10 lg:grid-cols-[.88fr_1.11fr] lg:gap-0">
         <div data-motion-intro className="lg:pe-14 xl:pe-18">
           <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-primary uppercase">
             {content.ui.contactEyebrow}
@@ -23,7 +23,7 @@ export default function Contact({ translations, locale, settings }) {
             <ContactDetails labels={{ addressTitle: translations.addressTitle }} settings={settings} />
             <Link
               href="/treatments"
-              className="group mt-7 flex min-h-11 items-center justify-between border-t border-ink/12 pt-4 text-[0.82rem] text-ink/58 transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:text-primary"
+              className="group mt-7 hidden min-h-11 items-center justify-between border-t border-ink/12 pt-4 text-[0.82rem] text-ink/58 transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:text-primary sm:flex"
             >
               <span>{content.ui.treatmentsTeaser}</span>
               <ArrowUpRight
@@ -35,7 +35,7 @@ export default function Contact({ translations, locale, settings }) {
           </div>
         </div>
 
-        <div data-motion-intro className="border-t border-ink/12 pt-10 lg:border-s lg:border-t-0 lg:ps-14 lg:pt-0 xl:ps-18">
+        <div data-motion-intro className="border-t border-ink/12 pt-6 sm:pt-8 md:pt-10 lg:border-s lg:border-t-0 lg:ps-14 lg:pt-0 xl:ps-18">
           <div className="border-b border-ink/12 pb-5">
             <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-primary uppercase">
               {translations.writeTitle}

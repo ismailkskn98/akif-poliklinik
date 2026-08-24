@@ -21,9 +21,15 @@
   "auth": {
     "loggedIn": "Connexion réussie.",
     "missingCredentials": "L'e-mail et le mot de passe sont obligatoires.",
+    "invalidEmail": "Saisissez une adresse e-mail valide.",
     "invalidCredentials": "L'e-mail ou le mot de passe est incorrect.",
     "unauthorized": "Vous devez vous connecter pour effectuer cette action.",
     "invalidToken": "La session est invalide ou a expiré.",
-    "rateLimited": "Trop de tentatives de connexion. Réessayez plus tard."
+    "rateLimited": "Trop de tentatives de connexion. Réessayez plus tard.",
+    "resetRequested": "Si un compte actif utilise cet e-mail, un lien de réinitialisation a été envoyé.",
+    "invalidResetFields": "Le lien est invalide ou le mot de passe contient moins de 12 caractères.",
+    "invalidResetToken": "Le lien est invalide, utilisé ou expiré.",
+    "passwordReset": "Votre mot de passe a été mis à jour. Vous pouvez maintenant vous connecter.",
+    "resetRateLimited": "Trop de tentatives de réinitialisation. Réessayez plus tard."
   }
 }

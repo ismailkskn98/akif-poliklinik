@@ -1,3 +1,5 @@
+const fs = require("node:fs/promises");
+const { Buffer } = require("node:buffer");
 const path = require("node:path");
 const { URL } = require("node:url");
 
@@ -15,6 +17,53 @@ function isValidUrl(value, { allowRelative = false } = {}) {
   } catch {
     return false;
   }
+}
+
+function isValidInstagramUrl(value) {
+  try {
+    const url = new URL(value);
+    const hostname = url.hostname.toLowerCase();
+
+    return (
+      url.protocol === "https:" &&
+      (hostname === "instagram.com" || hostname.endsWith(".instagram.com"))
+    );
+  } catch {
+    return false;
+  }
+}
+
+function isValidPhoneNumber(value) {
+  const digitCount = value.replace(/\D/g, "").length;
+
+  return (
+    value.length <= 40 &&
+    digitCount >= 7 &&
+    digitCount <= 15 &&
+    /^[+\d().\s-]+$/.test(value)
+  );
+}
+
+async function hasValidImageSignature(file) {
+  const content = await fs.readFile(file.path);
+
+  if (file.mimetype === "image/jpeg") {
+    return content.length >= 3 && content[0] === 0xff && content[1] === 0xd8 && content[2] === 0xff;
+  }
+
+  if (file.mimetype === "image/png") {
+    return (
+      content.length >= 8 &&
+      content.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))
+    );
+  }
+
+  return (
+    file.mimetype === "image/webp" &&
+    content.length >= 12 &&
+    content.subarray(0, 4).toString("ascii") === "RIFF" &&
+    content.subarray(8, 12).toString("ascii") === "WEBP"
+  );
 }
 
 function validateSettings(body) {
@@ -41,15 +90,13 @@ function validateSettings(body) {
   }
 
   const isValid =
-    isValidUrl(instagramUrl) &&
+    isValidInstagramUrl(instagramUrl) &&
     instagramUrl.length <= 500 &&
     address.length >= 10 &&
     address.length <= 1000 &&
     phoneNumbers.length >= 1 &&
     phoneNumbers.length <= 6 &&
-    phoneNumbers.every(
-      (phoneNumber) => phoneNumber.length >= 7 && phoneNumber.length <= 40,
-    ) &&
+    phoneNumbers.every(isValidPhoneNumber) &&
     authorizationDocumentUrl.length <= 500 &&
     isValidUrl(authorizationDocumentUrl, { allowRelative: true }) &&
     isValidDocumentUrl;
@@ -97,6 +144,15 @@ async function update(request, response) {
 
 async function uploadAuthorizationDocument(request, response) {
   if (!request.file) {
+    return sendError(response, {
+      statusCode: 422,
+      message: request.t("settings.invalidDocument"),
+    });
+  }
+
+  if (!(await hasValidImageSignature(request.file))) {
+    await fs.unlink(request.file.path).catch(() => {});
+
     return sendError(response, {
       statusCode: 422,
       message: request.t("settings.invalidDocument"),

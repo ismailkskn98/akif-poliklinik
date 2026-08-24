@@ -1,5 +1,3 @@
-USE akif_poliklinik;
-
 INSERT INTO site_settings
   (setting_key, setting_value, value_type, is_public)
 VALUES

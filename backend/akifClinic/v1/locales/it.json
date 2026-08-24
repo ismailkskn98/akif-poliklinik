@@ -21,9 +21,15 @@
   "auth": {
     "loggedIn": "Accesso effettuato.",
     "missingCredentials": "E-mail e password sono obbligatorie.",
+    "invalidEmail": "Inserisci un indirizzo e-mail valido.",
     "invalidCredentials": "E-mail o password non corretta.",
     "unauthorized": "Devi accedere per eseguire questa azione.",
     "invalidToken": "La sessione non è valida o è scaduta.",
-    "rateLimited": "Troppi tentativi di accesso. Riprova più tardi."
+    "rateLimited": "Troppi tentativi di accesso. Riprova più tardi.",
+    "resetRequested": "Se esiste un account attivo con questa e-mail, è stato inviato un link.",
+    "invalidResetFields": "Il link non è valido o la password ha meno di 12 caratteri.",
+    "invalidResetToken": "Il link non è valido, è già stato usato o è scaduto.",
+    "passwordReset": "La password è stata aggiornata. Ora puoi accedere.",
+    "resetRateLimited": "Troppi tentativi di reimpostazione. Riprova più tardi."
   }
 }

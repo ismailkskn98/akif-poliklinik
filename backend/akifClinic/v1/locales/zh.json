@@ -21,9 +21,15 @@
   "auth": {
     "loggedIn": "登录成功。",
     "missingCredentials": "电子邮箱和密码为必填项。",
+    "invalidEmail": "请输入有效的电子邮箱地址。",
     "invalidCredentials": "电子邮箱或密码不正确。",
     "unauthorized": "您必须登录才能执行此操作。",
     "invalidToken": "会话无效或已过期。",
-    "rateLimited": "登录尝试次数过多，请稍后再试。"
+    "rateLimited": "登录尝试次数过多，请稍后再试。",
+    "resetRequested": "如果该邮箱对应有效账户，重置链接已发送。",
+    "invalidResetFields": "重置链接无效，或密码少于 12 个字符。",
+    "invalidResetToken": "重置链接无效、已使用或已过期。",
+    "passwordReset": "密码已更新，现在可以使用新密码登录。",
+    "resetRateLimited": "密码重置尝试次数过多，请稍后再试。"
   }
 }

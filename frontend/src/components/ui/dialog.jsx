@@ -20,14 +20,14 @@ function DialogTitle(props) {
   return <DialogPrimitive.Title data-slot="dialog-title" {...props} />;
 }
 
-function DialogContent({ className, children, ...props }) {
+function DialogContent({ className, children, keepMounted = false, ...props }) {
   return (
-    <DialogPrimitive.Portal>
-      <DialogPrimitive.Backdrop className="fixed inset-0 z-40 bg-ink/24 backdrop-blur-[2px] transition-opacity duration-400 ease-[cubic-bezier(.22,1,.36,1)] data-[starting-style]:opacity-0 data-[ending-style]:opacity-0" />
-      <DialogPrimitive.Viewport className="fixed inset-0 z-50 flex justify-end overflow-hidden">
+    <DialogPrimitive.Portal keepMounted={keepMounted}>
+      <DialogPrimitive.Backdrop className="fixed inset-0 z-40 min-h-dvh bg-ink/24 transition-opacity duration-350 ease-[cubic-bezier(.22,1,.36,1)] data-[starting-style]:opacity-0 data-[ending-style]:opacity-0 supports-[-webkit-touch-callout:none]:absolute" />
+      <DialogPrimitive.Viewport className="fixed inset-0 z-50 flex h-dvh min-h-dvh justify-end overflow-hidden data-[ending-style]:pointer-events-none">
         <DialogPrimitive.Popup
           className={cn(
-            "h-full w-full overflow-y-auto overscroll-contain bg-surface text-ink outline-none transition-[transform,opacity] duration-600 ease-[cubic-bezier(.22,1,.36,1)] will-change-[transform,opacity] data-[starting-style]:translate-x-8 data-[starting-style]:opacity-0 data-[ending-style]:translate-x-8 data-[ending-style]:opacity-0 sm:max-w-[38rem] sm:border-s sm:border-ink/12",
+            "h-dvh min-h-0 w-full translate-x-0 transform-gpu overflow-hidden bg-surface text-ink outline-none transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] will-change-transform data-[starting-style]:translate-x-full data-[ending-style]:translate-x-full sm:max-w-[38rem] sm:border-s sm:border-ink/12",
             className,
           )}
           {...props}

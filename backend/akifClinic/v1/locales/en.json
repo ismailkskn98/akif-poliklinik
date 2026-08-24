@@ -21,9 +21,15 @@
   "auth": {
     "loggedIn": "Login successful.",
     "missingCredentials": "Email and password are required.",
+    "invalidEmail": "Enter a valid email address.",
     "invalidCredentials": "The email or password is incorrect.",
     "unauthorized": "You must sign in to perform this action.",
     "invalidToken": "The session is invalid or has expired.",
-    "rateLimited": "Too many login attempts. Please try again later."
+    "rateLimited": "Too many login attempts. Please try again later.",
+    "resetRequested": "If an active account uses this email, a reset link has been sent.",
+    "invalidResetFields": "The reset link is invalid or the password is shorter than 12 characters.",
+    "invalidResetToken": "The reset link is invalid, used, or expired.",
+    "passwordReset": "Your password was updated. You can now sign in with it.",
+    "resetRateLimited": "Too many password reset attempts. Please try again later."
   }
 }

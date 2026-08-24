@@ -42,6 +42,8 @@ function loadEnvironment() {
         "SMTP_HOST",
         "SMTP_FROM_ADDRESS",
         "CONTACT_NOTIFICATION_TO",
+        "PASSWORD_RESET_TO",
+        "FRONTEND_URL",
       ];
       const invalidMailValue = requiredMailValues.find((key) =>
         isPlaceholderValue(process.env[key]),

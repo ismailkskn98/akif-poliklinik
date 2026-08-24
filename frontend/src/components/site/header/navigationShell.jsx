@@ -16,8 +16,8 @@ export default function NavigationShell({ currentLocale, groups, labels, setting
           <Brand variant="display" />
         </div>
 
-        <div className="grid min-h-16 w-full grid-cols-[1fr_auto] items-stretch border-t border-ink/10 lg:min-h-14 lg:grid-cols-[1fr_auto_1fr]">
-          <div className="flex items-center ps-1 sm:ps-2">
+        <div className="grid min-h-[4.5rem] w-full grid-cols-[1fr_3.5rem] items-stretch lg:min-h-14 lg:grid-cols-[1fr_auto_1fr] lg:border-t lg:border-ink/10">
+          <div className="flex items-center py-2.5 ps-1 sm:ps-2 lg:py-0">
             <div className="lg:hidden">
               <Brand />
             </div>

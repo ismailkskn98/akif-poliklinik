@@ -17,7 +17,7 @@ export default function Brand({ variant = "compact" }) {
         className={`h-auto object-contain transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-0.5 ${
           isDisplay
             ? "w-[10.5rem] sm:w-48 xl:w-[13.5rem]"
-            : "w-[7.5rem] sm:w-[8.5rem]"
+            : "w-[6.5rem] sm:w-[7.5rem]"
         }`}
         height={468}
         priority

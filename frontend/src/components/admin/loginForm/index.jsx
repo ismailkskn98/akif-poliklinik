@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -67,6 +68,15 @@ export default function AdminLoginForm() {
           required
           type="password"
         />
+      </div>
+
+      <div className="-mt-2 flex justify-end">
+        <Link
+          className="text-xs font-medium text-[#516fc9] transition-colors hover:text-[#3f5cb5]"
+          href="/admin/forgot-password"
+        >
+          Parolamı unuttum
+        </Link>
       </div>
 
       <button

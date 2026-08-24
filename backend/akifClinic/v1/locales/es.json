@@ -21,9 +21,15 @@
   "auth": {
     "loggedIn": "Inicio de sesión correcto.",
     "missingCredentials": "El correo y la contraseña son obligatorios.",
+    "invalidEmail": "Introduce un correo electrónico válido.",
     "invalidCredentials": "El correo o la contraseña son incorrectos.",
     "unauthorized": "Debes iniciar sesión para realizar esta acción.",
     "invalidToken": "La sesión no es válida o ha caducado.",
-    "rateLimited": "Demasiados intentos de inicio de sesión. Inténtalo más tarde."
+    "rateLimited": "Demasiados intentos de inicio de sesión. Inténtalo más tarde.",
+    "resetRequested": "Si existe una cuenta activa con este correo, se ha enviado un enlace.",
+    "invalidResetFields": "El enlace no es válido o la contraseña tiene menos de 12 caracteres.",
+    "invalidResetToken": "El enlace no es válido, ya se usó o ha caducado.",
+    "passwordReset": "La contraseña se actualizó. Ya puedes iniciar sesión.",
+    "resetRateLimited": "Demasiados intentos de restablecimiento. Inténtalo más tarde."
   }
 }

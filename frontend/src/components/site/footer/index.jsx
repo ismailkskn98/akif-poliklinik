@@ -33,9 +33,9 @@ export default async function Footer({ locale }) {
             >
               <Image
                 alt=""
-                className="h-auto w-48 object-contain sm:w-56"
+                className="h-auto w-36 object-contain sm:w-44 lg:w-48"
                 height={468}
-                sizes="(min-width: 640px) 224px, 192px"
+                sizes="(min-width: 1024px) 192px, (min-width: 640px) 176px, 144px"
                 src="/images/logo/akif-wordmark-white.png"
                 width={953}
               />

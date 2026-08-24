@@ -29,4 +29,21 @@ const loginRateLimiter = createRateLimiter({
   messageKey: "auth.rateLimited",
 });
 
-module.exports = { contactRateLimiter, loginRateLimiter };
+const forgotPasswordRateLimiter = createRateLimiter({
+  windowMs: 15 * 60 * 1000,
+  limit: 3,
+  messageKey: "auth.resetRateLimited",
+});
+
+const resetPasswordRateLimiter = createRateLimiter({
+  windowMs: 15 * 60 * 1000,
+  limit: 5,
+  messageKey: "auth.resetRateLimited",
+});
+
+module.exports = {
+  contactRateLimiter,
+  forgotPasswordRateLimiter,
+  loginRateLimiter,
+  resetPasswordRateLimiter,
+};

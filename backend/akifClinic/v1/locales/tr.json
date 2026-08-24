@@ -21,9 +21,15 @@
   "auth": {
     "loggedIn": "Giriş başarılı.",
     "missingCredentials": "E-posta ve parola zorunludur.",
+    "invalidEmail": "Geçerli bir e-posta adresi girin.",
     "invalidCredentials": "E-posta veya parola hatalı.",
     "unauthorized": "Bu işlem için giriş yapmalısınız.",
     "invalidToken": "Oturum geçersiz veya süresi dolmuş.",
-    "rateLimited": "Çok fazla giriş denemesi yaptınız. Lütfen daha sonra tekrar deneyin."
+    "rateLimited": "Çok fazla giriş denemesi yaptınız. Lütfen daha sonra tekrar deneyin.",
+    "resetRequested": "Bu e-postaya bağlı aktif bir hesap varsa sıfırlama bağlantısı gönderildi.",
+    "invalidResetFields": "Sıfırlama bağlantısı geçersiz veya parola en az 12 karakter değil.",
+    "invalidResetToken": "Sıfırlama bağlantısı geçersiz, kullanılmış veya süresi dolmuş.",
+    "passwordReset": "Parolanız güncellendi. Yeni parolanızla giriş yapabilirsiniz.",
+    "resetRateLimited": "Çok fazla parola sıfırlama denemesi yaptınız. Lütfen daha sonra tekrar deneyin."
   }
 }

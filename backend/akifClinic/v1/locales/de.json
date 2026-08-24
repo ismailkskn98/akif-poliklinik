@@ -21,9 +21,15 @@
   "auth": {
     "loggedIn": "Anmeldung erfolgreich.",
     "missingCredentials": "E-Mail und Passwort sind erforderlich.",
+    "invalidEmail": "Geben Sie eine gültige E-Mail-Adresse ein.",
     "invalidCredentials": "E-Mail oder Passwort ist falsch.",
     "unauthorized": "Für diese Aktion müssen Sie angemeldet sein.",
     "invalidToken": "Die Sitzung ist ungültig oder abgelaufen.",
-    "rateLimited": "Zu viele Anmeldeversuche. Bitte versuchen Sie es später erneut."
+    "rateLimited": "Zu viele Anmeldeversuche. Bitte versuchen Sie es später erneut.",
+    "resetRequested": "Wenn für diese E-Mail ein aktives Konto besteht, wurde ein Link gesendet.",
+    "invalidResetFields": "Der Link ist ungültig oder das Passwort hat weniger als 12 Zeichen.",
+    "invalidResetToken": "Der Link ist ungültig, bereits verwendet oder abgelaufen.",
+    "passwordReset": "Ihr Passwort wurde aktualisiert. Sie können sich jetzt anmelden.",
+    "resetRateLimited": "Zu viele Versuche zur Passwortzurücksetzung. Bitte versuchen Sie es später erneut."
   }
 }

@@ -1,10 +1,4 @@
-CREATE DATABASE IF NOT EXISTS akif_poliklinik
-  CHARACTER SET utf8mb4
-  COLLATE utf8mb4_unicode_ci;
-
-USE akif_poliklinik;
-
-CREATE TABLE admin_users (
+CREATE TABLE IF NOT EXISTS admin_users (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   full_name VARCHAR(150) NOT NULL,
   email VARCHAR(190) NOT NULL,
@@ -18,7 +12,7 @@ CREATE TABLE admin_users (
   UNIQUE KEY uq_admin_users_email (email)
 ) ENGINE=InnoDB;
 
-CREATE TABLE contact_requests (
+CREATE TABLE IF NOT EXISTS contact_requests (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   full_name VARCHAR(150) NOT NULL,
   phone VARCHAR(50) NOT NULL,
@@ -37,7 +31,7 @@ CREATE TABLE contact_requests (
   KEY idx_contact_requests_phone (phone)
 ) ENGINE=InnoDB;
 
-CREATE TABLE site_settings (
+CREATE TABLE IF NOT EXISTS site_settings (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   setting_key VARCHAR(120) NOT NULL,
   setting_value TEXT NULL,
@@ -52,7 +46,7 @@ CREATE TABLE site_settings (
     FOREIGN KEY (updated_by) REFERENCES admin_users (id) ON DELETE SET NULL
 ) ENGINE=InnoDB;
 
-CREATE TABLE pages (
+CREATE TABLE IF NOT EXISTS pages (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   page_key VARCHAR(120) NOT NULL,
   content_source ENUM('database', 'static') NOT NULL DEFAULT 'database',
@@ -64,7 +58,7 @@ CREATE TABLE pages (
   UNIQUE KEY uq_pages_key (page_key)
 ) ENGINE=InnoDB;
 
-CREATE TABLE page_translations (
+CREATE TABLE IF NOT EXISTS page_translations (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   page_id BIGINT UNSIGNED NOT NULL,
   locale VARCHAR(5) NOT NULL,
@@ -83,7 +77,7 @@ CREATE TABLE page_translations (
     FOREIGN KEY (page_id) REFERENCES pages (id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
-CREATE TABLE legal_documents (
+CREATE TABLE IF NOT EXISTS legal_documents (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   document_key VARCHAR(120) NOT NULL,
   document_type ENUM('privacy', 'cookie', 'terms', 'authorization', 'other') NOT NULL,
@@ -97,7 +91,7 @@ CREATE TABLE legal_documents (
   UNIQUE KEY uq_legal_documents_key_version (document_key, version)
 ) ENGINE=InnoDB;
 
-CREATE TABLE legal_document_translations (
+CREATE TABLE IF NOT EXISTS legal_document_translations (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   legal_document_id BIGINT UNSIGNED NOT NULL,
   locale VARCHAR(5) NOT NULL,
@@ -111,7 +105,7 @@ CREATE TABLE legal_document_translations (
     FOREIGN KEY (legal_document_id) REFERENCES legal_documents (id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
-CREATE TABLE redirects (
+CREATE TABLE IF NOT EXISTS redirects (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   source_path VARCHAR(500) NOT NULL,
   destination_path VARCHAR(500) NOT NULL,
@@ -123,7 +117,7 @@ CREATE TABLE redirects (
   UNIQUE KEY uq_redirects_source (source_path)
 ) ENGINE=InnoDB;
 
-CREATE TABLE audit_logs (
+CREATE TABLE IF NOT EXISTS audit_logs (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   admin_user_id BIGINT UNSIGNED NULL,
   action VARCHAR(120) NOT NULL,

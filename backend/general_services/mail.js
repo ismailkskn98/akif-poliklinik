@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+const { URL } = require("node:url");
 
 let transporter;
 
@@ -135,6 +136,66 @@ function createContactRequestEmail(contactRequest) {
   };
 }
 
+function createPasswordResetEmail({ fullName, resetUrl, expiresAt }) {
+  const safeFullName = escapeHtml(fullName || "Yönetici");
+  const safeResetUrl = escapeHtml(resetUrl);
+  const safeExpiresAt = escapeHtml(formatSubmittedAt(expiresAt));
+  const text = [
+    "Akif Poliklinik admin parola sıfırlama",
+    "",
+    `Merhaba ${fullName || "Yönetici"},`,
+    "",
+    "Admin hesabınız için parola sıfırlama isteği aldık.",
+    `Bağlantı: ${resetUrl}`,
+    `Geçerlilik: ${formatSubmittedAt(expiresAt)}`,
+    "",
+    "Bu isteği siz yapmadıysanız e-postayı yok sayabilirsiniz.",
+  ].join("\n");
+  const html = `<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Parolanızı sıfırlayın</title>
+  </head>
+  <body style="margin:0;background:#ffffff;color:#172038;font-family:Arial,Helvetica,sans-serif;">
+    <div style="display:none;max-height:0;overflow:hidden;opacity:0;">Akif Poliklinik admin hesabınız için parola sıfırlama bağlantısı.</div>
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;background:#ffffff;border-collapse:collapse;">
+      <tr>
+        <td align="center" style="padding:32px 18px;">
+          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;max-width:520px;border-collapse:collapse;">
+            <tr>
+              <td style="border-top:2px solid #516fc9;padding:24px 0 20px;">
+                <p style="margin:0 0 12px;color:#516fc9;font-size:11px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;">Akif Poliklinik</p>
+                <h1 style="margin:0;color:#172038;font-size:24px;font-weight:500;line-height:1.25;">Parolanızı sıfırlayın</h1>
+                <p style="margin:10px 0 0;color:#667085;font-size:14px;line-height:1.65;">Merhaba ${safeFullName}, admin hesabınız için parola sıfırlama isteği aldık.</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="border-top:1px solid #e6e8ee;border-bottom:1px solid #e6e8ee;padding:24px 0;">
+                <a href="${safeResetUrl}" style="display:inline-block;background:#516fc9;color:#ffffff;font-size:14px;font-weight:600;line-height:1;text-decoration:none;padding:14px 20px;">Yeni parola belirle</a>
+                <p style="margin:16px 0 0;color:#7a8190;font-size:12px;line-height:1.6;">Bağlantı ${safeExpiresAt} tarihine kadar geçerlidir ve yalnızca bir kez kullanılabilir.</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:18px 0 0;color:#9298a5;font-size:11px;line-height:1.6;">
+                Bu isteği siz yapmadıysanız e-postayı yok sayabilirsiniz. Parolanız değişmez.
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>`;
+
+  return {
+    subject: "Akif Poliklinik · Parola sıfırlama",
+    text,
+    html,
+  };
+}
+
 function isMailEnabled() {
   return process.env.MAIL_ENABLED === "true";
 }
@@ -191,4 +252,42 @@ async function sendContactRequestNotification(contactRequest) {
   return true;
 }
 
-module.exports = { sendContactRequestNotification };
+async function sendPasswordResetNotification({ email, fullName, token, expiresAt }) {
+  if (!isMailEnabled()) {
+    return false;
+  }
+
+  const recipient = process.env.PASSWORD_RESET_TO || email;
+  const fromAddress = process.env.SMTP_FROM_ADDRESS || process.env.SMTP_USER;
+  const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
+
+  if (!process.env.SMTP_HOST || !recipient || !fromAddress) {
+    throw new Error("SMTP password reset configuration is incomplete.");
+  }
+
+  const resetUrl = new URL("/admin/reset-password", frontendUrl);
+  resetUrl.searchParams.set("token", token);
+  const emailContent = createPasswordResetEmail({
+    fullName,
+    resetUrl: resetUrl.toString(),
+    expiresAt,
+  });
+
+  await getTransporter().sendMail({
+    from: {
+      name: process.env.SMTP_FROM_NAME || "Akif Poliklinik",
+      address: fromAddress,
+    },
+    to: recipient,
+    subject: emailContent.subject,
+    text: emailContent.text,
+    html: emailContent.html,
+  });
+
+  return true;
+}
+
+module.exports = {
+  sendContactRequestNotification,
+  sendPasswordResetNotification,
+};

@@ -8,6 +8,7 @@
     "notFound": "La richiesta di contatto non è stata trovata.",
     "invalidFields": "Controlla nome completo e telefono.",
     "invalidEmail": "Inserisci un indirizzo e-mail valido.",
+    "privacyNoticeRequired": "Prima di inviare, conferma di aver letto e preso conoscenza dell’informativa sulla privacy vigente.",
     "invalidUpdate": "Il numero o lo stato della richiesta non è valido.",
     "rateLimited": "Hai inviato troppe richieste. Riprova più tardi."
   },
@@ -15,6 +16,7 @@
     "retrieved": "Le impostazioni del sito sono state caricate.",
     "updated": "Le impostazioni del sito sono state aggiornate.",
     "invalidFields": "Alcuni campi delle impostazioni sono mancanti o non validi.",
+    "invalidMapUrl": "Inserisci un link di condivisione Google Maps valido. Apri il luogo e scegli Condividi > Copia link.",
     "tooManyPhoneNumbers": "Puoi salvare fino a 8 numeri di telefono.",
     "invalidDocument": "Il documento di autorizzazione deve essere un’immagine JPG, PNG o WebP di massimo 8 MB.",
     "documentUploaded": "Il documento di autorizzazione è stato aggiornato."

@@ -15,7 +15,8 @@ const emptySettings = {
   instagramUrl: "",
   phoneNumbers: [""],
   address: "",
-  mapQuery: "",
+  mapShareUrl: "",
+  mapEmbedUrl: "",
   authorizationDocumentUrl: "",
   updatedAt: null,
 };
@@ -151,7 +152,7 @@ export default function SettingsDashboard() {
           instagramUrl: settings.instagramUrl,
           phoneNumbers: settings.phoneNumbers,
           address: settings.address,
-          mapQuery: settings.mapQuery,
+          mapShareUrl: settings.mapShareUrl,
           authorizationDocumentUrl: settings.authorizationDocumentUrl,
         },
       });
@@ -377,26 +378,39 @@ export default function SettingsDashboard() {
               </div>
 
               <div>
-                <label className="text-xs font-medium text-black/58" htmlFor="mapQuery">
-                  Harita konumu
+                <label className="text-xs font-medium text-black/58" htmlFor="mapShareUrl">
+                  Google Maps paylaşım bağlantısı
                 </label>
                 <input
                   className={inputClassName}
-                  id="mapQuery"
+                  id="mapShareUrl"
                   onChange={(event) =>
                     setSettings((currentSettings) => ({
                       ...currentSettings,
-                      mapQuery: event.target.value,
+                      mapShareUrl: event.target.value,
                     }))
                   }
+                  placeholder="https://maps.app.goo.gl/..."
                   required
-                  type="text"
-                  value={settings.mapQuery}
+                  type="url"
+                  value={settings.mapShareUrl}
                 />
                 <p className="mt-2 text-xs leading-5 text-black/42">
-                  Google Maps işletme adı veya tam adresi. Haritadaki pini, görünen
-                  adres metninden bağımsız olarak belirler.
+                  Google Maps’te doğru işletme konumunu açın. Ardından
+                  <strong className="font-medium text-black/58"> Paylaş</strong> düğmesine
+                  basıp <strong className="font-medium text-black/58">Bağlantıyı kopyala</strong>
+                  seçeneğiyle aldığınız adresi buraya yapıştırın.
                 </p>
+                {settings.mapShareUrl ? (
+                  <a
+                    className="mt-2 inline-flex text-xs font-medium text-[#516fc9] hover:underline"
+                    href={settings.mapShareUrl}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Kayıtlı konumu Google Maps’te kontrol et ↗
+                  </a>
+                ) : null}
               </div>
             </div>
 

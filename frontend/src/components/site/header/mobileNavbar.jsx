@@ -1,13 +1,53 @@
 "use client";
 
 import { ArrowUpRight, CaretDown } from "@phosphor-icons/react";
-import { useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
 import { Dialog, DialogClose, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Link, useRouter } from "@/i18n/navigation";
 
 import Brand from "./brand";
 import LanguageMenu from "./languageMenu";
+
+function usePageScrollLock(locked) {
+  useLayoutEffect(() => {
+    if (!locked) {
+      return undefined;
+    }
+
+    const html = document.documentElement;
+    const body = document.body;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const previousHtmlOverflow = html.style.overflow;
+    const previousBodyStyles = {
+      left: body.style.left,
+      overflow: body.style.overflow,
+      position: body.style.position,
+      top: body.style.top,
+      width: body.style.width,
+    };
+
+    html.style.overflow = "hidden";
+    Object.assign(body.style, {
+      left: `-${scrollX}px`,
+      overflow: "hidden",
+      position: "fixed",
+      top: `-${scrollY}px`,
+      width: "100%",
+    });
+
+    return () => {
+      html.style.overflow = previousHtmlOverflow;
+      Object.assign(body.style, previousBodyStyles);
+
+      const previousScrollBehavior = html.style.scrollBehavior;
+      html.style.scrollBehavior = "auto";
+      window.scrollTo(scrollX, scrollY);
+      html.style.scrollBehavior = previousScrollBehavior;
+    };
+  }, [locked]);
+}
 
 function MenuGlyph({ open }) {
   return (
@@ -23,10 +63,14 @@ export default function MobileNavbar({ currentLocale, groups, labels, phone }) {
   const router = useRouter();
   const pendingHrefRef = useRef(null);
   const [open, setOpen] = useState(false);
+  const [scrollLocked, setScrollLocked] = useState(false);
+
+  usePageScrollLock(scrollLocked);
 
   function handleOpenChange(nextOpen) {
     if (nextOpen) {
       pendingHrefRef.current = null;
+      setScrollLocked(true);
     }
 
     setOpen(nextOpen);
@@ -43,7 +87,13 @@ export default function MobileNavbar({ currentLocale, groups, labels, phone }) {
   }
 
   function handleOpenChangeComplete(isOpen) {
-    if (isOpen || !pendingHrefRef.current) {
+    if (isOpen) {
+      return;
+    }
+
+    setScrollLocked(false);
+
+    if (!pendingHrefRef.current) {
       return;
     }
 
@@ -54,6 +104,7 @@ export default function MobileNavbar({ currentLocale, groups, labels, phone }) {
 
   return (
     <Dialog
+      modal="trap-focus"
       open={open}
       onOpenChange={handleOpenChange}
       onOpenChangeComplete={handleOpenChangeComplete}

@@ -2,6 +2,7 @@ import { ArrowUpRight, InstagramLogo } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
+import CookieSettingsButton from "@/components/site/cookieConsent/settingsButton";
 import { siteConfig } from "@/config/site";
 import { getTreatmentCopy } from "@/content/treatmentCopy";
 import { Link } from "@/i18n/navigation";
@@ -67,8 +68,30 @@ export default async function Footer({ locale }) {
                 <Link className="py-1.5 transition-colors duration-200 hover:text-white" href="/authorization-document">
                   {translations("authorization")}
                 </Link>
+                <CookieSettingsButton label={translations("cookieSettings")} />
               </div>
             </nav>
+
+            <div className="flex min-h-[6.25rem] items-center justify-between gap-5 bg-white px-4 py-3 text-ink sm:col-span-2 sm:px-5 lg:col-span-1 xl:col-span-2">
+              <div className="min-w-0">
+                <p className="text-[0.62rem] font-semibold tracking-[0.14em] text-primary uppercase">
+                  {translations("healthTourism")}
+                </p>
+                <p className="mt-2 text-sm font-medium tracking-[-0.015em] text-ink/68">
+                  {siteConfig.name}
+                </p>
+              </div>
+              <div className="relative h-[4.25rem] w-[7.25rem] shrink-0 overflow-hidden bg-white">
+                <Image
+                  alt="Health Türkiye"
+                  className="absolute start-[-0.3rem] top-[-1.45rem] h-auto w-[7.95rem] max-w-none"
+                  height={1080}
+                  sizes="127px"
+                  src="/images/health-türkiye.jpeg"
+                  width={1080}
+                />
+              </div>
+            </div>
           </div>
         </div>
 

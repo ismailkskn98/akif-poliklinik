@@ -1,3 +1,5 @@
+export const privacyNoticeVersion = "2026-08-24";
+
 const privacyNotices = {
   tr: {
     effectiveDate: "Yürürlük tarihi: 24 Ağustos 2026",

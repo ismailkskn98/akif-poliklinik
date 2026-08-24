@@ -1,9 +1,12 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Check } from "@phosphor-icons/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+
+import PrivacyNoticeDialog from "@/components/site/privacyNoticeDialog";
 
 function createContactSchema(labels) {
   return z.object({
@@ -14,13 +17,17 @@ function createContactSchema(labels) {
       .optional(),
     message: z.string().trim().max(2000).optional(),
     website: z.string().max(0).optional(),
+    privacyNoticeAcknowledged: z
+      .boolean()
+      .refine(Boolean, labels.privacyRequired),
+    privacyNoticeVersion: z.string().min(1),
   });
 }
 
 const fieldClassName =
   "min-h-11 w-full rounded-none border-0 border-b border-[#172038]/16 bg-transparent px-0 text-sm text-[#172038] outline-none transition-colors placeholder:text-[#172038]/30 focus:border-primary focus:ring-0";
 
-export default function ContactForm({ labels, locale }) {
+export default function ContactForm({ labels, locale, privacyNotice }) {
   const [submissionState, setSubmissionState] = useState("idle");
   const schema = createContactSchema(labels.validation);
   const {
@@ -30,7 +37,15 @@ export default function ContactForm({ labels, locale }) {
     formState: { errors },
   } = useForm({
     resolver: zodResolver(schema),
-    defaultValues: { fullName: "", phone: "", email: "", message: "", website: "" },
+    defaultValues: {
+      fullName: "",
+      phone: "",
+      email: "",
+      message: "",
+      website: "",
+      privacyNoticeAcknowledged: false,
+      privacyNoticeVersion: privacyNotice.version,
+    },
   });
 
   async function submitContactRequest(values) {
@@ -96,6 +111,42 @@ export default function ContactForm({ labels, locale }) {
       <div className="hidden" aria-hidden="true">
         <label htmlFor="website">Website</label>
         <input id="website" tabIndex="-1" autoComplete="off" {...register("website")} />
+      </div>
+
+      <div>
+        <div className="flex items-start gap-3">
+          <span className="relative mt-0.5 grid size-4 shrink-0 place-items-center">
+            <input
+              aria-describedby="privacy-notice-acknowledgement"
+              aria-invalid={Boolean(errors.privacyNoticeAcknowledged)}
+              className="peer size-4 appearance-none border border-ink/28 bg-transparent transition-[border-color,background-color] duration-180 ease-[cubic-bezier(.22,1,.36,1)] checked:border-primary checked:bg-primary"
+              id="privacyNoticeAcknowledged"
+              type="checkbox"
+              {...register("privacyNoticeAcknowledged")}
+            />
+            <Check
+              aria-hidden="true"
+              className="pointer-events-none absolute size-2.5 text-white opacity-0 transition-opacity duration-150 peer-checked:opacity-100"
+              weight="bold"
+            />
+          </span>
+          <p id="privacy-notice-acknowledgement" className="text-xs leading-5 text-ink/58">
+            <PrivacyNoticeDialog
+              address={privacyNotice.address}
+              labels={privacyNotice.labels}
+              notice={privacyNotice.notice}
+              triggerLabel={labels.privacyLink}
+            />{" "}
+            <label className="cursor-pointer" htmlFor="privacyNoticeAcknowledged">
+              {labels.privacyAcknowledgement}
+            </label>
+          </p>
+        </div>
+        {errors.privacyNoticeAcknowledged ? (
+          <p className="mt-1.5 ps-7 text-xs text-destructive">
+            {errors.privacyNoticeAcknowledged.message}
+          </p>
+        ) : null}
       </div>
 
       <button

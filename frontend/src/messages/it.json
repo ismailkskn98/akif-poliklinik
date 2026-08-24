@@ -51,9 +51,12 @@
         "sending": "Invio in corso...",
         "success": "Abbiamo ricevuto la tua richiesta. Ti contatteremo a breve.",
         "error": "Non è stato possibile inviare la richiesta. Riprova o chiamaci.",
+        "privacyLink": "Informativa sulla privacy",
+        "privacyAcknowledgement": "Ho letto l’informativa e ne ho preso conoscenza.",
         "validation": {
           "required": "Questo campo è obbligatorio.",
-          "invalidEmail": "Inserisci un indirizzo e-mail valido."
+          "invalidEmail": "Inserisci un indirizzo e-mail valido.",
+          "privacyRequired": "Prima di inviare, conferma di aver letto e preso conoscenza dell’informativa."
         }
       }
     },
@@ -63,21 +66,52 @@
     "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
     "updatedAt": "Ultimo aggiornamento: aprile 2026",
     "legalTitle": "Link legali",
+    "healthTourism": "Turismo sanitario internazionale",
     "privacy": "Informativa sulla privacy",
     "authorization": "Documento di autorizzazione",
+    "cookieSettings": "Preferenze cookie",
     "rights": "Tutti i diritti riservati."
+  },
+  "CookieConsent": {
+    "title": "Preferenze sulla privacy",
+    "description": "Utilizziamo un cookie necessario per le funzioni del sito. I contenuti esterni come Google Maps vengono caricati solo con il tuo permesso.",
+    "acceptAll": "Accetta tutto",
+    "rejectOptional": "Rifiuta opzionali",
+    "preferences": "Gestisci preferenze",
+    "settingsEyebrow": "Gestione cookie",
+    "settingsTitle": "Gestisci le preferenze sulla privacy",
+    "settingsDescription": "I cookie necessari supportano il sito e la gestione delle preferenze. Puoi attivare o disattivare i contenuti esterni in qualsiasi momento.",
+    "necessaryTitle": "Cookie necessari",
+    "necessaryDescription": "Servono a ricordare la scelta e a fornire le funzioni essenziali del sito.",
+    "externalMediaTitle": "Contenuti esterni",
+    "externalMediaDescription": "Se attivati, viene caricato Google Maps e Google può usare cookie di terze parti.",
+    "alwaysActive": "Sempre attivo",
+    "active": "Attivo",
+    "inactive": "Disattivato",
+    "detailsTitle": "Servizi utilizzati",
+    "consentCookieDescription": "Memorizza le preferenze relative ai cookie e ai contenuti esterni.",
+    "mapsCookieDescription": "Mostra la posizione della clinica su una mappa interattiva e si carica solo dopo il consenso.",
+    "firstParty": "Prima parte",
+    "thirdParty": "Terza parte",
+    "sixMonths": "6 mesi",
+    "providerDuration": "Durata stabilita dal fornitore",
+    "savePreferences": "Salva preferenze",
+    "close": "Chiudi",
+    "mapTitle": "La mappa attende il tuo permesso",
+    "mapDescription": "Google Maps è un servizio esterno. Attivando la mappa il browser si collega a Google.",
+    "enableMap": "Attiva la mappa"
   },
   "Pages": {
     "privacy": {
       "eyebrow": "Protezione dei dati personali",
       "title": "Informativa sulla privacy",
       "description": "Informazioni sulle finalità e sulle basi giuridiche del trattamento dei dati personali.",
-      "setupNotice": "L'informativa viene adattata per Akif Poliklinik sulla base del testo esistente di British Estetik. La denominazione legale completa e i recapiti del titolare devono essere verificati prima della pubblicazione."
+      "close": "Chiudi"
     },
     "authorization": {
       "eyebrow": "Documenti aziendali",
       "title": "Autorizzazione al turismo sanitario internazionale",
-      "description": "Il documento AK-0995 è stato rilasciato ad Akif Özgüller Turizm Seyahat Acentası (British Esthetic Sağlık A.Ş.).",
+      "description": "Puoi consultare il documento di autorizzazione al turismo sanitario internazionale n. AK-0995.",
       "openDocument": "Apri il documento in una nuova scheda",
       "imageAlt": "Autorizzazione al turismo sanitario internazionale, documento AK-0995"
     }

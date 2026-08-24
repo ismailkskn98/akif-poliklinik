@@ -46,7 +46,7 @@
 
 ## Differentiation
 **Key differentiators:**
-- Referans kuruluştaki işlem sonrası bilgi birikimini tek bir modern sitede toplamak.
+- İşlem sonrası bilgi birikimini tek bir modern sitede toplamak.
 - Dokuz dil ve RTL desteği.
 - Nişantaşı konumu, dört doğrudan telefon hattı ve kısa form akışı.
 - Uluslararası sağlık turizmi yetki belgesini görünür sunmak.
@@ -106,4 +106,4 @@
 **Current metrics:** Henüz paylaşılmadı.
 
 ## Changelog
-- v1 (2026-08-24) — Mevcut repo, British Estetik referansı ve yeni tedavi sayfası kapsamından otomatik oluşturulan ilk bağlam.
+- v1 (2026-08-24) — Mevcut repo ve yeni tedavi sayfası kapsamından oluşturulan ilk bağlam.

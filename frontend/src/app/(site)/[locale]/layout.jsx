@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 
 import Footer from "@/components/site/footer";
 import Header from "@/components/site/header";
+import CookieConsent from "@/components/site/cookieConsent";
 import SiteMotion from "@/components/site/siteMotion";
 import { siteConfig } from "@/config/site";
 import { routing } from "@/i18n/routing";
@@ -117,6 +118,36 @@ export default async function SiteLayout({ children, params }) {
   }
 
   setRequestLocale(locale);
+  const consentTranslations = await getTranslations({
+    locale,
+    namespace: "CookieConsent",
+  });
+  const consentLabels = {
+    acceptAll: consentTranslations("acceptAll"),
+    active: consentTranslations("active"),
+    alwaysActive: consentTranslations("alwaysActive"),
+    close: consentTranslations("close"),
+    consentCookieDescription: consentTranslations("consentCookieDescription"),
+    description: consentTranslations("description"),
+    detailsTitle: consentTranslations("detailsTitle"),
+    externalMediaDescription: consentTranslations("externalMediaDescription"),
+    externalMediaTitle: consentTranslations("externalMediaTitle"),
+    firstParty: consentTranslations("firstParty"),
+    inactive: consentTranslations("inactive"),
+    mapsCookieDescription: consentTranslations("mapsCookieDescription"),
+    necessaryDescription: consentTranslations("necessaryDescription"),
+    necessaryTitle: consentTranslations("necessaryTitle"),
+    preferences: consentTranslations("preferences"),
+    providerDuration: consentTranslations("providerDuration"),
+    rejectOptional: consentTranslations("rejectOptional"),
+    savePreferences: consentTranslations("savePreferences"),
+    settingsDescription: consentTranslations("settingsDescription"),
+    settingsEyebrow: consentTranslations("settingsEyebrow"),
+    settingsTitle: consentTranslations("settingsTitle"),
+    sixMonths: consentTranslations("sixMonths"),
+    thirdParty: consentTranslations("thirdParty"),
+    title: consentTranslations("title"),
+  };
 
   return (
     <html lang={locale} dir={rtlLocales.has(locale) ? "rtl" : "ltr"} className={geistSans.variable} data-scroll-behavior="smooth">
@@ -143,6 +174,7 @@ export default async function SiteLayout({ children, params }) {
               <main>{children}</main>
               <Footer locale={locale} />
             </SiteMotion>
+            <CookieConsent labels={consentLabels} />
           </NextIntlClientProvider>
         </div>
       </body>

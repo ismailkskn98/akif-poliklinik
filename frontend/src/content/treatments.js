@@ -11,7 +11,6 @@ export const treatments = [
     category: "nonSurgical",
     profile: "botox",
     image: "/images/treatments/botox.png",
-    sourceUrl: "https://botoksuygulamasiislemsonrasi.britishestetik.com/",
     slugs: {
       tr: "botoks",
       en: "botox",
@@ -29,7 +28,6 @@ export const treatments = [
     category: "nonSurgical",
     profile: "filler",
     image: "/images/treatments/filler.png",
-    sourceUrl: "https://dolguuygulamasiislemsonrasi.britishestetik.com/",
     slugs: {
       tr: "dolgu",
       en: "dermal-filler",
@@ -47,7 +45,6 @@ export const treatments = [
     category: "nonSurgical",
     profile: "mesotherapy",
     image: "/images/treatments/mesotherapy.png",
-    sourceUrl: "https://mezoterapigenclikasisiislemsonrasi.britishestetik.com/",
     slugs: {
       tr: "mezoterapi-genclik-asisi",
       en: "mesotherapy-skin-booster",
@@ -65,7 +62,6 @@ export const treatments = [
     category: "face",
     profile: "rhinoplasty",
     image: "/images/treatments/rhinoplasty.png",
-    sourceUrl: "https://burunestetigiislemsonrasi.britishestetik.com/",
     slugs: {
       tr: "burun-estetigi",
       en: "rhinoplasty",
@@ -83,7 +79,6 @@ export const treatments = [
     category: "face",
     profile: "eyelid",
     image: "/images/treatments/upper-eyelid.png",
-    sourceUrl: "https://ustgozkapagiameliyatiislemsonrasi.britishestetik.com/",
     slugs: {
       tr: "ust-goz-kapagi",
       en: "upper-eyelid-surgery",
@@ -101,7 +96,6 @@ export const treatments = [
     category: "body",
     profile: "bodySurgery",
     image: "/images/treatments/thigh-lift.png",
-    sourceUrl: "http://bacakuylukgermeislemsonrasi.britishestetik.com/",
     slugs: {
       tr: "bacak-uyluk-germe",
       en: "thigh-lift",
@@ -119,7 +113,6 @@ export const treatments = [
     category: "body",
     profile: "bodySurgery",
     image: "/images/treatments/bbl-liposuction.png",
-    sourceUrl: "https://bblpopoliposuctionislemsonrasi.britishestetik.com/",
     slugs: {
       tr: "bbl-popo-liposuction",
       en: "bbl-liposuction",
@@ -137,7 +130,6 @@ export const treatments = [
     category: "body",
     profile: "bodySurgery",
     image: "/images/treatments/tummy-tuck.png",
-    sourceUrl: "https://karingermeislemsonrasi.britishestetik.com/",
     slugs: {
       tr: "karin-germe",
       en: "tummy-tuck",
@@ -155,7 +147,6 @@ export const treatments = [
     category: "body",
     profile: "bodySurgery",
     image: "/images/treatments/tummy-tuck-liposuction.png",
-    sourceUrl: "https://karingermeliposuctionislemsonrasi.britishestetik.com/",
     slugs: {
       tr: "karin-germe-liposuction",
       en: "tummy-tuck-liposuction",
@@ -173,7 +164,6 @@ export const treatments = [
     category: "body",
     profile: "bodySurgery",
     image: "/images/treatments/arm-lift.png",
-    sourceUrl: "https://kolgermeislemsonrasi.britishestetik.com/",
     slugs: {
       tr: "kol-germe",
       en: "arm-lift",
@@ -191,7 +181,6 @@ export const treatments = [
     category: "body",
     profile: "bodySurgery",
     image: "/images/treatments/liposuction.png",
-    sourceUrl: "https://liposuctionislemsonrasi.britishestetik.com/",
     slugs: {
       tr: "liposuction",
       en: "liposuction",
@@ -209,7 +198,6 @@ export const treatments = [
     category: "breast",
     profile: "breastSurgery",
     image: "/images/treatments/breast-lift.png",
-    sourceUrl: "https://memediklestirmeestetigiislemsonrasi.britishestetik.com/",
     slugs: {
       tr: "meme-diklestirme",
       en: "breast-lift",
@@ -227,7 +215,6 @@ export const treatments = [
     category: "breast",
     profile: "breastSurgery",
     image: "/images/treatments/breast-lift-implant.png",
-    sourceUrl: "https://memediklestirmeprotezestetigiislemsonrasi.britishestetik.com/",
     slugs: {
       tr: "meme-diklestirme-protez",
       en: "breast-lift-implants",
@@ -245,7 +232,6 @@ export const treatments = [
     category: "breast",
     profile: "breastSurgery",
     image: "/images/treatments/breast-implant.png",
-    sourceUrl: "https://memeproteziislemsonrasi.britishestetik.com/",
     slugs: {
       tr: "meme-protezi",
       en: "breast-implants",
@@ -263,7 +249,6 @@ export const treatments = [
     category: "breast",
     profile: "breastSurgery",
     image: "/images/treatments/breast-reduction.png",
-    sourceUrl: "https://memekucultmeislemsonrasi.britishestetik.com/",
     slugs: {
       tr: "meme-kucultme",
       en: "breast-reduction",

@@ -2,6 +2,8 @@
 
 Backend, bulunduğu ortama göre `.env.development` veya `.env.production` dosyasını kullanır.
 
+İlk kurulumda `.env.example` dosyasını hedef ortama göre `.env.development` veya `.env.production` adıyla kopyalayın ve örnek değerleri gerçek erişim bilgileriyle güncelleyin.
+
 ## İlk kurulum
 
 ```bash

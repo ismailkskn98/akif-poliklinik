@@ -207,18 +207,6 @@ export default async function TreatmentPage({ params }) {
               <p className="text-sm leading-7 text-[#172038]/58">
                 {content.ui.disclaimer}
               </p>
-              <p className="mt-5 text-xs leading-6 text-[#172038]/42">
-                {content.ui.sourceNote}
-              </p>
-              <a
-                href={treatment.sourceUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-dark"
-              >
-                {content.ui.source}
-                <ArrowUpRight aria-hidden="true" className="size-4" weight="light" />
-              </a>
             </div>
           </div>
         </div>

@@ -62,6 +62,7 @@ function createContactRequestEmail(contactRequest) {
     `Telefon: ${contactRequest.phone}`,
     `E-posta: ${email}`,
     `Dil: ${locale}`,
+    `KVKK aydınlatma sürümü: ${contactRequest.privacyNoticeVersion}`,
     `Gönderim: ${submittedAt}`,
     `Talep no: #${contactRequest.id}`,
     "",
@@ -107,6 +108,10 @@ function createContactRequestEmail(contactRequest) {
                   <tr>
                     <td width="112" valign="top" style="padding:8px 12px 8px 0;color:#7a8190;font-size:12px;line-height:1.5;">Dil</td>
                     <td valign="top" style="padding:8px 0;color:#172038;font-size:14px;line-height:1.5;">${safeLocale}</td>
+                  </tr>
+                  <tr>
+                    <td width="112" valign="top" style="padding:8px 12px 8px 0;color:#7a8190;font-size:12px;line-height:1.5;">KVKK bilgisi</td>
+                    <td valign="top" style="padding:8px 0;color:#172038;font-size:14px;line-height:1.5;">Aydınlatma metni ${escapeHtml(contactRequest.privacyNoticeVersion)} okundu</td>
                   </tr>
                 </table>
               </td>

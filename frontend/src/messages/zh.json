@@ -51,9 +51,12 @@
         "sending": "正在发送...",
         "success": "我们已收到您的申请，将尽快与您联系。",
         "error": "申请发送失败，请重试或致电我们。",
+        "privacyLink": "隐私告知书",
+        "privacyAcknowledgement": "我已阅读并知悉本告知书。",
         "validation": {
           "required": "此项为必填项。",
-          "invalidEmail": "请输入有效的电子邮箱地址。"
+          "invalidEmail": "请输入有效的电子邮箱地址。",
+          "privacyRequired": "提交前，请确认您已阅读并知悉隐私告知书。"
         }
       }
     },
@@ -63,21 +66,52 @@
     "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
     "updatedAt": "最后更新：2026年4月",
     "legalTitle": "法律链接",
+    "healthTourism": "国际医疗旅游",
     "privacy": "隐私信息",
     "authorization": "授权证书",
+    "cookieSettings": "Cookie 偏好设置",
     "rights": "版权所有。"
+  },
+  "CookieConsent": {
+    "title": "隐私偏好",
+    "description": "我们使用一项网站运行所必需的 Cookie。Google 地图等外部内容仅在您允许后加载。",
+    "acceptAll": "全部接受",
+    "rejectOptional": "拒绝可选项",
+    "preferences": "管理偏好",
+    "settingsEyebrow": "Cookie 管理",
+    "settingsTitle": "管理您的隐私偏好",
+    "settingsDescription": "必要 Cookie 用于网站运行和偏好管理。您可以随时启用或停用外部内容。",
+    "necessaryTitle": "必要 Cookie",
+    "necessaryDescription": "用于记住您的选择并提供网站的基本功能。",
+    "externalMediaTitle": "外部内容",
+    "externalMediaDescription": "启用后将加载 Google 地图，Google 可能使用第三方 Cookie。",
+    "alwaysActive": "始终启用",
+    "active": "已启用",
+    "inactive": "已关闭",
+    "detailsTitle": "使用的服务",
+    "consentCookieDescription": "保存您的 Cookie 和外部内容偏好。",
+    "mapsCookieDescription": "在互动地图上显示诊所位置，仅在获得许可后加载。",
+    "firstParty": "第一方",
+    "thirdParty": "第三方",
+    "sixMonths": "6个月",
+    "providerDuration": "期限由服务商决定",
+    "savePreferences": "保存偏好",
+    "close": "关闭",
+    "mapTitle": "地图正在等待您的许可",
+    "mapDescription": "Google 地图是外部服务。启用地图后，您的浏览器将连接到 Google。",
+    "enableMap": "启用地图"
   },
   "Pages": {
     "privacy": {
       "eyebrow": "个人数据保护",
       "title": "隐私信息",
       "description": "关于处理您个人数据的目的和法律依据的信息。",
-      "setupNotice": "本声明根据 British Estetik 的现有文本为 Akif Poliklinik 进行调整。正式发布前须核实数据负责人的完整法定名称和联系方式。"
+      "close": "关闭"
     },
     "authorization": {
       "eyebrow": "机构文件",
       "title": "国际健康旅游授权证书",
-      "description": "AK-0995 授权证书签发给 Akif Özgüller Turizm Seyahat Acentası（British Esthetic Sağlık A.Ş.）。",
+      "description": "您可以查看编号为 AK-0995 的国际医疗旅游授权文件。",
       "openDocument": "在新标签页打开文件",
       "imageAlt": "国际健康旅游授权证书，文件编号 AK-0995"
     }

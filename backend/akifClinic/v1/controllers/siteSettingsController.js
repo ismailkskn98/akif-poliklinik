@@ -4,6 +4,10 @@ const path = require("node:path");
 const { URL } = require("node:url");
 
 const { sendError, sendSuccess } = require("../../../general_helpers/response");
+const {
+  isAllowedGoogleMapsUrl,
+  resolveGoogleMapsShareUrl,
+} = require("../helpers/googleMaps");
 const siteSettingsService = require("../services/siteSettingsService");
 
 const MAX_PHONE_NUMBERS = 8;
@@ -71,7 +75,8 @@ async function hasValidImageSignature(file) {
 function validateSettings(body) {
   const instagramUrl = typeof body.instagramUrl === "string" ? body.instagramUrl.trim() : "";
   const address = typeof body.address === "string" ? body.address.trim() : "";
-  const mapQuery = typeof body.mapQuery === "string" ? body.mapQuery.trim() : "";
+  const mapShareUrl =
+    typeof body.mapShareUrl === "string" ? body.mapShareUrl.trim() : "";
   const authorizationDocumentUrl =
     typeof body.authorizationDocumentUrl === "string"
       ? body.authorizationDocumentUrl.trim()
@@ -83,6 +88,8 @@ function validateSettings(body) {
     process.env.PUBLIC_API_URL || "http://localhost:4000",
   ).origin;
   const hasTooManyPhoneNumbers = phoneNumbers.length > MAX_PHONE_NUMBERS;
+  const hasValidMapShareUrl =
+    mapShareUrl.length <= 1000 && isAllowedGoogleMapsUrl(mapShareUrl);
   let isValidDocumentUrl = authorizationDocumentUrl.startsWith("/");
 
   if (!isValidDocumentUrl) {
@@ -98,8 +105,7 @@ function validateSettings(body) {
     instagramUrl.length <= 500 &&
     address.length >= 10 &&
     address.length <= 1000 &&
-    mapQuery.length >= 3 &&
-    mapQuery.length <= 500 &&
+    hasValidMapShareUrl &&
     phoneNumbers.length >= 1 &&
     phoneNumbers.length <= MAX_PHONE_NUMBERS &&
     phoneNumbers.every(isValidPhoneNumber) &&
@@ -111,12 +117,14 @@ function validateSettings(body) {
     isValid,
     errorKey: hasTooManyPhoneNumbers
       ? "settings.tooManyPhoneNumbers"
-      : "settings.invalidFields",
+      : !hasValidMapShareUrl
+        ? "settings.invalidMapUrl"
+        : "settings.invalidFields",
     values: {
       instagramUrl,
       phoneNumbers,
       address,
-      mapQuery,
+      mapShareUrl,
       authorizationDocumentUrl,
     },
   };
@@ -141,8 +149,25 @@ async function update(request, response) {
     });
   }
 
+  let resolvedMapLocation;
+
+  try {
+    resolvedMapLocation = await resolveGoogleMapsShareUrl(
+      validation.values.mapShareUrl,
+    );
+  } catch {
+    return sendError(response, {
+      statusCode: 422,
+      message: request.t("settings.invalidMapUrl"),
+    });
+  }
+
   const settings = await siteSettingsService.updateSiteSettings(
-    validation.values,
+    {
+      ...validation.values,
+      mapShareUrl: resolvedMapLocation.mapShareUrl,
+      mapEmbedUrl: resolvedMapLocation.mapEmbedUrl,
+    },
     request.user.id,
   );
 

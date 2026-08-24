@@ -8,6 +8,7 @@
     "notFound": "La demande de contact est introuvable.",
     "invalidFields": "Vérifiez le nom complet et le numéro de téléphone.",
     "invalidEmail": "Saisissez une adresse e-mail valide.",
+    "privacyNoticeRequired": "Confirmez avoir lu et pris connaissance de la notice de confidentialité en vigueur avant l’envoi.",
     "invalidUpdate": "Le numéro ou le statut de la demande est invalide.",
     "rateLimited": "Trop de demandes ont été envoyées. Réessayez plus tard."
   },
@@ -15,6 +16,7 @@
     "retrieved": "Les paramètres du site ont été chargés.",
     "updated": "Les paramètres du site ont été mis à jour.",
     "invalidFields": "Certains paramètres du site sont manquants ou invalides.",
+    "invalidMapUrl": "Saisissez un lien de partage Google Maps valide. Ouvrez le lieu puis choisissez Partager > Copier le lien.",
     "tooManyPhoneNumbers": "Vous pouvez enregistrer jusqu’à 8 numéros de téléphone.",
     "invalidDocument": "Le document d’autorisation doit être une image JPG, PNG ou WebP de 8 Mo maximum.",
     "documentUploaded": "Le document d’autorisation a été mis à jour."

@@ -4,7 +4,8 @@ const settingDefinitions = {
   instagramUrl: { key: "instagram_url", type: "text" },
   phoneNumbers: { key: "phone_numbers", type: "json" },
   address: { key: "address", type: "text" },
-  mapQuery: { key: "map_query", type: "text" },
+  mapShareUrl: { key: "map_share_url", type: "text" },
+  mapEmbedUrl: { key: "map_embed_url", type: "text" },
   authorizationDocumentUrl: {
     key: "authorization_document_url",
     type: "text",
@@ -21,7 +22,9 @@ const defaultSettings = {
   ],
   address:
     "(Lotus Walk Nişantaşı) Halaskargazi Cd. No:38/66 Kat:6 Daire:109, 34371 Şişli/İstanbul",
-  mapQuery: "British Estetik Nişantaşı",
+  mapShareUrl: "https://maps.app.goo.gl/1GC2b1vs46bE8nZz9",
+  mapEmbedUrl:
+    "https://maps.google.com/maps?q=41.0516039%2C28.987723&t=m&z=17&output=embed&iwloc=near",
   authorizationDocumentUrl:
     "/documents/international-health-tourism-authorization.jpg",
 };

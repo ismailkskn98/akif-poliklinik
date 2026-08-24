@@ -18,54 +18,27 @@ export default function DesktopNavbar({ groups, labels }) {
       </Link>
 
       <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger
-          openOnHover
-          delay={70}
-          closeDelay={140}
-          className="nav-link group flex gap-1.5 data-[popup-open]:text-primary"
-        >
+        <PopoverTrigger openOnHover delay={70} closeDelay={140} className="nav-link group flex gap-1.5 data-[popup-open]:text-primary">
           {labels.treatments}
-          <CaretDown
-            aria-hidden="true"
-            className="size-3.5 transition-transform duration-250 ease-[cubic-bezier(.22,1,.36,1)] group-data-[popup-open]:rotate-180"
-            weight="light"
-          />
+          <CaretDown aria-hidden="true" className="size-3.5 transition-transform duration-250 ease-[cubic-bezier(.22,1,.36,1)] group-data-[popup-open]:rotate-180" weight="light" />
         </PopoverTrigger>
-        <PopoverContent
-          sideOffset={4}
-          className="w-[min(76rem,calc(100vw-2.5rem))] overflow-hidden p-0"
-        >
+        <PopoverContent sideOffset={4} className="w-[min(76rem,calc(100vw-2.5rem))] overflow-hidden p-0">
           <div className="grid min-h-[23rem] grid-cols-[17rem_1fr]">
             <figure className="relative overflow-hidden bg-ink-deep text-white">
-              <Image
-                key={preview.key}
-                alt={preview.label}
-                className="mega-menu-image object-cover"
-                fill
-                sizes="17rem"
-                src={preview.image}
-              />
+              <Image key={preview.key} alt={preview.label} className="mega-menu-image object-cover" fill sizes="30rem" src={preview.image} />
               <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/18 to-transparent" />
               <div aria-hidden="true" className="dot-texture absolute inset-0 opacity-[0.14]" />
               <figcaption className="absolute inset-x-0 bottom-0 p-6">
-                <span className="text-[0.62rem] font-semibold tracking-[0.17em] text-white/52 uppercase">
-                  {labels.treatments}
-                </span>
-                <p className="mt-2 max-w-48 text-2xl leading-[1.02] font-medium tracking-[-0.045em]">
-                  {preview.label}
-                </p>
+                <span className="text-[0.62rem] font-semibold tracking-[0.17em] text-white/52 uppercase">{labels.treatments}</span>
+                <p className="mt-2 max-w-48 text-2xl leading-[1.02] font-medium tracking-[-0.045em]">{preview.label}</p>
               </figcaption>
             </figure>
 
             <div className="flex min-w-0 flex-col">
               <div className="flex min-h-16 items-center border-b border-ink/12 px-6">
                 <div>
-                  <p className="text-[0.65rem] font-semibold tracking-[0.16em] text-primary uppercase">
-                    {labels.treatments}
-                  </p>
-                  <p className="mt-1 text-xs text-ink/45">
-                    {labels.treatmentsTeaser}
-                  </p>
+                  <p className="text-[0.65rem] font-semibold tracking-[0.16em] text-primary uppercase">{labels.treatments}</p>
+                  <p className="mt-1 text-xs text-ink/45">{labels.treatmentsTeaser}</p>
                 </div>
               </div>
 
@@ -73,9 +46,7 @@ export default function DesktopNavbar({ groups, labels }) {
                 {groups.map((group) => (
                   <section key={group.key} className="p-4 xl:p-5">
                     <div className="flex min-h-10 items-start border-b border-ink/10 pb-3">
-                      <h2 className="text-[0.64rem] leading-4 font-semibold tracking-[0.14em] text-primary uppercase">
-                        {group.label}
-                      </h2>
+                      <h2 className="text-[0.64rem] leading-4 font-semibold tracking-[0.14em] text-primary uppercase">{group.label}</h2>
                     </div>
                     <div className="mt-2 grid">
                       {group.items.map((item) => {
@@ -89,18 +60,14 @@ export default function DesktopNavbar({ groups, labels }) {
                             onFocus={() => setPreview(item)}
                             onPointerEnter={() => setPreview(item)}
                             className={`group/item flex min-h-9 items-center justify-between gap-2 px-2 text-[0.76rem] leading-4 transition-[background-color,color] duration-180 ease-[cubic-bezier(.22,1,.36,1)] ${
-                              isActive
-                                ? "bg-surface-soft text-ink"
-                                : "text-ink/56 hover:bg-surface-soft/70 hover:text-ink"
+                              isActive ? "bg-surface-soft text-ink" : "text-ink/56 hover:bg-surface-soft/70 hover:text-ink"
                             }`}
                           >
                             <span>{item.label}</span>
                             <ArrowUpRight
                               aria-hidden="true"
                               className={`size-3 shrink-0 transition-[transform,opacity] duration-180 ease-[cubic-bezier(.22,1,.36,1)] rtl:rotate-[-90deg] ${
-                                isActive
-                                  ? "opacity-100"
-                                  : "-translate-x-1 translate-y-1 opacity-0 group-hover/item:translate-x-0 group-hover/item:translate-y-0 group-hover/item:opacity-100"
+                                isActive ? "opacity-100" : "-translate-x-1 translate-y-1 opacity-0 group-hover/item:translate-x-0 group-hover/item:translate-y-0 group-hover/item:opacity-100"
                               }`}
                               weight="light"
                             />

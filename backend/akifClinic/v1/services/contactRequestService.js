@@ -3,8 +3,9 @@ const { getPool } = require("../models/db");
 async function createContactRequest(contactRequest) {
   const [result] = await getPool().execute(
     `INSERT INTO contact_requests
-      (full_name, phone, email, message, locale, source, ip_address, user_agent)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      (full_name, phone, email, message, locale, source, ip_address, user_agent,
+       privacy_notice_version, privacy_notice_acknowledged_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)`,
     [
       contactRequest.fullName,
       contactRequest.phone,
@@ -14,6 +15,7 @@ async function createContactRequest(contactRequest) {
       contactRequest.source,
       contactRequest.ipAddress,
       contactRequest.userAgent,
+      contactRequest.privacyNoticeVersion,
     ],
   );
 
@@ -33,7 +35,8 @@ async function listContactRequests({ page, limit, status }) {
   const whereClause = conditions.length ? `WHERE ${conditions.join(" AND ")}` : "";
   const [rows] = await getPool().execute(
     `SELECT id, full_name, phone, email, message, locale, source, status,
-            admin_note, created_at, updated_at
+            admin_note, privacy_notice_version, privacy_notice_acknowledged_at,
+            created_at, updated_at
        FROM contact_requests
        ${whereClause}
       ORDER BY created_at DESC

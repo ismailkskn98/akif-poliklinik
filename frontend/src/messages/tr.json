@@ -51,9 +51,12 @@
         "sending": "Gönderiliyor...",
         "success": "Talebiniz alındı. En kısa sürede sizinle iletişime geçeceğiz.",
         "error": "Talep gönderilemedi. Lütfen tekrar deneyin veya bizi arayın.",
+        "privacyLink": "KVKK Aydınlatma Metni’ni",
+        "privacyAcknowledgement": "okudum ve bilgi edindim.",
         "validation": {
           "required": "Bu alan zorunludur.",
-          "invalidEmail": "Geçerli bir e-posta adresi girin."
+          "invalidEmail": "Geçerli bir e-posta adresi girin.",
+          "privacyRequired": "Formu göndermeden önce aydınlatma metnini okuyup bilgi edindiğinizi belirtin."
         }
       }
     },
@@ -63,21 +66,52 @@
     "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
     "updatedAt": "Güncellenme Tarihi: Nisan 2026",
     "legalTitle": "Yasal bağlantılar",
+    "healthTourism": "Uluslararası sağlık turizmi",
     "privacy": "KVKK Hakkında Bilgilendirme",
     "authorization": "Yetki Belgesi",
+    "cookieSettings": "Çerez tercihleri",
     "rights": "Tüm hakları saklıdır."
+  },
+  "CookieConsent": {
+    "title": "Gizlilik tercihleri",
+    "description": "Site işlevleri için zorunlu çerezi kullanıyoruz. Google Haritalar gibi harici içerikler yalnızca izninizle yüklenir.",
+    "acceptAll": "Tümünü kabul et",
+    "rejectOptional": "Zorunlu olmayanları reddet",
+    "preferences": "Tercihleri yönet",
+    "settingsEyebrow": "Çerez yönetimi",
+    "settingsTitle": "Gizlilik tercihlerinizi yönetin",
+    "settingsDescription": "Zorunlu çerezler site ve tercih yönetimi için gereklidir. Harici içerikleri dilediğiniz zaman açıp kapatabilirsiniz.",
+    "necessaryTitle": "Zorunlu çerezler",
+    "necessaryDescription": "Tercihinizi hatırlamak ve sitenin temel işlevlerini sağlamak için kullanılır.",
+    "externalMediaTitle": "Harici içerikler",
+    "externalMediaDescription": "İzin verdiğinizde Google Haritalar yüklenir ve Google üçüncü taraf çerezleri kullanabilir.",
+    "alwaysActive": "Her zaman aktif",
+    "active": "Aktif",
+    "inactive": "Kapalı",
+    "detailsTitle": "Kullanılan hizmetler",
+    "consentCookieDescription": "Çerez ve harici içerik tercihlerinizi saklar.",
+    "mapsCookieDescription": "Klinik konumunu etkileşimli harita üzerinde gösterir; yalnızca izninizden sonra yüklenir.",
+    "firstParty": "Birinci taraf",
+    "thirdParty": "Üçüncü taraf",
+    "sixMonths": "6 ay",
+    "providerDuration": "Süreyi sağlayıcı belirler",
+    "savePreferences": "Tercihleri kaydet",
+    "close": "Kapat",
+    "mapTitle": "Harita izninizi bekliyor",
+    "mapDescription": "Google Haritalar harici bir hizmettir. Haritayı etkinleştirdiğinizde Google ile bağlantı kurulur.",
+    "enableMap": "Haritayı etkinleştir"
   },
   "Pages": {
     "privacy": {
       "eyebrow": "Kişisel verilerin korunması",
       "title": "KVKK Hakkında Bilgilendirme",
       "description": "Kişisel verilerinizin hangi amaçlarla ve hangi hukuki dayanaklarla işlendiğine ilişkin bilgilendirme.",
-      "setupNotice": "Aydınlatma metni, British Estetik'teki mevcut metin esas alınarak Akif Poliklinik adına uyarlanmaktadır. Üretim yayını öncesinde veri sorumlusunun eksiksiz ticari unvanı ve iletişim bilgilerinin doğrulanması gerekir."
+      "close": "Kapat"
     },
     "authorization": {
       "eyebrow": "Kurumsal belgeler",
       "title": "Uluslararası Sağlık Turizmi Yetki Belgesi",
-      "description": "AK-0995 belge numaralı yetki belgesi, Akif Özgüller Turizm Seyahat Acentası (British Esthetic Sağlık A.Ş.) adına düzenlenmiştir.",
+      "description": "AK-0995 belge numaralı Uluslararası Sağlık Turizmi Yetki Belgesi’ni inceleyebilirsiniz.",
       "openDocument": "Belgeyi yeni sekmede aç",
       "imageAlt": "Uluslararası Sağlık Turizmi Yetki Belgesi, belge numarası AK-0995"
     }

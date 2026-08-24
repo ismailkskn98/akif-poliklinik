@@ -51,9 +51,12 @@
         "sending": "שולח...",
         "success": "הבקשה התקבלה. ניצור איתך קשר בהקדם.",
         "error": "לא ניתן לשלוח את הבקשה. נסו שוב או התקשרו אלינו.",
+        "privacyLink": "הודעת הפרטיות",
+        "privacyAcknowledgement": "קראתי את ההודעה וקיבלתי את המידע.",
         "validation": {
           "required": "שדה זה הוא חובה.",
-          "invalidEmail": "יש להזין כתובת אימייל תקינה."
+          "invalidEmail": "יש להזין כתובת אימייל תקינה.",
+          "privacyRequired": "לפני השליחה יש לאשר שקראת את הודעת הפרטיות וקיבלת את המידע."
         }
       }
     },
@@ -63,21 +66,52 @@
     "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
     "updatedAt": "עודכן לאחרונה: אפריל 2026",
     "legalTitle": "קישורים משפטיים",
+    "healthTourism": "תיירות מרפא בינלאומית",
     "privacy": "מידע על פרטיות",
     "authorization": "תעודת הרשאה",
+    "cookieSettings": "העדפות עוגיות",
     "rights": "כל הזכויות שמורות."
+  },
+  "CookieConsent": {
+    "title": "העדפות פרטיות",
+    "description": "אנו משתמשים בעוגייה הכרחית לתפקוד האתר. תוכן חיצוני כגון Google Maps נטען רק באישורך.",
+    "acceptAll": "אישור הכול",
+    "rejectOptional": "דחיית אופציונליות",
+    "preferences": "ניהול העדפות",
+    "settingsEyebrow": "ניהול עוגיות",
+    "settingsTitle": "ניהול העדפות הפרטיות",
+    "settingsDescription": "עוגיות הכרחיות תומכות באתר ובניהול ההעדפות. ניתן להפעיל או להשבית תוכן חיצוני בכל עת.",
+    "necessaryTitle": "עוגיות הכרחיות",
+    "necessaryDescription": "משמשות לזכירת הבחירה ולמתן הפונקציות החיוניות של האתר.",
+    "externalMediaTitle": "תוכן חיצוני",
+    "externalMediaDescription": "בהפעלה נטען Google Maps ו-Google עשויה להשתמש בעוגיות צד שלישי.",
+    "alwaysActive": "פעיל תמיד",
+    "active": "פעיל",
+    "inactive": "כבוי",
+    "detailsTitle": "שירותים בשימוש",
+    "consentCookieDescription": "שומרת את העדפות העוגיות והתוכן החיצוני.",
+    "mapsCookieDescription": "מציג את מיקום המרפאה במפה אינטראקטיבית ונטען רק לאחר אישור.",
+    "firstParty": "צד ראשון",
+    "thirdParty": "צד שלישי",
+    "sixMonths": "6 חודשים",
+    "providerDuration": "המשך נקבע בידי הספק",
+    "savePreferences": "שמירת העדפות",
+    "close": "סגירה",
+    "mapTitle": "המפה ממתינה לאישורך",
+    "mapDescription": "Google Maps הוא שירות חיצוני. הפעלת המפה מחברת את הדפדפן ל-Google.",
+    "enableMap": "הפעלת המפה"
   },
   "Pages": {
     "privacy": {
       "eyebrow": "הגנה על מידע אישי",
       "title": "מידע על פרטיות",
       "description": "מידע על המטרות והבסיסים המשפטיים לעיבוד המידע האישי שלך.",
-      "setupNotice": "ההודעה מותאמת ל-Akif Poliklinik על בסיס הטקסט הקיים של British Estetik. יש לאמת את השם המשפטי המלא ואת פרטי הקשר של בעל מאגר המידע לפני העלייה לייצור."
+      "close": "סגירה"
     },
     "authorization": {
       "eyebrow": "מסמכים ארגוניים",
       "title": "הרשאה לתיירות בריאות בינלאומית",
-      "description": "מסמך ההרשאה AK-0995 הונפק עבור Akif Özgüller Turizm Seyahat Acentası (British Esthetic Sağlık A.Ş.).",
+      "description": "ניתן לעיין במסמך ההרשאה לתיירות מרפא בינלאומית שמספרו AK-0995.",
       "openDocument": "פתיחת המסמך בלשונית חדשה",
       "imageAlt": "הרשאה לתיירות בריאות בינלאומית, מספר מסמך AK-0995"
     }

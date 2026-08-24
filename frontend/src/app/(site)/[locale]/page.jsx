@@ -4,13 +4,17 @@ import Contact from "@/components/site/contact";
 import JsonLd from "@/components/site/jsonLd";
 import LocationMap from "@/components/site/locationMap";
 import { siteConfig } from "@/config/site";
+import { getPrivacyNotice, privacyNoticeVersion } from "@/content/privacyNotice";
 import { getPublicSiteSettings } from "@/lib/siteSettings";
 
 export default async function HomePage({ params }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const translations = await getTranslations({ locale, namespace: "Home" });
+  const privacyTranslations = await getTranslations({ locale, namespace: "Pages.privacy" });
+  const consentTranslations = await getTranslations({ locale, namespace: "CookieConsent" });
   const settings = await getPublicSiteSettings();
+  const privacyNotice = getPrivacyNotice(locale);
   const logoUrl = new URL("/images/logo/main-logo.png", siteConfig.siteUrl).toString();
 
   const contact = {
@@ -26,9 +30,12 @@ export default async function HomePage({ params }) {
       sending: translations("contact.form.sending"),
       success: translations("contact.form.success"),
       error: translations("contact.form.error"),
+      privacyLink: translations("contact.form.privacyLink"),
+      privacyAcknowledgement: translations("contact.form.privacyAcknowledgement"),
       validation: {
         required: translations("contact.form.validation.required"),
         invalidEmail: translations("contact.form.validation.invalidEmail"),
+        privacyRequired: translations("contact.form.validation.privacyRequired"),
       },
     },
   };
@@ -50,8 +57,30 @@ export default async function HomePage({ params }) {
         }}
       />
 
-      <Contact translations={contact} locale={locale} settings={settings} />
-      <LocationMap title={translations("mapTitle")} settings={settings} />
+      <Contact
+        translations={contact}
+        locale={locale}
+        privacyNotice={{
+          address: settings.address,
+          labels: {
+            close: privacyTranslations("close"),
+            eyebrow: privacyTranslations("eyebrow"),
+            title: privacyTranslations("title"),
+          },
+          notice: privacyNotice,
+          version: privacyNoticeVersion,
+        }}
+        settings={settings}
+      />
+      <LocationMap
+        consentLabels={{
+          enableMap: consentTranslations("enableMap"),
+          mapDescription: consentTranslations("mapDescription"),
+          mapTitle: consentTranslations("mapTitle"),
+        }}
+        title={translations("mapTitle")}
+        settings={settings}
+      />
     </>
   );
 }

@@ -8,6 +8,7 @@
     "notFound": "The contact request was not found.",
     "invalidFields": "Check the full name and phone fields.",
     "invalidEmail": "Enter a valid email address.",
+    "privacyNoticeRequired": "Confirm that you have read and been informed by the current privacy notice before submitting.",
     "invalidUpdate": "The request number or status is invalid.",
     "rateLimited": "Too many requests were sent. Please try again later."
   },
@@ -15,6 +16,7 @@
     "retrieved": "Site settings were retrieved.",
     "updated": "Site settings were updated.",
     "invalidFields": "Some site setting fields are missing or invalid.",
+    "invalidMapUrl": "Enter a valid Google Maps share link. Open the location in Google Maps and use Share > Copy link.",
     "tooManyPhoneNumbers": "You can save up to 8 phone numbers.",
     "invalidDocument": "The authorization document must be a JPG, PNG or WebP image up to 8 MB.",
     "documentUploaded": "The authorization document was updated."

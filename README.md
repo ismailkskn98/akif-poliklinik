@@ -48,7 +48,7 @@ akif-poliklinik/
    npm run install:all
    ```
 
-2. Kök `.env.example` dosyasını `.env`, backend örneğini `backend/.env.development` olarak kopyalayın. JWT anahtarını ve MySQL bilgilerini doldurun.
+2. `frontend/.env.example` dosyasını `frontend/.env.development`, `backend/.env.example` dosyasını ise `backend/.env.development` olarak kopyalayın. JWT anahtarını ve MySQL bilgilerini doldurun. Production kurulumu için aynı örnek dosyaları `.env.production` adıyla kopyalayıp gerçek URL ve erişim bilgileriyle güncelleyin.
 
 3. MySQL şemasını çalıştırın:
 
@@ -62,7 +62,7 @@ akif-poliklinik/
    npm run dev
    ```
 
-Varsayılan adresler frontend için `http://localhost:3000`, API için `http://localhost:4000/api/akifclinic/v1` şeklindedir. Portlar kök `.env` içindeki `FRONTEND_PORT` ve `BACKEND_PORT` değerleriyle değiştirilebilir.
+Varsayılan adresler frontend için `http://localhost:3000`, API için `http://localhost:4000/api/akifclinic/v1` şeklindedir. Portlar ilgili uygulamanın `.env.development` dosyasındaki `PORT` değeriyle değiştirilebilir.
 
 ## Başlangıç uçları
 
@@ -76,7 +76,7 @@ API yanıtları `{ status, message, data }` biçimindedir ve `Accept-Language` b
 
 ## İçerik ve tedavi rotaları
 
-Ana sayfa, British Estetik referansındaki iletişim odaklı kısa akışı korur: doğrudan telefon/form erişimi, adres ve harita. Navigasyondaki `Tedaviler` mega menüsü, referansın dağınık işlem-sonrası mikro sitelerini Akif Poliklinik altında indekslenebilir iç sayfalarda toplar.
+Ana sayfa iletişim odaklı kısa bir akış sunar: doğrudan telefon/form erişimi, adres ve harita. Navigasyondaki `Tedaviler` mega menüsü, işlem-sonrası bilgilendirmelerini Akif Poliklinik altında indekslenebilir iç sayfalarda toplar.
 
 - Türkçe liste: `/tedaviler`
 - Türkçe örnek detay: `/tedaviler/botoks`
@@ -86,9 +86,9 @@ Ana sayfa, British Estetik referansındaki iletişim odaklı kısa akışı koru
 - İtalyanca liste: `/it/trattamenti`
 - İspanyolca liste: `/es/tratamientos`
 
-Toplam 15 tedavi, dokuz dilde statik olarak üretilir. Her detay sayfasında özgün görsel, genel işlem-sonrası rehber, hekim talimatının önceliğini açıklayan tıbbi uyarı ve temel alınan resmi mikro site bağlantısı bulunur. İçerik kaynak metinden birebir kopyalanmaz; sadeleştirilip yeniden yazılır.
+Toplam 15 tedavi, dokuz dilde statik olarak üretilir. Her detay sayfasında özgün görsel, genel işlem-sonrası rehber ve hekim talimatının önceliğini açıklayan tıbbi uyarı bulunur.
 
-Marka/iletişim ayarları `frontend/src/config/site.js`, tedavi rotaları ve kaynakları `frontend/src/content/treatments.js`, dokuz dilde tedavi içeriği `frontend/src/content/treatmentCopy.js` içinde tutulur. Tedavi kataloğu lansman aşamasında statik ve sürüm kontrollüdür; form talepleri MySQL/API üzerinden yönetilir. Yasal belge sürümleri, yönlendirmeler ve site ayarları için backend şeması ayrılmıştır.
+Marka/iletişim ayarları `frontend/src/config/site.js`, tedavi rota tanımları `frontend/src/content/treatments.js`, dokuz dilde tedavi içeriği `frontend/src/content/treatmentCopy.js` içinde tutulur. Tedavi kataloğu lansman aşamasında statik ve sürüm kontrollüdür; form talepleri MySQL/API üzerinden yönetilir. Yasal belge sürümleri, yönlendirmeler ve site ayarları için backend şeması ayrılmıştır.
 
 Yetki belgesinin değiştirilmeyen kopyası `frontend/public/documents` altındadır. KVKK metni üretime alınmadan önce veri sorumlusunun eksiksiz ticari unvanı ve iletişim bilgileri doğrulanmalıdır.
 

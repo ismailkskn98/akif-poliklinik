@@ -8,6 +8,7 @@
     "notFound": "No se encontró la solicitud de contacto.",
     "invalidFields": "Comprueba el nombre completo y el teléfono.",
     "invalidEmail": "Introduce un correo electrónico válido.",
+    "privacyNoticeRequired": "Antes de enviar, confirma que has leído y has sido informado por el aviso de privacidad vigente.",
     "invalidUpdate": "El número o el estado de la solicitud no es válido.",
     "rateLimited": "Has enviado demasiadas solicitudes. Inténtalo más tarde."
   },
@@ -15,6 +16,7 @@
     "retrieved": "Se cargó la configuración del sitio.",
     "updated": "Se actualizó la configuración del sitio.",
     "invalidFields": "Faltan campos de configuración o contienen valores no válidos.",
+    "invalidMapUrl": "Introduce un enlace para compartir de Google Maps válido. Abre el lugar y elige Compartir > Copiar enlace.",
     "tooManyPhoneNumbers": "Puedes guardar hasta 8 números de teléfono.",
     "invalidDocument": "El documento de autorización debe ser una imagen JPG, PNG o WebP de hasta 8 MB.",
     "documentUploaded": "Se actualizó el documento de autorización."

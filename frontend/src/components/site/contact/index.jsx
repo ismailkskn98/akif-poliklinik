@@ -5,7 +5,7 @@ import ContactForm from "@/components/site/contactForm";
 import { getTreatmentCopy } from "@/content/treatmentCopy";
 import { Link } from "@/i18n/navigation";
 
-export default function Contact({ translations, locale, settings }) {
+export default function Contact({ translations, locale, privacyNotice, settings }) {
   const content = getTreatmentCopy(locale);
 
   return (
@@ -43,7 +43,7 @@ export default function Contact({ translations, locale, settings }) {
             <h2 className="mt-3 max-w-xl text-[clamp(1.55rem,2.7vw,2rem)] leading-[1.08] font-medium tracking-[-0.04em] text-ink">{content.ui.homeIntro}</h2>
           </div>
           <div className="mt-7 lg:mt-8">
-            <ContactForm labels={translations.form} locale={locale} />
+            <ContactForm labels={translations.form} locale={locale} privacyNotice={privacyNotice} />
           </div>
         </div>
       </div>

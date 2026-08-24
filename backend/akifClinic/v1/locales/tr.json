@@ -8,6 +8,7 @@
     "notFound": "İletişim talebi bulunamadı.",
     "invalidFields": "Ad soyad ve telefon alanlarını kontrol edin.",
     "invalidEmail": "Geçerli bir e-posta adresi girin.",
+    "privacyNoticeRequired": "Formu göndermeden önce güncel KVKK aydınlatma metnini okuyup bilgi edindiğinizi belirtin.",
     "invalidUpdate": "Talep numarası veya durum bilgisi geçersiz.",
     "rateLimited": "Çok fazla talep gönderdiniz. Lütfen daha sonra tekrar deneyin."
   },
@@ -15,6 +16,7 @@
     "retrieved": "Site ayarları getirildi.",
     "updated": "Site ayarları güncellendi.",
     "invalidFields": "Site ayarlarında geçersiz veya eksik alanlar var.",
+    "invalidMapUrl": "Geçerli bir Google Maps paylaşım bağlantısı girin. Konumu Google Maps'te açıp Paylaş > Bağlantıyı kopyala adımlarını kullanın.",
     "tooManyPhoneNumbers": "En fazla 8 telefon numarası kaydedebilirsiniz.",
     "invalidDocument": "Yetki belgesi JPG, PNG veya WebP biçiminde ve en fazla 8 MB olmalıdır.",
     "documentUploaded": "Yetki belgesi güncellendi."

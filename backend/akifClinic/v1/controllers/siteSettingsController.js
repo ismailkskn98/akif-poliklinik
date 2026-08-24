@@ -6,6 +6,8 @@ const { URL } = require("node:url");
 const { sendError, sendSuccess } = require("../../../general_helpers/response");
 const siteSettingsService = require("../services/siteSettingsService");
 
+const MAX_PHONE_NUMBERS = 8;
+
 function isValidUrl(value, { allowRelative = false } = {}) {
   if (allowRelative && value.startsWith("/")) {
     return true;
@@ -69,6 +71,7 @@ async function hasValidImageSignature(file) {
 function validateSettings(body) {
   const instagramUrl = typeof body.instagramUrl === "string" ? body.instagramUrl.trim() : "";
   const address = typeof body.address === "string" ? body.address.trim() : "";
+  const mapQuery = typeof body.mapQuery === "string" ? body.mapQuery.trim() : "";
   const authorizationDocumentUrl =
     typeof body.authorizationDocumentUrl === "string"
       ? body.authorizationDocumentUrl.trim()
@@ -79,6 +82,7 @@ function validateSettings(body) {
   const publicApiOrigin = new URL(
     process.env.PUBLIC_API_URL || "http://localhost:4000",
   ).origin;
+  const hasTooManyPhoneNumbers = phoneNumbers.length > MAX_PHONE_NUMBERS;
   let isValidDocumentUrl = authorizationDocumentUrl.startsWith("/");
 
   if (!isValidDocumentUrl) {
@@ -94,8 +98,10 @@ function validateSettings(body) {
     instagramUrl.length <= 500 &&
     address.length >= 10 &&
     address.length <= 1000 &&
+    mapQuery.length >= 3 &&
+    mapQuery.length <= 500 &&
     phoneNumbers.length >= 1 &&
-    phoneNumbers.length <= 6 &&
+    phoneNumbers.length <= MAX_PHONE_NUMBERS &&
     phoneNumbers.every(isValidPhoneNumber) &&
     authorizationDocumentUrl.length <= 500 &&
     isValidUrl(authorizationDocumentUrl, { allowRelative: true }) &&
@@ -103,10 +109,14 @@ function validateSettings(body) {
 
   return {
     isValid,
+    errorKey: hasTooManyPhoneNumbers
+      ? "settings.tooManyPhoneNumbers"
+      : "settings.invalidFields",
     values: {
       instagramUrl,
       phoneNumbers,
       address,
+      mapQuery,
       authorizationDocumentUrl,
     },
   };
@@ -127,7 +137,7 @@ async function update(request, response) {
   if (!validation.isValid) {
     return sendError(response, {
       statusCode: 422,
-      message: request.t("settings.invalidFields"),
+      message: request.t(validation.errorKey),
     });
   }
 

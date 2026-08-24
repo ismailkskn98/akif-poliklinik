@@ -15,6 +15,7 @@
     "retrieved": "Le impostazioni del sito sono state caricate.",
     "updated": "Le impostazioni del sito sono state aggiornate.",
     "invalidFields": "Alcuni campi delle impostazioni sono mancanti o non validi.",
+    "tooManyPhoneNumbers": "Puoi salvare fino a 8 numeri di telefono.",
     "invalidDocument": "Il documento di autorizzazione deve essere un’immagine JPG, PNG o WebP di massimo 8 MB.",
     "documentUploaded": "Il documento di autorizzazione è stato aggiornato."
   },

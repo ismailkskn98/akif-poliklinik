@@ -15,6 +15,7 @@
     "retrieved": "Die Website-Einstellungen wurden geladen.",
     "updated": "Die Website-Einstellungen wurden aktualisiert.",
     "invalidFields": "Einige Website-Einstellungen fehlen oder sind ungültig.",
+    "tooManyPhoneNumbers": "Sie können höchstens 8 Telefonnummern speichern.",
     "invalidDocument": "Das Berechtigungsdokument muss ein JPG-, PNG- oder WebP-Bild mit maximal 8 MB sein.",
     "documentUploaded": "Das Berechtigungsdokument wurde aktualisiert."
   },

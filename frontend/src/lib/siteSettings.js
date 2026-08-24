@@ -10,6 +10,7 @@ const fallbackSettings = {
   instagramUrl: siteConfig.instagramUrl,
   phones: siteConfig.phones,
   address: siteConfig.address,
+  mapQuery: siteConfig.mapQuery,
   authorizationDocumentUrl: siteConfig.authorizationDocumentPath,
   mapEmbedUrl: siteConfig.mapEmbedUrl,
   updatedAt: null,
@@ -25,6 +26,10 @@ function normalizeSettings(settings) {
     typeof settings.address === "string" && settings.address.trim()
       ? settings.address.trim()
       : fallbackSettings.address;
+  const mapQuery =
+    typeof settings.mapQuery === "string" && settings.mapQuery.trim()
+      ? settings.mapQuery.trim()
+      : fallbackSettings.mapQuery;
 
   return {
     instagramUrl:
@@ -38,12 +43,13 @@ function normalizeSettings(settings) {
         }))
       : fallbackSettings.phones,
     address,
+    mapQuery,
     authorizationDocumentUrl:
       typeof settings.authorizationDocumentUrl === "string" &&
       settings.authorizationDocumentUrl.trim()
         ? settings.authorizationDocumentUrl.trim()
         : fallbackSettings.authorizationDocumentUrl,
-    mapEmbedUrl: createMapEmbedUrl(address),
+    mapEmbedUrl: createMapEmbedUrl(mapQuery),
     updatedAt: settings.updatedAt || null,
   };
 }

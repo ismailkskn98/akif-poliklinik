@@ -15,6 +15,7 @@
     "retrieved": "Site settings were retrieved.",
     "updated": "Site settings were updated.",
     "invalidFields": "Some site setting fields are missing or invalid.",
+    "tooManyPhoneNumbers": "You can save up to 8 phone numbers.",
     "invalidDocument": "The authorization document must be a JPG, PNG or WebP image up to 8 MB.",
     "documentUploaded": "The authorization document was updated."
   },

@@ -1,6 +1,7 @@
 import "../globals.css";
 import localFont from "next/font/local";
 
+import { Toaster } from "@/components/ui/toast";
 import { siteConfig } from "@/config/site";
 
 const geistSans = localFont({
@@ -24,7 +25,10 @@ export const metadata = {
 export default function AdminRootLayout({ children }) {
   return (
     <html className={geistSans.variable} lang="tr">
-      <body className="bg-[#fafafa] text-[#1f1f1f]">{children}</body>
+      <body className="bg-[#fafafa] text-[#1f1f1f]">
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }

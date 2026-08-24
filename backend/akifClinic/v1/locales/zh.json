@@ -15,6 +15,7 @@
     "retrieved": "已获取网站设置。",
     "updated": "网站设置已更新。",
     "invalidFields": "部分网站设置缺失或无效。",
+    "tooManyPhoneNumbers": "最多可以保存 8 个电话号码。",
     "invalidDocument": "授权文件必须是 JPG、PNG 或 WebP 图片，且不超过 8 MB。",
     "documentUploaded": "授权文件已更新。"
   },

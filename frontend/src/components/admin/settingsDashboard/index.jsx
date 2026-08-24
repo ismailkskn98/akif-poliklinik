@@ -4,14 +4,18 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
+import { toast } from "@/components/ui/toast";
 import { adminApiRequest, adminSessionKey } from "@/lib/adminApi";
 
+const MAX_PHONE_NUMBERS = 8;
+const SAVED_FEEDBACK_DURATION = 2000;
 const inputClassName =
   "mt-2 min-h-10 w-full rounded-md border border-black/12 bg-white px-3 text-sm outline-none transition-colors focus:border-[#516fc9] focus:ring-2 focus:ring-[#516fc9]/12";
 const emptySettings = {
   instagramUrl: "",
   phoneNumbers: [""],
   address: "",
+  mapQuery: "",
   authorizationDocumentUrl: "",
   updatedAt: null,
 };
@@ -19,10 +23,12 @@ const emptySettings = {
 export default function SettingsDashboard() {
   const router = useRouter();
   const sessionRef = useRef(null);
+  const savedFeedbackTimeoutRef = useRef(null);
   const [settings, setSettings] = useState(emptySettings);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
   const [selectedDocument, setSelectedDocument] = useState(null);
   const [status, setStatus] = useState({ type: "", message: "" });
 
@@ -58,9 +64,23 @@ export default function SettingsDashboard() {
         }
 
         setStatus({ type: "error", message: error.message });
+        toast.add({
+          title: "Ayarlar yüklenemedi",
+          description: error.message,
+          type: "error",
+        });
       })
       .finally(() => setIsLoading(false));
   }, [router]);
+
+  useEffect(
+    () => () => {
+      if (savedFeedbackTimeoutRef.current) {
+        clearTimeout(savedFeedbackTimeoutRef.current);
+      }
+    },
+    [],
+  );
 
   function updatePhone(index, value) {
     setSettings((currentSettings) => ({
@@ -72,12 +92,21 @@ export default function SettingsDashboard() {
   }
 
   function addPhone() {
+    if (settings.phoneNumbers.length >= MAX_PHONE_NUMBERS) {
+      const message = `En fazla ${MAX_PHONE_NUMBERS} telefon numarası ekleyebilirsiniz.`;
+
+      setStatus({ type: "error", message });
+      toast.add({
+        title: "Telefon sınırına ulaşıldı",
+        description: message,
+        type: "warning",
+      });
+      return;
+    }
+
     setSettings((currentSettings) => ({
       ...currentSettings,
-      phoneNumbers:
-        currentSettings.phoneNumbers.length >= 6
-          ? currentSettings.phoneNumbers
-          : [...currentSettings.phoneNumbers, ""],
+      phoneNumbers: [...currentSettings.phoneNumbers, ""],
     }));
   }
 
@@ -93,6 +122,24 @@ export default function SettingsDashboard() {
 
   async function saveSettings(event) {
     event.preventDefault();
+
+    if (settings.phoneNumbers.length > MAX_PHONE_NUMBERS) {
+      const message = `En fazla ${MAX_PHONE_NUMBERS} telefon numarası kaydedebilirsiniz.`;
+
+      setStatus({ type: "error", message });
+      toast.add({
+        title: "Telefon numaralarını kontrol edin",
+        description: message,
+        type: "error",
+      });
+      return;
+    }
+
+    if (savedFeedbackTimeoutRef.current) {
+      clearTimeout(savedFeedbackTimeoutRef.current);
+    }
+
+    setIsSaved(false);
     setIsSaving(true);
     setStatus({ type: "", message: "" });
 
@@ -104,17 +151,36 @@ export default function SettingsDashboard() {
           instagramUrl: settings.instagramUrl,
           phoneNumbers: settings.phoneNumbers,
           address: settings.address,
+          mapQuery: settings.mapQuery,
           authorizationDocumentUrl: settings.authorizationDocumentUrl,
         },
       });
 
       setSettings(updatedSettings);
+      const successMessage =
+        "Değişiklikler kaydedildi. Site, yeni bilgileri sonraki istekte kullanır.";
+
       setStatus({
         type: "success",
-        message: "Değişiklikler kaydedildi. Site, yeni bilgileri sonraki istekte kullanır.",
+        message: successMessage,
       });
+      toast.add({
+        title: "Değişiklikler kaydedildi",
+        description: "Site yeni bilgileri sonraki istekte kullanır.",
+        type: "success",
+      });
+      setIsSaved(true);
+      savedFeedbackTimeoutRef.current = setTimeout(() => {
+        setIsSaved(false);
+        savedFeedbackTimeoutRef.current = null;
+      }, SAVED_FEEDBACK_DURATION);
     } catch (error) {
       setStatus({ type: "error", message: error.message });
+      toast.add({
+        title: "Değişiklikler kaydedilemedi",
+        description: error.message,
+        type: "error",
+      });
     } finally {
       setIsSaving(false);
     }
@@ -125,7 +191,10 @@ export default function SettingsDashboard() {
     const form = event.currentTarget;
 
     if (!selectedDocument) {
-      setStatus({ type: "error", message: "Yüklenecek belge görselini seçin." });
+      const message = "Yüklenecek belge görselini seçin.";
+
+      setStatus({ type: "error", message });
+      toast.add({ title: "Belge seçilmedi", description: message, type: "warning" });
       return;
     }
 
@@ -143,8 +212,18 @@ export default function SettingsDashboard() {
       setSelectedDocument(null);
       form.reset();
       setStatus({ type: "success", message: "Yetki belgesi güncellendi." });
+      toast.add({
+        title: "Yetki belgesi güncellendi",
+        description: "Yeni belge sitede kullanılmaya hazır.",
+        type: "success",
+      });
     } catch (error) {
       setStatus({ type: "error", message: error.message });
+      toast.add({
+        title: "Belge güncellenemedi",
+        description: error.message,
+        type: "error",
+      });
     } finally {
       setIsUploading(false);
     }
@@ -243,12 +322,12 @@ export default function SettingsDashboard() {
                 <div className="flex items-center justify-between gap-3">
                   <legend className="text-xs font-medium text-black/58">Telefon numaraları</legend>
                   <button
-                    className="text-xs font-medium text-[#516fc9] disabled:opacity-40"
-                    disabled={settings.phoneNumbers.length >= 6}
+                    aria-disabled={settings.phoneNumbers.length >= MAX_PHONE_NUMBERS}
+                    className="text-xs font-medium text-[#516fc9] transition-colors duration-200 ease-[cubic-bezier(.33,1,.68,1)] aria-disabled:text-black/35"
                     onClick={addPhone}
                     type="button"
                   >
-                    Numara ekle
+                    Numara ekle · {settings.phoneNumbers.length}/{MAX_PHONE_NUMBERS}
                   </button>
                 </div>
                 <div className="mt-2 grid gap-2 sm:grid-cols-2">
@@ -274,6 +353,9 @@ export default function SettingsDashboard() {
                     </div>
                   ))}
                 </div>
+                <p className="mt-2 text-xs leading-5 text-black/42">
+                  En fazla {MAX_PHONE_NUMBERS} telefon numarası eklenebilir.
+                </p>
               </fieldset>
 
               <div>
@@ -293,14 +375,41 @@ export default function SettingsDashboard() {
                   value={settings.address}
                 />
               </div>
+
+              <div>
+                <label className="text-xs font-medium text-black/58" htmlFor="mapQuery">
+                  Harita konumu
+                </label>
+                <input
+                  className={inputClassName}
+                  id="mapQuery"
+                  onChange={(event) =>
+                    setSettings((currentSettings) => ({
+                      ...currentSettings,
+                      mapQuery: event.target.value,
+                    }))
+                  }
+                  required
+                  type="text"
+                  value={settings.mapQuery}
+                />
+                <p className="mt-2 text-xs leading-5 text-black/42">
+                  Google Maps işletme adı veya tam adresi. Haritadaki pini, görünen
+                  adres metninden bağımsız olarak belirler.
+                </p>
+              </div>
             </div>
 
             <button
-              className="mt-7 min-h-10 rounded-md bg-[#1f1f1f] px-4 text-sm font-medium text-white transition-colors hover:bg-[#516fc9] disabled:cursor-not-allowed disabled:opacity-50"
+              className="mt-7 min-h-10 min-w-44 rounded-md bg-[#1f1f1f] px-4 text-sm font-medium text-white transition-[background-color,opacity] duration-250 ease-[cubic-bezier(.33,1,.68,1)] hover:bg-[#516fc9] disabled:cursor-not-allowed disabled:opacity-50"
               disabled={isSaving}
               type="submit"
             >
-              {isSaving ? "Kaydediliyor…" : "Değişiklikleri kaydet"}
+              {isSaving
+                ? "Kaydediliyor…"
+                : isSaved
+                  ? "Kaydedildi"
+                  : "Değişiklikleri kaydet"}
             </button>
           </form>
 

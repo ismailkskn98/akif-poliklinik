@@ -15,6 +15,7 @@
     "retrieved": "Site ayarları getirildi.",
     "updated": "Site ayarları güncellendi.",
     "invalidFields": "Site ayarlarında geçersiz veya eksik alanlar var.",
+    "tooManyPhoneNumbers": "En fazla 8 telefon numarası kaydedebilirsiniz.",
     "invalidDocument": "Yetki belgesi JPG, PNG veya WebP biçiminde ve en fazla 8 MB olmalıdır.",
     "documentUploaded": "Yetki belgesi güncellendi."
   },

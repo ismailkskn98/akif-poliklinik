@@ -79,11 +79,11 @@ export default function MobileNavbar({ currentLocale, groups, labels, phone }) {
 
         <nav aria-label={labels.menu} className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain px-5 pb-7 pt-6 sm:px-7 sm:pb-9 sm:pt-8">
           <div>
-            <div data-mobile-nav-item className="mb-4 text-[0.62rem] font-semibold tracking-[0.16em] text-ink/40 uppercase" style={{ "--mobile-nav-delay": "60ms" }}>
+            <div data-mobile-nav-item className="mb-4 text-[0.62rem] font-semibold tracking-[0.16em] text-ink/40 uppercase" style={{ "--mobile-nav-delay": "35ms" }}>
               <span>{labels.menu}</span>
             </div>
 
-            <div data-mobile-nav-item className="border-t border-ink/12" style={{ "--mobile-nav-delay": "90ms" }}>
+            <div data-mobile-nav-item className="border-t border-ink/12" style={{ "--mobile-nav-delay": "55ms" }}>
               <Link
                 href="/"
                 onClick={(event) => closeThenNavigate(event, "/")}
@@ -112,7 +112,7 @@ export default function MobileNavbar({ currentLocale, groups, labels, phone }) {
 
             <div className="border-b border-ink/12 py-4">
               {groups.map((group, groupIndex) => (
-                <details key={group.key} data-mobile-nav-item className="group border-t border-ink/10 first:border-t-0" style={{ "--mobile-nav-delay": `${140 + groupIndex * 30}ms` }}>
+                <details key={group.key} data-mobile-nav-item className="group border-t border-ink/10 first:border-t-0" style={{ "--mobile-nav-delay": `${85 + groupIndex * 18}ms` }}>
                   <summary className="flex min-h-12 list-none items-center justify-between gap-4 text-[0.68rem] font-semibold tracking-[0.14em] text-ink/66 uppercase transition-colors duration-180 hover:text-primary">
                     <span>{group.label}</span>
                     <CaretDown aria-hidden="true" className="size-3.5 text-primary transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-open:rotate-180" weight="light" />
@@ -134,7 +134,7 @@ export default function MobileNavbar({ currentLocale, groups, labels, phone }) {
             </div>
           </div>
 
-          <div data-mobile-nav-item className="mt-auto grid gap-5 border-t border-ink/12 pt-5" style={{ "--mobile-nav-delay": "260ms" }}>
+          <div data-mobile-nav-item className="mt-auto grid gap-5 border-t border-ink/12 pt-5" style={{ "--mobile-nav-delay": "165ms" }}>
             <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-ink/58">
               <Link href="/privacy-notice" onClick={(event) => closeThenNavigate(event, "/privacy-notice")}>
                 {labels.privacy}

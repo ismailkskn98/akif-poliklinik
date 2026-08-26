@@ -18,7 +18,12 @@ function createContactSchema(labels) {
       .min(1, labels.required)
       .min(2, labels.fullNameLength)
       .max(150, labels.fullNameLength),
-    phone: z.string().trim().superRefine((phoneNumber, context) => {
+    phone: z.union([z.string().trim(), z.null()]).superRefine((phoneNumber, context) => {
+      if (phoneNumber === null) {
+        context.addIssue({ code: "custom", message: labels.invalidPhone });
+        return;
+      }
+
       if (!phoneNumber) {
         context.addIssue({ code: "custom", message: labels.required });
         return;

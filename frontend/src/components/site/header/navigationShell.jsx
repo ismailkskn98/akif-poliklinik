@@ -7,24 +7,14 @@ import MobileNavbar from "./mobileNavbar";
 
 export default function NavigationShell({ currentLocale, labels, settings }) {
   return (
-    <header
-      data-motion-header
-      className="relative z-40 border-b border-ink/10 bg-[#fafbfe]"
-    >
+    <header data-motion-header className="relative z-40 border-b border-ink/10 bg-[#fafbfe]">
       <div className="grid-container">
         <div className="lg:hidden">
           <div className="flex min-h-14 items-stretch justify-between border-b border-ink/10">
-            <LanguageMenu
-              currentLocale={currentLocale}
-              label={labels.languages}
-              align="start"
-              variant="mobile-header"
-            />
-            <MobileNavbar
-              currentLocale={currentLocale}
-              labels={labels}
-              phone={settings.phones[0]}
-            />
+            <div className="flex items-center gap-2">
+              <LanguageMenu currentLocale={currentLocale} label={labels.languages} align="start" variant="mobile-header" />
+            </div>
+            <MobileNavbar currentLocale={currentLocale} labels={labels} phone={settings.phones[0]} />
           </div>
           <div className="flex justify-center py-5 sm:py-6">
             <Brand variant="display" />
@@ -50,7 +40,6 @@ export default function NavigationShell({ currentLocale, labels, settings }) {
               {labels.call}
             </a>
           </div>
-
         </div>
       </div>
     </header>

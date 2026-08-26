@@ -1,12 +1,13 @@
 {
   "health": { "ready": "L'API de la Clinique Akif est prête." },
-  "errors": { "notFound": "La ressource API demandée est introuvable.", "serverError": "Une erreur serveur inattendue s'est produite." },
+  "errors": { "notFound": "La ressource API demandée est introuvable.", "serverError": "Une erreur serveur inattendue s'est produite.", "corsOriginDenied": "Les requêtes provenant de cette origine ne sont pas autorisées." },
   "contact": {
     "created": "Votre demande de contact a été reçue.",
     "listed": "Les demandes de contact ont été listées.",
     "updated": "La demande de contact a été mise à jour.",
     "notFound": "La demande de contact est introuvable.",
     "invalidFields": "Vérifiez le nom complet et le numéro de téléphone.",
+    "invalidPhone": "Saisissez un numéro de téléphone valide.",
     "invalidEmail": "Saisissez une adresse e-mail valide.",
     "privacyNoticeRequired": "Confirmez avoir lu et pris connaissance de la notice de confidentialité en vigueur avant l’envoi.",
     "invalidUpdate": "Le numéro ou le statut de la demande est invalide.",
@@ -33,6 +34,11 @@
     "invalidResetFields": "Le lien est invalide ou le mot de passe contient moins de 12 caractères.",
     "invalidResetToken": "Le lien est invalide, utilisé ou expiré.",
     "passwordReset": "Votre mot de passe a été mis à jour. Vous pouvez maintenant vous connecter.",
-    "resetRateLimited": "Trop de tentatives de réinitialisation. Réessayez plus tard."
+    "resetRateLimited": "Trop de tentatives de réinitialisation. Réessayez plus tard.",
+    "invalidChangeFields": "Le mot de passe actuel et un nouveau mot de passe de 12 à 128 caractères sont obligatoires.",
+    "currentPasswordIncorrect": "Le mot de passe actuel est incorrect.",
+    "samePassword": "Le nouveau mot de passe doit être différent du mot de passe actuel.",
+    "passwordChanged": "Votre mot de passe a été mis à jour. Reconnectez-vous avec le nouveau mot de passe.",
+    "changeRateLimited": "Trop de tentatives de modification du mot de passe. Réessayez plus tard."
   }
 }

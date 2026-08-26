@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
+import PasswordChangeForm from "@/components/admin/passwordChangeForm";
 import { toast } from "@/components/ui/toast";
 import { adminApiRequest, adminSessionKey } from "@/lib/adminApi";
 
@@ -30,6 +31,7 @@ export default function SettingsDashboard() {
   const [isSaving, setIsSaving] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
+  const [sessionToken, setSessionToken] = useState("");
   const [selectedDocument, setSelectedDocument] = useState(null);
   const [status, setStatus] = useState({ type: "", message: "" });
 
@@ -55,6 +57,7 @@ export default function SettingsDashboard() {
 
     adminApiRequest("/site-settings", { token: parsedSession.token })
       .then((siteSettings) => {
+        setSessionToken(parsedSession.token);
         setSettings(siteSettings);
       })
       .catch((error) => {
@@ -396,7 +399,8 @@ export default function SettingsDashboard() {
                   value={settings.mapShareUrl}
                 />
                 <p className="mt-2 text-xs leading-5 text-black/42">
-                  Google Maps’te doğru işletme konumunu açın. Ardından
+                  İşletme adının, pin etiketinin ve Google bilgi kartının görünmesi için
+                  koordinat yerine doğru işletme kaydını açın. Ardından
                   <strong className="font-medium text-black/58"> Paylaş</strong> düğmesine
                   basıp <strong className="font-medium text-black/58">Bağlantıyı kopyala</strong>
                   seçeneğiyle aldığınız adresi buraya yapıştırın.
@@ -448,14 +452,19 @@ export default function SettingsDashboard() {
             </div>
 
             <form className="mt-5" onSubmit={uploadDocument}>
-              <label className="text-xs font-medium text-black/58" htmlFor="document">
+              <label
+                className="text-xs font-medium text-black/58"
+                htmlFor="document"
+              >
                 Yeni belge görseli
               </label>
               <input
                 accept="image/jpeg,image/png,image/webp"
                 className="mt-2 block w-full rounded-md border border-black/10 bg-white p-2 text-xs file:me-3 file:rounded file:border-0 file:bg-black/[.06] file:px-3 file:py-2 file:text-xs file:font-medium"
                 id="document"
-                onChange={(event) => setSelectedDocument(event.target.files?.[0] || null)}
+                onChange={(event) =>
+                  setSelectedDocument(event.target.files?.[0] || null)
+                }
                 type="file"
               />
               <button
@@ -468,6 +477,11 @@ export default function SettingsDashboard() {
             </form>
           </section>
         </div>
+
+        <PasswordChangeForm
+          onSessionEnded={logout}
+          token={sessionToken}
+        />
 
         <div
           aria-live="polite"

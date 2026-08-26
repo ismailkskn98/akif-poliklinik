@@ -1,11 +1,10 @@
 import { siteConfig } from "@/config/site";
-import { getTreatmentHref, treatments } from "@/content/treatments";
 import { getPathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 
 const routes = [
   { href: "/", changeFrequency: "weekly", priority: 1 },
-  { href: "/treatments", changeFrequency: "monthly", priority: 0.9 },
+  { href: "/doctors", changeFrequency: "monthly", priority: 0.8 },
   { href: "/authorization-document", changeFrequency: "yearly", priority: 0.5 },
   { href: "/privacy-notice", changeFrequency: "yearly", priority: 0.4 },
 ];
@@ -28,21 +27,5 @@ export default function sitemap() {
     }));
   });
 
-  const treatmentEntries = treatments.flatMap((treatment) => {
-    const languages = Object.fromEntries(
-      routing.locales.map((locale) => [
-        locale,
-        getUrl(locale, getTreatmentHref(treatment, locale)),
-      ]),
-    );
-
-    return routing.locales.map((locale) => ({
-      url: getUrl(locale, getTreatmentHref(treatment, locale)),
-      changeFrequency: "monthly",
-      priority: 0.75,
-      alternates: { languages },
-    }));
-  });
-
-  return [...staticEntries, ...treatmentEntries];
+  return staticEntries;
 }

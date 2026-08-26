@@ -1,12 +1,10 @@
 "use client";
 
 import { CaretDown, Check, GlobeHemisphereWest } from "@phosphor-icons/react";
-import { useParams } from "next/navigation";
 import { useState } from "react";
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { localeLabels } from "@/config/site";
-import { getTreatmentByAnySlug, getTreatmentHref } from "@/content/treatments";
 import { Link, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 
@@ -18,18 +16,6 @@ export default function LanguageMenu({
 }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const params = useParams();
-  const currentTreatment = params?.slug
-    ? getTreatmentByAnySlug(String(params.slug))
-    : null;
-
-  function getHref(locale) {
-    if (currentTreatment) {
-      return getTreatmentHref(currentTreatment, locale);
-    }
-
-    return pathname;
-  }
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -37,7 +23,9 @@ export default function LanguageMenu({
         className={`group flex min-h-10 items-center gap-2 text-[0.68rem] font-medium tracking-[0.08em] text-ink/62 uppercase transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:text-ink data-[popup-open]:text-primary ${
           variant === "mobile"
             ? "h-11 px-0"
-            : "h-full border-s border-ink/12 px-3"
+            : variant === "mobile-header"
+              ? "h-full w-[4.5rem] justify-start"
+              : "h-full border-s border-ink/12 px-3"
         }`}
       >
         <GlobeHemisphereWest aria-hidden="true" className="size-4" weight="light" />
@@ -66,7 +54,7 @@ export default function LanguageMenu({
           {routing.locales.map((locale) => (
             <Link
               key={locale}
-              href={getHref(locale)}
+              href={pathname}
               locale={locale}
               hrefLang={locale}
               aria-current={locale === currentLocale ? "page" : undefined}

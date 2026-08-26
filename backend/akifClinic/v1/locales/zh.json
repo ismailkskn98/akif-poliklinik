@@ -1,12 +1,13 @@
 {
   "health": { "ready": "Akif 诊所 API 已就绪。" },
-  "errors": { "notFound": "未找到请求的 API 资源。", "serverError": "服务器发生意外错误。" },
+  "errors": { "notFound": "未找到请求的 API 资源。", "serverError": "服务器发生意外错误。", "corsOriginDenied": "不允许来自此来源的请求。" },
   "contact": {
     "created": "您的联系请求已收到。",
     "listed": "联系请求已列出。",
     "updated": "联系请求已更新。",
     "notFound": "未找到联系请求。",
     "invalidFields": "请检查姓名和电话字段。",
+    "invalidPhone": "请输入有效的电话号码。",
     "invalidEmail": "请输入有效的电子邮箱地址。",
     "privacyNoticeRequired": "提交前，请确认您已阅读并知悉当前隐私告知书。",
     "invalidUpdate": "请求编号或状态无效。",
@@ -33,6 +34,11 @@
     "invalidResetFields": "重置链接无效，或密码少于 12 个字符。",
     "invalidResetToken": "重置链接无效、已使用或已过期。",
     "passwordReset": "密码已更新，现在可以使用新密码登录。",
-    "resetRateLimited": "密码重置尝试次数过多，请稍后再试。"
+    "resetRateLimited": "密码重置尝试次数过多，请稍后再试。",
+    "invalidChangeFields": "必须提供当前密码以及长度为 12 至 128 个字符的新密码。",
+    "currentPasswordIncorrect": "当前密码不正确。",
+    "samePassword": "新密码必须与当前密码不同。",
+    "passwordChanged": "密码已更新，请使用新密码重新登录。",
+    "changeRateLimited": "密码修改尝试次数过多，请稍后再试。"
   }
 }

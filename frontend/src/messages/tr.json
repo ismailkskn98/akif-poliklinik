@@ -7,11 +7,14 @@
   "Navigation": {
     "ariaLabel": "Ana navigasyon",
     "home": "Anasayfa",
+    "doctors": "Doktorlarımız",
     "privacy": "KVKK Hakkında Bilgilendirme",
     "aftercare": "İşlem Sonrası Bilgilendirme",
     "authorization": "Yetki Belgesi",
     "languages": "Dil seçimi",
     "menu": "Menü",
+    "call": "Hemen ara",
+    "close": "Kapat",
     "externalLink": "Harici bilgilendirme sitesinde açılır",
     "aftercareItems": {
       "botox": "Botox",
@@ -53,20 +56,28 @@
         "error": "Talep gönderilemedi. Lütfen tekrar deneyin veya bizi arayın.",
         "privacyLink": "KVKK Aydınlatma Metni’ni",
         "privacyAcknowledgement": "okudum ve bilgi edindim.",
+        "countrySelector": "Ülke kodu seçin",
+        "countrySearch": "Ülke veya telefon kodu ara",
+        "noCountryResults": "Eşleşen ülke bulunamadı.",
         "validation": {
           "required": "Bu alan zorunludur.",
+          "fullNameLength": "Adınız 2 ile 150 karakter arasında olmalıdır.",
+          "invalidPhone": "Geçerli bir telefon numarası girin.",
           "invalidEmail": "Geçerli bir e-posta adresi girin.",
+          "emailTooLong": "E-posta adresi en fazla 190 karakter olabilir.",
+          "messageTooLong": "İletiniz en fazla 2000 karakter olabilir.",
           "privacyRequired": "Formu göndermeden önce aydınlatma metnini okuyup bilgi edindiğinizi belirtin."
         }
       }
     },
-    "mapTitle": "Akif Poliklinik Nişantaşı konumu"
+    "mapTitle": "British Esthetic Nişantaşı konumu"
   },
   "Footer": {
     "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
     "updatedAt": "Güncellenme Tarihi: Nisan 2026",
-    "legalTitle": "Yasal bağlantılar",
+    "legalTitle": "Bağlantılar",
     "healthTourism": "Uluslararası sağlık turizmi",
+    "doctors": "Doktorlarımız",
     "privacy": "KVKK Hakkında Bilgilendirme",
     "authorization": "Yetki Belgesi",
     "cookieSettings": "Çerez tercihleri",
@@ -102,6 +113,11 @@
     "enableMap": "Haritayı etkinleştir"
   },
   "Pages": {
+    "doctors": {
+      "eyebrow": "Hekim kadromuz",
+      "title": "Doktorlarımız",
+      "description": "Doktor kadromuza ilişkin bilgiler yakında burada paylaşılacaktır."
+    },
     "privacy": {
       "eyebrow": "Kişisel verilerin korunması",
       "title": "KVKK Hakkında Bilgilendirme",

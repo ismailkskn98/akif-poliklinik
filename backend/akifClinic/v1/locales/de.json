@@ -1,12 +1,13 @@
 {
   "health": { "ready": "Die API der Akif Klinik ist bereit." },
-  "errors": { "notFound": "Die angeforderte API-Ressource wurde nicht gefunden.", "serverError": "Ein unerwarteter Serverfehler ist aufgetreten." },
+  "errors": { "notFound": "Die angeforderte API-Ressource wurde nicht gefunden.", "serverError": "Ein unerwarteter Serverfehler ist aufgetreten.", "corsOriginDenied": "Anfragen von diesem Ursprung sind nicht erlaubt." },
   "contact": {
     "created": "Ihre Kontaktanfrage ist eingegangen.",
     "listed": "Kontaktanfragen wurden aufgelistet.",
     "updated": "Die Kontaktanfrage wurde aktualisiert.",
     "notFound": "Die Kontaktanfrage wurde nicht gefunden.",
     "invalidFields": "Prüfen Sie Name und Telefonnummer.",
+    "invalidPhone": "Geben Sie eine gültige Telefonnummer ein.",
     "invalidEmail": "Geben Sie eine gültige E-Mail-Adresse ein.",
     "privacyNoticeRequired": "Bestätigen Sie vor dem Absenden, dass Sie die aktuelle Datenschutzinformation gelesen und zur Kenntnis genommen haben.",
     "invalidUpdate": "Anfragenummer oder Status ist ungültig.",
@@ -33,6 +34,11 @@
     "invalidResetFields": "Der Link ist ungültig oder das Passwort hat weniger als 12 Zeichen.",
     "invalidResetToken": "Der Link ist ungültig, bereits verwendet oder abgelaufen.",
     "passwordReset": "Ihr Passwort wurde aktualisiert. Sie können sich jetzt anmelden.",
-    "resetRateLimited": "Zu viele Versuche zur Passwortzurücksetzung. Bitte versuchen Sie es später erneut."
+    "resetRateLimited": "Zu viele Versuche zur Passwortzurücksetzung. Bitte versuchen Sie es später erneut.",
+    "invalidChangeFields": "Das aktuelle Passwort und ein neues Passwort mit 12 bis 128 Zeichen sind erforderlich.",
+    "currentPasswordIncorrect": "Das aktuelle Passwort ist falsch.",
+    "samePassword": "Das neue Passwort muss sich vom aktuellen Passwort unterscheiden.",
+    "passwordChanged": "Ihr Passwort wurde aktualisiert. Melden Sie sich mit dem neuen Passwort erneut an.",
+    "changeRateLimited": "Zu viele Versuche zur Passwortänderung. Bitte versuchen Sie es später erneut."
   }
 }

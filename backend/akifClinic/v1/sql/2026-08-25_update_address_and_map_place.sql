@@ -1,11 +1,9 @@
 INSERT INTO site_settings
   (setting_key, setting_value, value_type, is_public)
 VALUES
-  ('instagram_url', 'https://www.instagram.com/akif_poliklinik/', 'text', 1),
-  ('phone_numbers', '["0532 446 90 39","0533 152 38 93","0532 352 43 88","0533 151 32 89"]', 'json', 1),
   ('address', '(Lotus Walk Nişantaşı) Halaskargazi Cd. No:38/66 Kat:6 Daire:112, 34371 Şişli/İstanbul', 'text', 1),
-  ('map_query', 'British Esthetic', 'text', 1),
-  ('authorization_document_url', '/documents/international-health-tourism-authorization.jpg', 'text', 1)
+  ('map_share_url', 'https://maps.app.goo.gl/1GC2b1vs46bE8nZz9', 'text', 1),
+  ('map_embed_url', 'https://maps.google.com/maps?q=British+Esthetic&ll=41.0516039%2C28.987723&t=m&z=17&output=embed&iwloc=A', 'text', 1)
 ON DUPLICATE KEY UPDATE
   setting_value = VALUES(setting_value),
   value_type = VALUES(value_type),

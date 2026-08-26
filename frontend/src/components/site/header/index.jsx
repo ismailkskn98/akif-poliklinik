@@ -1,32 +1,28 @@
-import { getTreatmentCopy } from "@/content/treatmentCopy";
-import {
-  getTreatmentHref,
-  getTreatmentsByCategory,
-  treatmentCategories,
-} from "@/content/treatments";
+import { getTranslations } from "next-intl/server";
+
 import { getPublicSiteSettings } from "@/lib/siteSettings";
 
 import NavigationShell from "./navigationShell";
 
 export default async function Header({ locale }) {
-  const content = getTreatmentCopy(locale);
+  const translations = await getTranslations({ locale, namespace: "Navigation" });
   const settings = await getPublicSiteSettings();
-  const groups = treatmentCategories.map((category) => ({
-    key: category,
-    label: content.categories[category][0],
-    items: getTreatmentsByCategory(category).map((treatment) => ({
-      key: treatment.key,
-      label: content.items[treatment.key][0],
-      href: getTreatmentHref(treatment, locale),
-      image: treatment.image,
-    })),
-  }));
+  const labels = {
+    ariaLabel: translations("ariaLabel"),
+    authorization: translations("authorization"),
+    call: translations("call"),
+    close: translations("close"),
+    doctors: translations("doctors"),
+    home: translations("home"),
+    languages: translations("languages"),
+    menu: translations("menu"),
+    privacy: translations("privacy"),
+  };
 
   return (
     <NavigationShell
       currentLocale={locale}
-      groups={groups}
-      labels={content.ui}
+      labels={labels}
       settings={settings}
     />
   );

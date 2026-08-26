@@ -7,11 +7,14 @@
   "Navigation": {
     "ariaLabel": "主导航",
     "home": "首页",
+    "doctors": "医生团队",
     "privacy": "隐私信息",
     "aftercare": "术后须知",
     "authorization": "授权证书",
     "languages": "选择语言",
     "menu": "菜单",
+    "call": "立即致电",
+    "close": "关闭",
     "externalLink": "在外部信息网站打开",
     "aftercareItems": {
       "botox": "肉毒素",
@@ -53,20 +56,28 @@
         "error": "申请发送失败，请重试或致电我们。",
         "privacyLink": "隐私告知书",
         "privacyAcknowledgement": "我已阅读并知悉本告知书。",
+        "countrySelector": "选择国家或地区代码",
+        "countrySearch": "搜索国家、地区或区号",
+        "noCountryResults": "未找到匹配的国家或地区。",
         "validation": {
           "required": "此项为必填项。",
+          "fullNameLength": "姓名长度须为2至150个字符。",
+          "invalidPhone": "请输入有效的电话号码。",
           "invalidEmail": "请输入有效的电子邮箱地址。",
+          "emailTooLong": "电子邮箱地址最多可包含190个字符。",
+          "messageTooLong": "留言最多可包含2000个字符。",
           "privacyRequired": "提交前，请确认您已阅读并知悉隐私告知书。"
         }
       }
     },
-    "mapTitle": "Akif Poliklinik Nişantaşı 位置"
+    "mapTitle": "British Esthetic Nişantaşı 位置"
   },
   "Footer": {
     "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
     "updatedAt": "最后更新：2026年4月",
-    "legalTitle": "法律链接",
+    "legalTitle": "链接",
     "healthTourism": "国际医疗旅游",
+    "doctors": "医生团队",
     "privacy": "隐私信息",
     "authorization": "授权证书",
     "cookieSettings": "Cookie 偏好设置",
@@ -102,6 +113,11 @@
     "enableMap": "启用地图"
   },
   "Pages": {
+    "doctors": {
+      "eyebrow": "医疗团队",
+      "title": "医生团队",
+      "description": "医生团队信息即将在此发布。"
+    },
     "privacy": {
       "eyebrow": "个人数据保护",
       "title": "隐私信息",

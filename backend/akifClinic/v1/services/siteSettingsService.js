@@ -21,10 +21,10 @@ const defaultSettings = {
     "0533 151 32 89",
   ],
   address:
-    "(Lotus Walk Nişantaşı) Halaskargazi Cd. No:38/66 Kat:6 Daire:109, 34371 Şişli/İstanbul",
+    "(Lotus Walk Nişantaşı) Halaskargazi Cd. No:38/66 Kat:6 Daire:112, 34371 Şişli/İstanbul",
   mapShareUrl: "https://maps.app.goo.gl/1GC2b1vs46bE8nZz9",
   mapEmbedUrl:
-    "https://maps.google.com/maps?q=41.0516039%2C28.987723&t=m&z=17&output=embed&iwloc=near",
+    "https://maps.google.com/maps?q=British+Esthetic&ll=41.0516039%2C28.987723&t=m&z=17&output=embed&iwloc=A",
   authorizationDocumentUrl:
     "/documents/international-health-tourism-authorization.jpg",
 };

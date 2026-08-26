@@ -1,32 +1,39 @@
 const supportedLocales = new Set(["tr", "en", "de", "he", "fr", "ar", "it", "es", "zh"]);
 const privacyNoticeVersion = "2026-08-24";
 
-function normalizeOptionalText(value, maximumLength) {
+function normalizeOptionalText(value) {
   if (typeof value !== "string") {
     return null;
   }
 
   const normalizedValue = value.trim();
-  return normalizedValue ? normalizedValue.slice(0, maximumLength) : null;
+  return normalizedValue || null;
 }
 
 function validateContactRequest(body, requestLocale) {
-  const fullName = normalizeOptionalText(body.fullName, 150);
-  const phone = normalizeOptionalText(body.phone, 50);
-  const email = normalizeOptionalText(body.email, 190);
-  const message = normalizeOptionalText(body.message, 2000);
-  const website = normalizeOptionalText(body.website, 200);
+  const fullName = normalizeOptionalText(body.fullName);
+  const phone = normalizeOptionalText(body.phone);
+  const email = normalizeOptionalText(body.email);
+  const message = normalizeOptionalText(body.message);
+  const website = normalizeOptionalText(body.website);
   const acknowledgedPrivacyNotice = body.privacyNoticeAcknowledged === true;
-  const submittedPrivacyNoticeVersion = normalizeOptionalText(
-    body.privacyNoticeVersion,
-    40,
-  );
+  const submittedPrivacyNoticeVersion = normalizeOptionalText(body.privacyNoticeVersion);
 
-  if (!fullName || fullName.length < 2 || !phone || phone.length < 7) {
+  if (
+    !fullName ||
+    fullName.length < 2 ||
+    fullName.length > 150 ||
+    (message && message.length > 2000) ||
+    !phone
+  ) {
     return { isValid: false, messageKey: "contact.invalidFields" };
   }
 
-  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  if (!/^\+[1-9]\d{7,14}$/.test(phone)) {
+    return { isValid: false, messageKey: "contact.invalidPhone" };
+  }
+
+  if (email && (email.length > 190 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))) {
     return { isValid: false, messageKey: "contact.invalidEmail" };
   }
 

@@ -121,4 +121,49 @@ async function resetPassword(request, response) {
   });
 }
 
-module.exports = { forgotPassword, login, resetPassword };
+async function changePassword(request, response) {
+  const currentPassword =
+    typeof request.body?.currentPassword === "string"
+      ? request.body.currentPassword
+      : "";
+  const newPassword = request.body?.newPassword;
+
+  if (
+    !currentPassword ||
+    currentPassword.length > 128 ||
+    !isValidPassword(newPassword)
+  ) {
+    return sendError(response, {
+      statusCode: 422,
+      message: request.t("auth.invalidChangeFields"),
+    });
+  }
+
+  const admin = await authService.findActiveAdminById(request.user.id);
+  const currentPasswordMatches = admin
+    ? await bcrypt.compare(currentPassword, admin.password_hash)
+    : false;
+
+  if (!currentPasswordMatches) {
+    return sendError(response, {
+      statusCode: 400,
+      message: request.t("auth.currentPasswordIncorrect"),
+    });
+  }
+
+  if (await bcrypt.compare(newPassword, admin.password_hash)) {
+    return sendError(response, {
+      statusCode: 409,
+      message: request.t("auth.samePassword"),
+    });
+  }
+
+  const passwordHash = await bcrypt.hash(newPassword, 12);
+  await authService.updateAdminPassword(admin.id, passwordHash);
+
+  return sendSuccess(response, {
+    message: request.t("auth.passwordChanged"),
+  });
+}
+
+module.exports = { changePassword, forgotPassword, login, resetPassword };

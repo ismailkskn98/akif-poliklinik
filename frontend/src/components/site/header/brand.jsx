@@ -16,12 +16,16 @@ export default function Brand({ variant = "compact" }) {
         alt=""
         className={`h-auto object-contain transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-0.5 ${
           isDisplay
-            ? "w-[10.5rem] sm:w-48 xl:w-[13.5rem]"
-            : "w-[6.5rem] sm:w-[7.5rem]"
+            ? "w-48 sm:w-[13.5rem] lg:w-56 xl:w-60"
+            : "w-32 sm:w-36"
         }`}
         height={468}
         priority
-        sizes={isDisplay ? "(min-width: 1280px) 216px, 192px" : "136px"}
+        sizes={
+          isDisplay
+            ? "(min-width: 1280px) 240px, (min-width: 1024px) 224px, (min-width: 640px) 216px, 192px"
+            : "(min-width: 640px) 144px, 128px"
+        }
         src="/images/logo/akif-wordmark-primary.png"
         width={953}
       />

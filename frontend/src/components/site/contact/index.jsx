@@ -1,9 +1,6 @@
-import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
-
 import ContactDetails from "@/components/site/contactDetails";
 import ContactForm from "@/components/site/contactForm";
 import { getTreatmentCopy } from "@/content/treatmentCopy";
-import { Link } from "@/i18n/navigation";
 
 export default function Contact({ translations, locale, privacyNotice, settings }) {
   const content = getTreatmentCopy(locale);
@@ -18,20 +15,9 @@ export default function Contact({ translations, locale, privacyNotice, settings 
           <h1 className="mt-5 max-w-2xl text-balance text-[clamp(2.25rem,4.1vw,3.8rem)] leading-[0.96] font-medium tracking-[-0.055em] text-ink">{content.ui.contactTitle}</h1>
           <p className="mt-4 max-w-md text-sm leading-6 text-ink/54">{content.ui.homeIntro}</p>
 
-          <div className="mt-9 lg:mt-11">
-            <p className="text-[0.65rem] font-semibold tracking-[0.16em] text-ink/38 uppercase">{translations.callTitle}</p>
+          <div className="mt-9 sm:mt-11 lg:mt-12">
+            <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-ink/46 uppercase">{translations.callTitle}</p>
             <ContactDetails labels={{ addressTitle: translations.addressTitle }} settings={settings} />
-            <Link
-              href="/treatments"
-              className="group mt-7 hidden min-h-11 items-center justify-between border-t border-ink/12 pt-4 text-[0.82rem] text-ink/58 transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:text-primary sm:flex"
-            >
-              <span>{content.ui.treatmentsTeaser}</span>
-              <ArrowUpRight
-                aria-hidden="true"
-                className="size-4 shrink-0 transition-transform duration-200 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                weight="light"
-              />
-            </Link>
           </div>
         </div>
 

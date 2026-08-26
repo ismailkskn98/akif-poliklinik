@@ -59,8 +59,8 @@ export default async function Footer({ locale }) {
             <nav aria-label={translations("legalTitle")}>
               <p className="border-b border-white/12 pb-3 text-[0.64rem] font-semibold tracking-[0.14em] text-white/40 uppercase">{translations("legalTitle")}</p>
               <div className="mt-3 grid text-sm text-white/54">
-                <Link className="py-1.5 transition-colors duration-200 hover:text-white" href="/treatments">
-                  {content.ui.treatments}
+                <Link className="py-1.5 transition-colors duration-200 hover:text-white" href="/doctors">
+                  {translations("doctors")}
                 </Link>
                 <Link className="py-1.5 transition-colors duration-200 hover:text-white" href="/privacy-notice">
                   {translations("privacy")}

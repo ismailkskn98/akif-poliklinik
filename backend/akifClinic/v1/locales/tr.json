@@ -1,12 +1,13 @@
 {
   "health": { "ready": "Akif Poliklinik API kullanıma hazır." },
-  "errors": { "notFound": "İstenen API kaynağı bulunamadı.", "serverError": "Beklenmeyen bir sunucu hatası oluştu." },
+  "errors": { "notFound": "İstenen API kaynağı bulunamadı.", "serverError": "Beklenmeyen bir sunucu hatası oluştu.", "corsOriginDenied": "Bu kaynaktan gelen isteğe izin verilmiyor." },
   "contact": {
     "created": "İletişim talebiniz alındı.",
     "listed": "İletişim talepleri listelendi.",
     "updated": "İletişim talebi güncellendi.",
     "notFound": "İletişim talebi bulunamadı.",
     "invalidFields": "Ad soyad ve telefon alanlarını kontrol edin.",
+    "invalidPhone": "Geçerli bir telefon numarası girin.",
     "invalidEmail": "Geçerli bir e-posta adresi girin.",
     "privacyNoticeRequired": "Formu göndermeden önce güncel KVKK aydınlatma metnini okuyup bilgi edindiğinizi belirtin.",
     "invalidUpdate": "Talep numarası veya durum bilgisi geçersiz.",
@@ -33,6 +34,11 @@
     "invalidResetFields": "Sıfırlama bağlantısı geçersiz veya parola en az 12 karakter değil.",
     "invalidResetToken": "Sıfırlama bağlantısı geçersiz, kullanılmış veya süresi dolmuş.",
     "passwordReset": "Parolanız güncellendi. Yeni parolanızla giriş yapabilirsiniz.",
-    "resetRateLimited": "Çok fazla parola sıfırlama denemesi yaptınız. Lütfen daha sonra tekrar deneyin."
+    "resetRateLimited": "Çok fazla parola sıfırlama denemesi yaptınız. Lütfen daha sonra tekrar deneyin.",
+    "invalidChangeFields": "Mevcut parola ile 12–128 karakter uzunluğunda yeni parola zorunludur.",
+    "currentPasswordIncorrect": "Mevcut parola hatalı.",
+    "samePassword": "Yeni parola mevcut paroladan farklı olmalıdır.",
+    "passwordChanged": "Parolanız güncellendi. Lütfen yeni parolanızla tekrar giriş yapın.",
+    "changeRateLimited": "Çok fazla parola değiştirme denemesi yaptınız. Lütfen daha sonra tekrar deneyin."
   }
 }

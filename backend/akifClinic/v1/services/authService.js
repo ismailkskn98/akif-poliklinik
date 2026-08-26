@@ -33,6 +33,32 @@ async function updateLastLogin(adminId) {
   );
 }
 
+async function updateAdminPassword(adminId, passwordHash) {
+  const connection = await getPool().getConnection();
+
+  try {
+    await connection.beginTransaction();
+    await connection.execute(
+      `UPDATE admin_users
+          SET password_hash = ?, updated_at = CURRENT_TIMESTAMP
+        WHERE id = ? AND is_active = 1`,
+      [passwordHash, adminId],
+    );
+    await connection.execute(
+      `UPDATE password_reset_tokens
+          SET used_at = CURRENT_TIMESTAMP
+        WHERE admin_user_id = ? AND used_at IS NULL`,
+      [adminId],
+    );
+    await connection.commit();
+  } catch (error) {
+    await connection.rollback();
+    throw error;
+  } finally {
+    connection.release();
+  }
+}
+
 async function createPasswordResetToken(adminId, requestedIp) {
   const token = crypto.randomBytes(32).toString("hex");
   const tokenHash = crypto.createHash("sha256").update(token).digest("hex");
@@ -119,5 +145,6 @@ module.exports = {
   findActiveAdminById,
   findAdminByEmail,
   resetPassword,
+  updateAdminPassword,
   updateLastLogin,
 };

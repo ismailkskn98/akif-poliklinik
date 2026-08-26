@@ -11,6 +11,7 @@
     "db:migrate:production": "node --env-file=.env.production scripts/migrate.js",
     "admin:create": "node --env-file=.env.development scripts/createAdmin.js",
     "admin:create:production": "node --env-file=.env.production scripts/createAdmin.js",
+    "test": "node --test tests/cors.test.js",
     "lint": "eslint ."
   },
   "dependencies": {

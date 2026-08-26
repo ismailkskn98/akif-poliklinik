@@ -7,11 +7,14 @@
   "Navigation": {
     "ariaLabel": "Hauptnavigation",
     "home": "Startseite",
+    "doctors": "Unsere Ärzte",
     "privacy": "Datenschutzinformation",
     "aftercare": "Informationen nach dem Eingriff",
     "authorization": "Berechtigungsnachweis",
     "languages": "Sprache wählen",
     "menu": "Menü",
+    "call": "Jetzt anrufen",
+    "close": "Schließen",
     "externalLink": "Öffnet auf einer externen Informationsseite",
     "aftercareItems": {
       "botox": "Botox",
@@ -53,20 +56,28 @@
         "error": "Ihre Anfrage konnte nicht gesendet werden. Versuchen Sie es erneut oder rufen Sie uns an.",
         "privacyLink": "Datenschutzinformation",
         "privacyAcknowledgement": "Ich habe diesen Hinweis gelesen und zur Kenntnis genommen.",
+        "countrySelector": "Ländervorwahl auswählen",
+        "countrySearch": "Land oder Vorwahl suchen",
+        "noCountryResults": "Kein passendes Land gefunden.",
         "validation": {
           "required": "Dieses Feld ist erforderlich.",
+          "fullNameLength": "Ihr Name muss zwischen 2 und 150 Zeichen lang sein.",
+          "invalidPhone": "Geben Sie eine gültige Telefonnummer ein.",
           "invalidEmail": "Geben Sie eine gültige E-Mail-Adresse ein.",
+          "emailTooLong": "Die E-Mail-Adresse darf höchstens 190 Zeichen enthalten.",
+          "messageTooLong": "Ihre Nachricht darf höchstens 2000 Zeichen enthalten.",
           "privacyRequired": "Bestätigen Sie vor dem Absenden, dass Sie die Datenschutzinformation gelesen und zur Kenntnis genommen haben."
         }
       }
     },
-    "mapTitle": "Standort der Akif Poliklinik in Nişantaşı"
+    "mapTitle": "Standort von British Esthetic in Nişantaşı"
   },
   "Footer": {
     "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
     "updatedAt": "Aktualisiert: April 2026",
-    "legalTitle": "Rechtliche Links",
+    "legalTitle": "Links",
     "healthTourism": "Internationaler Gesundheitstourismus",
+    "doctors": "Unsere Ärzte",
     "privacy": "Datenschutzinformation",
     "authorization": "Berechtigungsnachweis",
     "cookieSettings": "Cookie-Einstellungen",
@@ -102,6 +113,11 @@
     "enableMap": "Karte aktivieren"
   },
   "Pages": {
+    "doctors": {
+      "eyebrow": "Ärzteteam",
+      "title": "Unsere Ärzte",
+      "description": "Informationen zu unserem Ärzteteam werden in Kürze hier veröffentlicht."
+    },
     "privacy": {
       "eyebrow": "Schutz personenbezogener Daten",
       "title": "Datenschutzinformation",

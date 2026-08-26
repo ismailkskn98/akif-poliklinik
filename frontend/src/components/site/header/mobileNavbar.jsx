@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, CaretDown } from "@phosphor-icons/react";
+import { ArrowUpRight } from "@phosphor-icons/react";
 import { useLayoutEffect, useRef, useState } from "react";
 
 import { Dialog, DialogClose, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -59,7 +59,7 @@ function MenuGlyph({ open }) {
   );
 }
 
-export default function MobileNavbar({ currentLocale, groups, labels, phone }) {
+export default function MobileNavbar({ currentLocale, labels, phone }) {
   const router = useRouter();
   const pendingHrefRef = useRef(null);
   const [open, setOpen] = useState(false);
@@ -109,7 +109,7 @@ export default function MobileNavbar({ currentLocale, groups, labels, phone }) {
       onOpenChange={handleOpenChange}
       onOpenChangeComplete={handleOpenChangeComplete}
     >
-      <DialogTrigger className="grid h-full min-h-[4.5rem] w-14 place-items-center border-s border-ink/12 text-ink transition-colors duration-200 hover:text-primary lg:hidden">
+      <DialogTrigger className="flex h-full min-h-14 w-[4.5rem] items-center justify-end text-ink transition-colors duration-200 hover:text-primary lg:hidden">
         <MenuGlyph open={open} />
         <span className="sr-only">{labels.menu}</span>
       </DialogTrigger>
@@ -148,11 +148,23 @@ export default function MobileNavbar({ currentLocale, groups, labels, phone }) {
                 />
               </Link>
               <Link
-                href="/treatments"
-                onClick={(event) => closeThenNavigate(event, "/treatments")}
+                href="/doctors"
+                onClick={(event) => closeThenNavigate(event, "/doctors")}
                 className="group flex min-h-14 items-center justify-between border-b border-ink/12 text-xl font-medium tracking-[-0.04em] transition-colors duration-200 hover:text-primary sm:text-2xl"
               >
-                {labels.treatments}
+                {labels.doctors}
+                <ArrowUpRight
+                  aria-hidden="true"
+                  className="size-4 text-ink/30 transition-[transform,color] duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
+                  weight="light"
+                />
+              </Link>
+              <Link
+                href="/authorization-document"
+                onClick={(event) => closeThenNavigate(event, "/authorization-document")}
+                className="group flex min-h-14 items-center justify-between border-b border-ink/12 text-xl font-medium tracking-[-0.04em] transition-colors duration-200 hover:text-primary sm:text-2xl"
+              >
+                {labels.authorization}
                 <ArrowUpRight
                   aria-hidden="true"
                   className="size-4 text-ink/30 transition-[transform,color] duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
@@ -161,37 +173,12 @@ export default function MobileNavbar({ currentLocale, groups, labels, phone }) {
               </Link>
             </div>
 
-            <div className="border-b border-ink/12 py-4">
-              {groups.map((group, groupIndex) => (
-                <details key={group.key} data-mobile-nav-item className="group border-t border-ink/10 first:border-t-0" style={{ "--mobile-nav-delay": `${85 + groupIndex * 18}ms` }}>
-                  <summary className="flex min-h-12 list-none items-center justify-between gap-4 text-[0.68rem] font-semibold tracking-[0.14em] text-ink/66 uppercase transition-colors duration-180 hover:text-primary">
-                    <span>{group.label}</span>
-                    <CaretDown aria-hidden="true" className="size-3.5 text-primary transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-open:rotate-180" weight="light" />
-                  </summary>
-                  <div className="grid pb-4 ps-3">
-                    {group.items.map((item) => (
-                      <Link
-                        key={item.key}
-                        href={item.href}
-                        onClick={(event) => closeThenNavigate(event, item.href)}
-                        className="border-s border-ink/10 py-1.5 ps-4 text-[0.86rem] leading-5 text-ink/58 transition-[border-color,color] duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:border-primary hover:text-ink"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                </details>
-              ))}
-            </div>
           </div>
 
           <div data-mobile-nav-item className="mt-auto grid gap-5 border-t border-ink/12 pt-5" style={{ "--mobile-nav-delay": "165ms" }}>
-            <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-ink/58">
+            <div className="text-sm text-ink/58">
               <Link href="/privacy-notice" onClick={(event) => closeThenNavigate(event, "/privacy-notice")}>
                 {labels.privacy}
-              </Link>
-              <Link href="/authorization-document" onClick={(event) => closeThenNavigate(event, "/authorization-document")}>
-                {labels.authorization}
               </Link>
             </div>
             <div className="flex items-center justify-between gap-3">

@@ -1,12 +1,13 @@
 {
   "health": { "ready": "Akif Clinic API is ready." },
-  "errors": { "notFound": "The requested API resource was not found.", "serverError": "An unexpected server error occurred." },
+  "errors": { "notFound": "The requested API resource was not found.", "serverError": "An unexpected server error occurred.", "corsOriginDenied": "Requests from this origin are not allowed." },
   "contact": {
     "created": "Your contact request has been received.",
     "listed": "Contact requests were listed.",
     "updated": "The contact request was updated.",
     "notFound": "The contact request was not found.",
     "invalidFields": "Check the full name and phone fields.",
+    "invalidPhone": "Enter a valid phone number.",
     "invalidEmail": "Enter a valid email address.",
     "privacyNoticeRequired": "Confirm that you have read and been informed by the current privacy notice before submitting.",
     "invalidUpdate": "The request number or status is invalid.",
@@ -33,6 +34,11 @@
     "invalidResetFields": "The reset link is invalid or the password is shorter than 12 characters.",
     "invalidResetToken": "The reset link is invalid, used, or expired.",
     "passwordReset": "Your password was updated. You can now sign in with it.",
-    "resetRateLimited": "Too many password reset attempts. Please try again later."
+    "resetRateLimited": "Too many password reset attempts. Please try again later.",
+    "invalidChangeFields": "The current password and a new password between 12 and 128 characters are required.",
+    "currentPasswordIncorrect": "The current password is incorrect.",
+    "samePassword": "The new password must be different from the current password.",
+    "passwordChanged": "Your password was updated. Sign in again with your new password.",
+    "changeRateLimited": "Too many password change attempts. Please try again later."
   }
 }

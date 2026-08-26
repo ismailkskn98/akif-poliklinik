@@ -7,11 +7,14 @@
   "Navigation": {
     "ariaLabel": "ניווט ראשי",
     "home": "דף הבית",
+    "doctors": "הרופאים שלנו",
     "privacy": "מידע על פרטיות",
     "aftercare": "מידע לאחר ההליך",
     "authorization": "תעודת הרשאה",
     "languages": "בחירת שפה",
     "menu": "תפריט",
+    "call": "התקשרו עכשיו",
+    "close": "סגירה",
     "externalLink": "נפתח באתר מידע חיצוני",
     "aftercareItems": {
       "botox": "בוטוקס",
@@ -53,20 +56,28 @@
         "error": "לא ניתן לשלוח את הבקשה. נסו שוב או התקשרו אלינו.",
         "privacyLink": "הודעת הפרטיות",
         "privacyAcknowledgement": "קראתי את ההודעה וקיבלתי את המידע.",
+        "countrySelector": "בחירת קידומת מדינה",
+        "countrySearch": "חיפוש מדינה או קידומת",
+        "noCountryResults": "לא נמצאה מדינה מתאימה.",
         "validation": {
           "required": "שדה זה הוא חובה.",
+          "fullNameLength": "השם חייב להכיל בין 2 ל-150 תווים.",
+          "invalidPhone": "יש להזין מספר טלפון תקין.",
           "invalidEmail": "יש להזין כתובת אימייל תקינה.",
+          "emailTooLong": "כתובת האימייל יכולה להכיל עד 190 תווים.",
+          "messageTooLong": "ההודעה יכולה להכיל עד 2000 תווים.",
           "privacyRequired": "לפני השליחה יש לאשר שקראת את הודעת הפרטיות וקיבלת את המידע."
         }
       }
     },
-    "mapTitle": "מיקום Akif Poliklinik בנישאנטאשי"
+    "mapTitle": "מיקום British Esthetic בנישאנטאשי"
   },
   "Footer": {
     "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
     "updatedAt": "עודכן לאחרונה: אפריל 2026",
-    "legalTitle": "קישורים משפטיים",
+    "legalTitle": "קישורים",
     "healthTourism": "תיירות מרפא בינלאומית",
+    "doctors": "הרופאים שלנו",
     "privacy": "מידע על פרטיות",
     "authorization": "תעודת הרשאה",
     "cookieSettings": "העדפות עוגיות",
@@ -102,6 +113,11 @@
     "enableMap": "הפעלת המפה"
   },
   "Pages": {
+    "doctors": {
+      "eyebrow": "הצוות הרפואי",
+      "title": "הרופאים שלנו",
+      "description": "מידע על צוות הרופאים שלנו יפורסם כאן בקרוב."
+    },
     "privacy": {
       "eyebrow": "הגנה על מידע אישי",
       "title": "מידע על פרטיות",

@@ -7,11 +7,14 @@
   "Navigation": {
     "ariaLabel": "Main navigation",
     "home": "Home",
+    "doctors": "Our Doctors",
     "privacy": "Privacy Information",
     "aftercare": "Aftercare Information",
     "authorization": "Authorization Document",
     "languages": "Choose language",
     "menu": "Menu",
+    "call": "Call now",
+    "close": "Close",
     "externalLink": "Opens on an external information website",
     "aftercareItems": {
       "botox": "Botox",
@@ -53,20 +56,28 @@
         "error": "Your request could not be sent. Please try again or call us.",
         "privacyLink": "Privacy Notice",
         "privacyAcknowledgement": "I have read this notice and have been informed.",
+        "countrySelector": "Select country code",
+        "countrySearch": "Search country or calling code",
+        "noCountryResults": "No matching country found.",
         "validation": {
           "required": "This field is required.",
+          "fullNameLength": "Your name must be between 2 and 150 characters.",
+          "invalidPhone": "Enter a valid phone number.",
           "invalidEmail": "Enter a valid email address.",
+          "emailTooLong": "The email address can contain up to 190 characters.",
+          "messageTooLong": "Your message can contain up to 2000 characters.",
           "privacyRequired": "Confirm that you have read and been informed by the privacy notice before submitting."
         }
       }
     },
-    "mapTitle": "Akif Poliklinik Nişantaşı location"
+    "mapTitle": "British Esthetic Nişantaşı location"
   },
   "Footer": {
     "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
     "updatedAt": "Last updated: April 2026",
-    "legalTitle": "Legal links",
+    "legalTitle": "Links",
     "healthTourism": "International health tourism",
+    "doctors": "Our Doctors",
     "privacy": "Privacy Information",
     "authorization": "Authorization Document",
     "cookieSettings": "Cookie preferences",
@@ -102,6 +113,11 @@
     "enableMap": "Enable map"
   },
   "Pages": {
+    "doctors": {
+      "eyebrow": "Medical team",
+      "title": "Our Doctors",
+      "description": "Information about our doctors will be shared here soon."
+    },
     "privacy": {
       "eyebrow": "Personal data protection",
       "title": "Privacy Information",

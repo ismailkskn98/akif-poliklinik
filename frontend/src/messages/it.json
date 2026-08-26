@@ -7,11 +7,14 @@
   "Navigation": {
     "ariaLabel": "Navigazione principale",
     "home": "Home",
+    "doctors": "I nostri medici",
     "privacy": "Informativa sulla privacy",
     "aftercare": "Informazioni post-trattamento",
     "authorization": "Documento di autorizzazione",
     "languages": "Scegli la lingua",
     "menu": "Menu",
+    "call": "Chiama ora",
+    "close": "Chiudi",
     "externalLink": "Si apre su un sito informativo esterno",
     "aftercareItems": {
       "botox": "Botox",
@@ -53,20 +56,28 @@
         "error": "Non è stato possibile inviare la richiesta. Riprova o chiamaci.",
         "privacyLink": "Informativa sulla privacy",
         "privacyAcknowledgement": "Ho letto l’informativa e ne ho preso conoscenza.",
+        "countrySelector": "Seleziona il prefisso internazionale",
+        "countrySearch": "Cerca paese o prefisso",
+        "noCountryResults": "Nessun paese corrispondente.",
         "validation": {
           "required": "Questo campo è obbligatorio.",
+          "fullNameLength": "Il nome deve contenere da 2 a 150 caratteri.",
+          "invalidPhone": "Inserisci un numero di telefono valido.",
           "invalidEmail": "Inserisci un indirizzo e-mail valido.",
+          "emailTooLong": "L’indirizzo e-mail può contenere al massimo 190 caratteri.",
+          "messageTooLong": "Il messaggio può contenere al massimo 2000 caratteri.",
           "privacyRequired": "Prima di inviare, conferma di aver letto e preso conoscenza dell’informativa."
         }
       }
     },
-    "mapTitle": "Sede Akif Poliklinik a Nişantaşı"
+    "mapTitle": "Sede British Esthetic a Nişantaşı"
   },
   "Footer": {
     "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
     "updatedAt": "Ultimo aggiornamento: aprile 2026",
-    "legalTitle": "Link legali",
+    "legalTitle": "Link",
     "healthTourism": "Turismo sanitario internazionale",
+    "doctors": "I nostri medici",
     "privacy": "Informativa sulla privacy",
     "authorization": "Documento di autorizzazione",
     "cookieSettings": "Preferenze cookie",
@@ -102,6 +113,11 @@
     "enableMap": "Attiva la mappa"
   },
   "Pages": {
+    "doctors": {
+      "eyebrow": "Team medico",
+      "title": "I nostri medici",
+      "description": "Le informazioni sui nostri medici saranno pubblicate qui a breve."
+    },
     "privacy": {
       "eyebrow": "Protezione dei dati personali",
       "title": "Informativa sulla privacy",

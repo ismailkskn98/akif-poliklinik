@@ -41,7 +41,14 @@ const resetPasswordRateLimiter = createRateLimiter({
   messageKey: "auth.resetRateLimited",
 });
 
+const changePasswordRateLimiter = createRateLimiter({
+  windowMs: 15 * 60 * 1000,
+  limit: 5,
+  messageKey: "auth.changeRateLimited",
+});
+
 module.exports = {
+  changePasswordRateLimiter,
   contactRateLimiter,
   forgotPasswordRateLimiter,
   loginRateLimiter,

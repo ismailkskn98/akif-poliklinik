@@ -1,4 +1,4 @@
-const { URL } = require("node:url");
+const { URL, URLSearchParams } = require("node:url");
 const { AbortSignal, fetch } = globalThis;
 
 const allowedGoogleMapsHosts = new Set([
@@ -79,9 +79,39 @@ function normalizeCoordinates(latitudeValue, longitudeValue) {
   return { latitude, longitude };
 }
 
-function createMapEmbedUrl({ latitude, longitude }) {
+function parsePlaceName(value) {
+  const url = new URL(value);
+  const placePathMatch = url.pathname.match(/\/maps\/place\/([^/]+)/i);
+  const coordinateValuePattern =
+    /^\s*-?\d{1,2}(?:\.\d+)?\s*,\s*-?\d{1,3}(?:\.\d+)?\s*$/;
+
+  if (placePathMatch) {
+    return decodeURIComponent(placePathMatch[1].replace(/\+/g, " ")).trim();
+  }
+
+  for (const parameterName of ["q", "query", "destination"]) {
+    const parameterValue = url.searchParams.get(parameterName)?.trim();
+
+    if (parameterValue && !coordinateValuePattern.test(parameterValue)) {
+      return parameterValue;
+    }
+  }
+
+  return null;
+}
+
+function createMapEmbedUrl({ latitude, longitude, placeName }) {
   const coordinates = `${latitude},${longitude}`;
-  return `https://maps.google.com/maps?q=${encodeURIComponent(coordinates)}&t=m&z=17&output=embed&iwloc=near`;
+  const parameters = new URLSearchParams({
+    q: placeName || coordinates,
+    ll: coordinates,
+    t: "m",
+    z: "17",
+    output: "embed",
+    iwloc: "A",
+  });
+
+  return `https://maps.google.com/maps?${parameters.toString()}`;
 }
 
 async function resolveGoogleMapsShareUrl(shareUrl) {
@@ -119,6 +149,7 @@ async function resolveGoogleMapsShareUrl(shareUrl) {
   }
 
   const coordinates = parseCoordinates(resolvedUrl);
+  const placeName = parsePlaceName(resolvedUrl);
 
   if (!coordinates) {
     throw new Error("GOOGLE_MAPS_COORDINATES_NOT_FOUND");
@@ -126,8 +157,9 @@ async function resolveGoogleMapsShareUrl(shareUrl) {
 
   return {
     mapShareUrl: new URL(shareUrl).toString(),
-    mapEmbedUrl: createMapEmbedUrl(coordinates),
+    mapEmbedUrl: createMapEmbedUrl({ ...coordinates, placeName }),
     coordinates,
+    placeName,
   };
 }
 
@@ -135,5 +167,6 @@ module.exports = {
   createMapEmbedUrl,
   isAllowedGoogleMapsUrl,
   parseCoordinates,
+  parsePlaceName,
   resolveGoogleMapsShareUrl,
 };

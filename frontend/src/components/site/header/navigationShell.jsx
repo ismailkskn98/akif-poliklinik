@@ -5,25 +5,40 @@ import DesktopNavbar from "./desktopNavbar";
 import LanguageMenu from "./languageMenu";
 import MobileNavbar from "./mobileNavbar";
 
-export default function NavigationShell({ currentLocale, groups, labels, settings }) {
+export default function NavigationShell({ currentLocale, labels, settings }) {
   return (
     <header
       data-motion-header
       className="relative z-40 border-b border-ink/10 bg-[#fafbfe]"
     >
       <div className="grid-container">
-        <div className="hidden justify-center py-5 lg:flex xl:py-6">
+        <div className="lg:hidden">
+          <div className="flex min-h-14 items-stretch justify-between border-b border-ink/10">
+            <LanguageMenu
+              currentLocale={currentLocale}
+              label={labels.languages}
+              align="start"
+              variant="mobile-header"
+            />
+            <MobileNavbar
+              currentLocale={currentLocale}
+              labels={labels}
+              phone={settings.phones[0]}
+            />
+          </div>
+          <div className="flex justify-center py-5 sm:py-6">
+            <Brand variant="display" />
+          </div>
+        </div>
+
+        <div className="hidden justify-center py-6 lg:flex xl:py-7">
           <Brand variant="display" />
         </div>
 
-        <div className="grid min-h-[4.5rem] w-full grid-cols-[1fr_3.5rem] items-stretch lg:min-h-14 lg:grid-cols-[1fr_auto_1fr] lg:border-t lg:border-ink/10">
-          <div className="flex items-center py-2.5 ps-1 sm:ps-2 lg:py-0">
-            <div className="lg:hidden">
-              <Brand />
-            </div>
-          </div>
+        <div className="hidden min-h-14 w-full grid-cols-[1fr_auto_1fr] items-stretch border-t border-ink/10 lg:grid">
+          <div aria-hidden="true" />
 
-          <DesktopNavbar groups={groups} labels={labels} />
+          <DesktopNavbar labels={labels} />
 
           <div className="hidden items-stretch justify-self-end lg:flex">
             <LanguageMenu currentLocale={currentLocale} label={labels.languages} />
@@ -36,12 +51,6 @@ export default function NavigationShell({ currentLocale, groups, labels, setting
             </a>
           </div>
 
-          <MobileNavbar
-            currentLocale={currentLocale}
-            groups={groups}
-            labels={labels}
-            phone={settings.phones[0]}
-          />
         </div>
       </div>
     </header>

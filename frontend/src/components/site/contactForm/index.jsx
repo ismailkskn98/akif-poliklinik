@@ -2,20 +2,41 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Check } from "@phosphor-icons/react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
+import { isValidPhoneNumber } from "react-phone-number-input/max";
 import { z } from "zod";
 
+import PhoneNumberInput from "@/components/site/phoneInput";
 import PrivacyNoticeDialog from "@/components/site/privacyNoticeDialog";
 
 function createContactSchema(labels) {
   return z.object({
-    fullName: z.string().trim().min(2, labels.required),
-    phone: z.string().trim().min(7, labels.required),
+    fullName: z
+      .string()
+      .trim()
+      .min(1, labels.required)
+      .min(2, labels.fullNameLength)
+      .max(150, labels.fullNameLength),
+    phone: z.string().trim().superRefine((phoneNumber, context) => {
+      if (!phoneNumber) {
+        context.addIssue({ code: "custom", message: labels.required });
+        return;
+      }
+
+      if (!isValidPhoneNumber(phoneNumber)) {
+        context.addIssue({ code: "custom", message: labels.invalidPhone });
+      }
+    }),
     email: z
-      .union([z.literal(""), z.string().trim().email(labels.invalidEmail)])
-      .optional(),
-    message: z.string().trim().max(2000).optional(),
+      .string()
+      .trim()
+      .max(190, labels.emailTooLong)
+      .refine(
+        (email) => !email || z.email().safeParse(email).success,
+        labels.invalidEmail,
+      ),
+    message: z.string().trim().max(2000, labels.messageTooLong),
     website: z.string().max(0).optional(),
     privacyNoticeAcknowledged: z
       .boolean()
@@ -25,18 +46,24 @@ function createContactSchema(labels) {
 }
 
 const fieldClassName =
-  "min-h-11 w-full rounded-none border-0 border-b border-[#172038]/16 bg-transparent px-0 text-sm text-[#172038] outline-none transition-colors placeholder:text-[#172038]/30 focus:border-primary focus:ring-0";
+  "min-h-11 w-full rounded-none border-0 border-b border-[#172038]/16 bg-transparent px-0 text-sm text-[#172038] outline-none transition-colors placeholder:text-[#172038]/30 focus:border-primary focus:ring-0 aria-invalid:border-destructive";
 
 export default function ContactForm({ labels, locale, privacyNotice }) {
   const [submissionState, setSubmissionState] = useState("idle");
-  const schema = createContactSchema(labels.validation);
+  const schema = useMemo(
+    () => createContactSchema(labels.validation),
+    [labels.validation],
+  );
   const {
+    control,
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(schema),
+    mode: "onBlur",
+    reValidateMode: "onChange",
     defaultValues: {
       fullName: "",
       phone: "",
@@ -49,7 +76,7 @@ export default function ContactForm({ labels, locale, privacyNotice }) {
   });
 
   async function submitContactRequest(values) {
-    setSubmissionState("loading");
+    setSubmissionState("idle");
 
     try {
       const apiBaseUrl =
@@ -75,37 +102,105 @@ export default function ContactForm({ labels, locale, privacyNotice }) {
     }
   }
 
+  function handleInvalidSubmit() {
+    setSubmissionState("idle");
+  }
+
+  function handleFormChange() {
+    if (submissionState !== "idle") {
+      setSubmissionState("idle");
+    }
+  }
+
   return (
-    <form className="grid gap-5" onSubmit={handleSubmit(submitContactRequest)} noValidate>
+    <form
+      className="grid gap-5"
+      noValidate
+      onChange={handleFormChange}
+      onSubmit={handleSubmit(submitContactRequest, handleInvalidSubmit)}
+    >
       <div>
         <label className="mb-1 block text-xs font-medium text-[#172038]/52" htmlFor="fullName">
           {labels.fullName}
         </label>
-        <input id="fullName" autoComplete="name" className={fieldClassName} {...register("fullName")} />
-        {errors.fullName ? <p className="mt-1 text-xs text-destructive">{errors.fullName.message}</p> : null}
+        <input
+          aria-describedby={errors.fullName ? "full-name-error" : undefined}
+          aria-invalid={Boolean(errors.fullName)}
+          aria-required="true"
+          autoComplete="name"
+          className={fieldClassName}
+          id="fullName"
+          maxLength="150"
+          {...register("fullName")}
+        />
+        {errors.fullName ? (
+          <p className="mt-1 text-xs text-destructive" id="full-name-error">
+            {errors.fullName.message}
+          </p>
+        ) : null}
       </div>
 
       <div>
         <label className="mb-1 block text-xs font-medium text-[#172038]/52" htmlFor="email">
           {labels.email}
         </label>
-        <input id="email" autoComplete="email" inputMode="email" className={fieldClassName} {...register("email")} />
-        {errors.email ? <p className="mt-1 text-xs text-destructive">{errors.email.message}</p> : null}
+        <input
+          aria-describedby={errors.email ? "email-error" : undefined}
+          aria-invalid={Boolean(errors.email)}
+          autoComplete="email"
+          className={fieldClassName}
+          id="email"
+          inputMode="email"
+          maxLength="190"
+          {...register("email")}
+        />
+        {errors.email ? (
+          <p className="mt-1 text-xs text-destructive" id="email-error">
+            {errors.email.message}
+          </p>
+        ) : null}
       </div>
 
       <div>
         <label className="mb-1 block text-xs font-medium text-[#172038]/52" htmlFor="phone">
           {labels.phone}
         </label>
-        <input id="phone" autoComplete="tel" inputMode="tel" className={fieldClassName} {...register("phone")} />
-        {errors.phone ? <p className="mt-1 text-xs text-destructive">{errors.phone.message}</p> : null}
+        <PhoneNumberInput
+          control={control}
+          error={errors.phone}
+          labels={{
+            countrySearch: labels.countrySearch,
+            countrySelector: labels.countrySelector,
+            noCountryResults: labels.noCountryResults,
+            phone: labels.phone,
+          }}
+          locale={locale}
+        />
+        {errors.phone ? (
+          <p className="mt-1 text-xs text-destructive" id="phone-error">
+            {errors.phone.message}
+          </p>
+        ) : null}
       </div>
 
       <div>
         <label className="mb-1 block text-xs font-medium text-[#172038]/52" htmlFor="message">
           {labels.message}
         </label>
-        <textarea id="message" rows="4" className={`${fieldClassName} py-3`} {...register("message")} />
+        <textarea
+          aria-describedby={errors.message ? "message-error" : undefined}
+          aria-invalid={Boolean(errors.message)}
+          className={`${fieldClassName} py-3`}
+          id="message"
+          maxLength="2000"
+          rows="4"
+          {...register("message")}
+        />
+        {errors.message ? (
+          <p className="mt-1 text-xs text-destructive" id="message-error">
+            {errors.message.message}
+          </p>
+        ) : null}
       </div>
 
       <div className="hidden" aria-hidden="true">
@@ -119,6 +214,7 @@ export default function ContactForm({ labels, locale, privacyNotice }) {
             <input
               aria-describedby="privacy-notice-acknowledgement"
               aria-invalid={Boolean(errors.privacyNoticeAcknowledged)}
+              aria-required="true"
               className="peer size-4 appearance-none border border-ink/28 bg-transparent transition-[border-color,background-color] duration-180 ease-[cubic-bezier(.22,1,.36,1)] checked:border-primary checked:bg-primary"
               id="privacyNoticeAcknowledged"
               type="checkbox"
@@ -151,10 +247,10 @@ export default function ContactForm({ labels, locale, privacyNotice }) {
 
       <button
         className="mt-2 min-h-11 border border-primary bg-primary px-5 text-[0.82rem] font-medium text-white transition-[transform,background-color] duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:bg-primary-dark active:scale-[.99] disabled:cursor-not-allowed disabled:opacity-60"
-        disabled={submissionState === "loading"}
+        disabled={isSubmitting}
         type="submit"
       >
-        {submissionState === "loading" ? labels.sending : labels.submit}
+        {isSubmitting ? labels.sending : labels.submit}
       </button>
 
       <div aria-live="polite" className="min-h-4 text-xs">

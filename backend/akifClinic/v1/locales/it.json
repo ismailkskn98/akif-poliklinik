@@ -1,12 +1,13 @@
 {
   "health": { "ready": "L'API della Clinica Akif è pronta." },
-  "errors": { "notFound": "La risorsa API richiesta non è stata trovata.", "serverError": "Si è verificato un errore imprevisto del server." },
+  "errors": { "notFound": "La risorsa API richiesta non è stata trovata.", "serverError": "Si è verificato un errore imprevisto del server.", "corsOriginDenied": "Le richieste da questa origine non sono consentite." },
   "contact": {
     "created": "La tua richiesta di contatto è stata ricevuta.",
     "listed": "Le richieste di contatto sono state elencate.",
     "updated": "La richiesta di contatto è stata aggiornata.",
     "notFound": "La richiesta di contatto non è stata trovata.",
     "invalidFields": "Controlla nome completo e telefono.",
+    "invalidPhone": "Inserisci un numero di telefono valido.",
     "invalidEmail": "Inserisci un indirizzo e-mail valido.",
     "privacyNoticeRequired": "Prima di inviare, conferma di aver letto e preso conoscenza dell’informativa sulla privacy vigente.",
     "invalidUpdate": "Il numero o lo stato della richiesta non è valido.",
@@ -33,6 +34,11 @@
     "invalidResetFields": "Il link non è valido o la password ha meno di 12 caratteri.",
     "invalidResetToken": "Il link non è valido, è già stato usato o è scaduto.",
     "passwordReset": "La password è stata aggiornata. Ora puoi accedere.",
-    "resetRateLimited": "Troppi tentativi di reimpostazione. Riprova più tardi."
+    "resetRateLimited": "Troppi tentativi di reimpostazione. Riprova più tardi.",
+    "invalidChangeFields": "Sono richieste la password attuale e una nuova password da 12 a 128 caratteri.",
+    "currentPasswordIncorrect": "La password attuale non è corretta.",
+    "samePassword": "La nuova password deve essere diversa da quella attuale.",
+    "passwordChanged": "La password è stata aggiornata. Accedi nuovamente con la nuova password.",
+    "changeRateLimited": "Troppi tentativi di modifica della password. Riprova più tardi."
   }
 }

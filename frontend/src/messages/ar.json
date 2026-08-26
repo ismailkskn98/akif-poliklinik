@@ -7,11 +7,14 @@
   "Navigation": {
     "ariaLabel": "التنقل الرئيسي",
     "home": "الرئيسية",
+    "doctors": "أطباؤنا",
     "privacy": "معلومات الخصوصية",
     "aftercare": "معلومات ما بعد الإجراء",
     "authorization": "وثيقة الترخيص",
     "languages": "اختيار اللغة",
     "menu": "القائمة",
+    "call": "اتصل الآن",
+    "close": "إغلاق",
     "externalLink": "يفتح في موقع معلومات خارجي",
     "aftercareItems": {
       "botox": "البوتوكس",
@@ -53,20 +56,28 @@
         "error": "تعذر إرسال طلبك. حاول مرة أخرى أو اتصل بنا.",
         "privacyLink": "إشعار الخصوصية",
         "privacyAcknowledgement": "قرأت هذا الإشعار وتم إبلاغي بمضمونه.",
+        "countrySelector": "اختر رمز الدولة",
+        "countrySearch": "ابحث عن دولة أو رمز اتصال",
+        "noCountryResults": "لم يتم العثور على دولة مطابقة.",
         "validation": {
           "required": "هذا الحقل مطلوب.",
+          "fullNameLength": "يجب أن يتراوح الاسم بين حرفين و150 حرفًا.",
+          "invalidPhone": "أدخل رقم هاتف صالحًا.",
           "invalidEmail": "أدخل عنوان بريد إلكتروني صالحًا.",
+          "emailTooLong": "يجب ألا يتجاوز البريد الإلكتروني 190 حرفًا.",
+          "messageTooLong": "يجب ألا تتجاوز الرسالة 2000 حرف.",
           "privacyRequired": "قبل الإرسال، أكّد أنك قرأت إشعار الخصوصية وتم إبلاغك بمضمونه."
         }
       }
     },
-    "mapTitle": "موقع Akif Poliklinik في نيشانتاشي"
+    "mapTitle": "موقع British Esthetic في نيشانتاشي"
   },
   "Footer": {
     "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
     "updatedAt": "آخر تحديث: أبريل 2026",
-    "legalTitle": "الروابط القانونية",
+    "legalTitle": "الروابط",
     "healthTourism": "السياحة الصحية الدولية",
+    "doctors": "أطباؤنا",
     "privacy": "معلومات الخصوصية",
     "authorization": "وثيقة الترخيص",
     "cookieSettings": "تفضيلات ملفات الارتباط",
@@ -102,6 +113,11 @@
     "enableMap": "تشغيل الخريطة"
   },
   "Pages": {
+    "doctors": {
+      "eyebrow": "الفريق الطبي",
+      "title": "أطباؤنا",
+      "description": "سيتم نشر معلومات أطبائنا هنا قريبًا."
+    },
     "privacy": {
       "eyebrow": "حماية البيانات الشخصية",
       "title": "معلومات الخصوصية",

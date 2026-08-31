@@ -10,6 +10,7 @@ import SiteMotion from "@/components/site/siteMotion";
 import { siteConfig } from "@/config/site";
 import { siteTheme } from "@/config/theme";
 import { routing } from "@/i18n/routing";
+import { cookieConsentBootScript } from "@/lib/cookieConsent";
 
 import "../../globals.css";
 
@@ -152,6 +153,7 @@ export default async function SiteLayout({ children, params }) {
       suppressHydrationWarning
     >
       <head>
+        <script dangerouslySetInnerHTML={{ __html: cookieConsentBootScript }} />
         <script dangerouslySetInnerHTML={{ __html: siteMotionBootScript }} />
       </head>
       <body

@@ -94,6 +94,7 @@ export default function CookieConsent({ labels }) {
         <section
           aria-labelledby="cookie-consent-title"
           className="fixed inset-x-0 bottom-0 z-30 border-t border-ink/14 bg-surface-overlay px-5 py-5 shadow-[0_-18px_60px_rgb(var(--shadow-rgb)_/_0.08)] sm:inset-x-auto sm:bottom-5 sm:start-5 sm:w-[min(42rem,calc(100vw-2.5rem))] sm:border"
+          data-cookie-consent-banner
           role="region"
         >
           <div className="flex items-start gap-4">

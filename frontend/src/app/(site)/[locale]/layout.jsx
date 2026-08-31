@@ -148,6 +148,7 @@ export default async function SiteLayout({ children, params }) {
       dir={rtlLocales.has(locale) ? "rtl" : "ltr"}
       className={geistSans.variable}
       data-scroll-behavior="smooth"
+      data-site-scale={siteTheme.scale}
       data-site-theme={siteTheme.name}
       style={siteTheme.style}
       suppressHydrationWarning

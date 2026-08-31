@@ -43,8 +43,27 @@ const siteThemes = {
   },
 };
 
+const siteScalePresets = {
+  standard: {
+    rootFontSize: "16px",
+    textSm: "0.875rem",
+    textSmLineHeight: "1.25rem",
+    textXs: "0.75rem",
+    textXsLineHeight: "1rem",
+  },
+  accessible: {
+    rootFontSize: "clamp(17px, calc(16.4px + 0.12vw), 18px)",
+    textSm: "0.95rem",
+    textSmLineHeight: "1.5rem",
+    textXs: "0.8rem",
+    textXsLineHeight: "1.25rem",
+  },
+};
+
 const defaultThemeName = "monochrome";
 const requestedThemeName = process.env.NEXT_PUBLIC_SITE_THEME;
+const defaultSiteScaleName = "accessible";
+const requestedSiteScaleName = process.env.NEXT_PUBLIC_SITE_SCALE;
 
 export const activeSiteThemeName = Object.hasOwn(siteThemes, requestedThemeName)
   ? requestedThemeName
@@ -52,9 +71,19 @@ export const activeSiteThemeName = Object.hasOwn(siteThemes, requestedThemeName)
 
 const activeTheme = siteThemes[activeSiteThemeName];
 
+export const activeSiteScaleName = Object.hasOwn(
+  siteScalePresets,
+  requestedSiteScaleName,
+)
+  ? requestedSiteScaleName
+  : defaultSiteScaleName;
+
+const activeSiteScale = siteScalePresets[activeSiteScaleName];
+
 export const siteTheme = {
   ...activeTheme,
   name: activeSiteThemeName,
+  scale: activeSiteScaleName,
   style: {
     "--background": activeTheme.colors.background,
     "--foreground": activeTheme.colors.foreground,
@@ -69,5 +98,10 @@ export const siteTheme = {
     "--surface": activeTheme.colors.surface,
     "--surface-overlay": activeTheme.colors.surfaceOverlay,
     "--surface-soft": activeTheme.colors.surfaceSoft,
+    "--site-root-font-size": activeSiteScale.rootFontSize,
+    "--site-text-sm": activeSiteScale.textSm,
+    "--site-text-sm-line-height": activeSiteScale.textSmLineHeight,
+    "--site-text-xs": activeSiteScale.textXs,
+    "--site-text-xs-line-height": activeSiteScale.textXsLineHeight,
   },
 };

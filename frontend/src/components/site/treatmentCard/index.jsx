@@ -34,12 +34,12 @@ export default function TreatmentCard({
             <p className="mt-2 max-w-xl text-sm leading-6 text-ink/52">
               {summary}
             </p>
-            <span className="mt-3 inline-flex text-xs font-medium text-primary">
+            <span className="mt-3 inline-flex text-sm font-medium text-primary">
               {action}
             </span>
           </div>
-          <span className="grid size-9 place-items-center border border-ink/14 transition-colors duration-200 ease-[cubic-bezier(.22,1,.36,1)] group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground">
-            <ArrowUpRight aria-hidden="true" className="size-4" weight="light" />
+          <span className="grid size-10 place-items-center border border-ink/14 transition-colors duration-200 ease-[cubic-bezier(.22,1,.36,1)] group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground">
+            <ArrowUpRight aria-hidden="true" className="size-5" weight="light" />
           </span>
         </div>
       </Link>

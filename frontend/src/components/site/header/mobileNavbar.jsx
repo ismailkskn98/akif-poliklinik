@@ -135,7 +135,7 @@ export default function MobileNavbar({
 
         <nav aria-label={labels.menu} className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain px-5 pb-7 pt-6 sm:px-7 sm:pb-9 sm:pt-8">
           <div>
-            <div data-mobile-nav-item className="mb-4 text-[0.62rem] font-semibold tracking-[0.16em] text-ink/40 uppercase" style={{ "--mobile-nav-delay": "35ms" }}>
+            <div data-mobile-nav-item className="mb-4 text-xs font-semibold tracking-[0.14em] text-ink/58 uppercase" style={{ "--mobile-nav-delay": "35ms" }}>
               <span>{labels.menu}</span>
             </div>
 
@@ -190,7 +190,7 @@ export default function MobileNavbar({
             </div>
             <div className="flex items-center justify-between gap-3">
               <LanguageMenu currentLocale={currentLocale} label={labels.languages} align="start" variant="mobile" />
-              <a href={phone.href} className="group inline-flex min-h-11 items-center gap-3 bg-primary px-4 text-sm font-medium text-primary-foreground">
+              <a href={phone.href} className="group inline-flex min-h-12 items-center gap-3 bg-primary px-5 text-base font-medium text-primary-foreground">
                 {labels.call}
                 <ArrowUpRight
                   aria-hidden="true"

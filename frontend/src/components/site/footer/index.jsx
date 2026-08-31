@@ -17,7 +17,7 @@ export default async function Footer({ locale }) {
   return (
     <footer data-motion-reveal className="bg-ink-deep text-white">
       <div className="grid-container">
-        <div className="flex items-center justify-end border-b border-white/12 py-5 text-[0.65rem] font-semibold tracking-[0.16em] text-white/46 uppercase">
+        <div className="flex items-center justify-end border-b border-white/12 py-5 text-xs font-semibold tracking-[0.14em] text-white/52 uppercase">
           <a className="group inline-flex items-center gap-2 transition-colors duration-200 hover:text-white" href={settings.instagramUrl} target="_blank" rel="noreferrer">
             <InstagramLogo aria-hidden="true" className="size-3.5" weight="light" />
             Instagram
@@ -27,7 +27,7 @@ export default async function Footer({ locale }) {
 
         <div className="grid gap-10 py-11 sm:py-13 lg:grid-cols-[1.2fr_.8fr] lg:gap-16">
           <div>
-            <p className="text-[0.66rem] font-semibold tracking-[0.16em] text-white/42 uppercase">{content.ui.contact}</p>
+            <p className="text-xs font-semibold tracking-[0.14em] text-white/62 uppercase">{content.ui.contact}</p>
             <Link
               href="/"
               aria-label={siteConfig.name}
@@ -35,19 +35,19 @@ export default async function Footer({ locale }) {
             >
               <Image
                 alt=""
-                className="h-auto w-36 object-contain sm:w-44 lg:w-48"
+                className="h-auto w-40 object-contain sm:w-48 lg:w-52"
                 height={468}
-                sizes="(min-width: 1024px) 192px, (min-width: 640px) 176px, 144px"
+                sizes="(min-width: 1024px) 208px, (min-width: 640px) 192px, 160px"
                 src={siteTheme.logos.footer}
                 width={953}
               />
             </Link>
-            <address className="mt-6 max-w-md text-[0.82rem] leading-5.5 not-italic text-white/54">{settings.address}</address>
+            <address className="mt-6 max-w-md text-sm leading-6 not-italic text-white/60">{settings.address}</address>
           </div>
 
           <div className="grid content-start gap-8 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
             <div>
-              <p className="border-b border-white/12 pb-3 text-[0.64rem] font-semibold tracking-[0.14em] text-white/40 uppercase">{content.ui.call}</p>
+              <p className="border-b border-white/12 pb-3 text-xs font-semibold tracking-[0.12em] text-white/62 uppercase">{content.ui.call}</p>
               <div className="mt-3 grid">
                 {settings.phones.map((phone, index) => (
                   <a key={phone.href} href={phone.href} className={`py-1.5 text-sm transition-colors duration-200 hover:text-white ${index === 0 ? "text-white" : "text-white/52"}`}>
@@ -58,7 +58,7 @@ export default async function Footer({ locale }) {
             </div>
 
             <nav aria-label={translations("legalTitle")}>
-              <p className="border-b border-white/12 pb-3 text-[0.64rem] font-semibold tracking-[0.14em] text-white/40 uppercase">{translations("legalTitle")}</p>
+              <p className="border-b border-white/12 pb-3 text-xs font-semibold tracking-[0.12em] text-white/62 uppercase">{translations("legalTitle")}</p>
               <div className="mt-3 grid text-sm text-white/54">
                 <Link className="py-1.5 transition-colors duration-200 hover:text-white" href="/doctors">
                   {translations("doctors")}
@@ -77,7 +77,7 @@ export default async function Footer({ locale }) {
 
             <div className="flex min-h-[6.25rem] items-center justify-between gap-5 bg-white px-4 py-3 text-ink sm:col-span-2 sm:px-5 lg:col-span-1 xl:col-span-2">
               <div className="min-w-0">
-                <p className="text-[0.62rem] font-semibold tracking-[0.14em] text-primary uppercase">
+                <p className="text-xs font-semibold tracking-[0.12em] text-primary uppercase">
                   {translations("healthTourism")}
                 </p>
                 <p className="mt-2 text-sm font-medium tracking-[-0.015em] text-ink/68">
@@ -98,7 +98,7 @@ export default async function Footer({ locale }) {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 border-t border-white/12 py-6 text-xs text-white/32 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 border-t border-white/12 py-6 text-sm text-white/58 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. {translations("rights")}
           </p>

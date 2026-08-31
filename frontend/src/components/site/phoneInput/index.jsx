@@ -91,7 +91,7 @@ function CountrySelect({
     <Popover open={open} onOpenChange={handleOpenChange}>
       <PopoverTrigger
         {...triggerProps}
-        className="group flex min-h-11 shrink-0 items-center gap-2 border-e border-ink/12 pe-3 text-sm text-ink transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:text-primary data-[popup-open]:text-primary disabled:cursor-not-allowed disabled:opacity-50"
+        className="group flex min-h-12 shrink-0 items-center gap-2 border-e border-ink/12 pe-3 text-base text-ink transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:text-primary data-[popup-open]:text-primary disabled:cursor-not-allowed disabled:opacity-50"
         disabled={disabled || readOnly}
         dir="ltr"
         onBlur={onBlur}
@@ -128,7 +128,7 @@ function CountrySelect({
             aria-label={searchPlaceholder}
             autoComplete="off"
             autoFocus
-            className="min-h-12 min-w-0 flex-1 bg-transparent text-sm text-ink outline-none placeholder:text-ink/38"
+            className="min-h-12 min-w-0 flex-1 bg-transparent text-base text-ink outline-none placeholder:text-ink/50"
             onChange={(event) => setSearchQuery(event.target.value)}
             placeholder={searchPlaceholder}
             type="search"
@@ -149,7 +149,7 @@ function CountrySelect({
                 <button
                   aria-selected={isSelected}
                   className={cn(
-                    "flex min-h-10 w-full items-center gap-3 px-3 text-start text-sm text-ink/72 transition-colors duration-150 hover:bg-primary/7 hover:text-ink focus-visible:bg-primary/7",
+                    "flex min-h-11 w-full items-center gap-3 px-3 text-start text-sm text-ink/72 transition-colors duration-150 hover:bg-primary/7 hover:text-ink focus-visible:bg-primary/7",
                     isSelected && "bg-primary/8 text-primary",
                   )}
                   key={option.value}
@@ -161,7 +161,7 @@ function CountrySelect({
                     <CountryIcon country={option.value} label={option.label} />
                   </span>
                   <span className="min-w-0 flex-1 truncate">{option.label}</span>
-                  <span className="text-xs tabular-nums text-ink/42" dir="ltr">
+                  <span className="text-xs tabular-nums text-ink/58" dir="ltr">
                     +{getCountryCallingCode(option.value)}
                   </span>
                   <span className="grid size-4 shrink-0 place-items-center">
@@ -198,7 +198,7 @@ export default function PhoneNumberInput({
     <PhoneInput
       addInternationalOption={false}
       className={cn(
-        "flex min-h-11 w-full border-b bg-transparent transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] focus-within:border-primary",
+        "flex min-h-12 w-full border-b bg-transparent transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] focus-within:border-primary",
         error ? "border-destructive" : "border-ink/16",
       )}
       control={control}
@@ -221,7 +221,7 @@ export default function PhoneNumberInput({
         "aria-required": true,
         autoComplete: "tel",
         className:
-          "min-h-11 min-w-0 flex-1 bg-transparent ps-3 text-sm text-ink outline-none placeholder:text-ink/30",
+          "min-h-12 min-w-0 flex-1 bg-transparent ps-3 text-base text-ink outline-none placeholder:text-ink/50",
         dir: "ltr",
         id: "phone",
         inputMode: "tel",

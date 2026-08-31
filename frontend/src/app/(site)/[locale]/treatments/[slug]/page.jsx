@@ -133,7 +133,7 @@ export default async function TreatmentPage({ params }) {
       <JsonLd data={schema} />
 
       <header data-motion-intro className="grid-container pb-9 pt-8 sm:pb-11 sm:pt-12 lg:pt-16">
-        <nav aria-label={content.ui.breadcrumb} className="flex flex-wrap items-center gap-2 text-xs text-ink/45">
+        <nav aria-label={content.ui.breadcrumb} className="flex flex-wrap items-center gap-2 text-xs text-ink/58">
           <Link href="/" className="hover:text-primary">{content.ui.home}</Link>
           <span aria-hidden="true">/</span>
           <Link href="/treatments" className="hover:text-primary">{content.ui.treatments}</Link>
@@ -143,14 +143,14 @@ export default async function TreatmentPage({ params }) {
 
         <div className="mt-8 grid gap-7 lg:grid-cols-[1.4fr_.6fr] lg:items-end">
           <div>
-            <p className="text-[0.68rem] font-semibold tracking-[0.18em] text-primary uppercase">
+            <p className="text-xs font-semibold tracking-[0.16em] text-primary uppercase">
               {categoryTitle}
             </p>
             <h1 className="mt-4 max-w-5xl text-balance text-[clamp(2.8rem,7vw,6.25rem)] leading-[0.9] font-medium tracking-[-0.068em] text-ink">
               {title}
             </h1>
           </div>
-          <p className="border-s border-ink/12 ps-5 text-sm leading-6 text-ink/58">
+          <p className="border-s border-ink/12 ps-5 text-base leading-7 text-ink/62">
             {description}
           </p>
         </div>
@@ -172,7 +172,7 @@ export default async function TreatmentPage({ params }) {
 
       <section data-motion-reveal className="grid-container grid gap-9 py-14 sm:py-20 lg:grid-cols-[.68fr_1.32fr]">
         <div>
-          <p className="text-[0.68rem] font-semibold tracking-[0.18em] text-primary uppercase">
+          <p className="text-xs font-semibold tracking-[0.16em] text-primary uppercase">
             {content.ui.aftercareEyebrow}
           </p>
           <h2 className="mt-4 max-w-md text-balance text-3xl leading-[1.02] font-medium tracking-[-0.045em] sm:text-4xl">
@@ -204,7 +204,7 @@ export default async function TreatmentPage({ params }) {
               {content.ui.disclaimerTitle}
             </h2>
             <div>
-              <p className="text-sm leading-7 text-ink/58">
+              <p className="text-base leading-7 text-ink/62">
                 {content.ui.disclaimer}
               </p>
             </div>
@@ -243,7 +243,7 @@ export default async function TreatmentPage({ params }) {
           </p>
           <Link
             href={{ pathname: "/", hash: "contact" }}
-            className="inline-flex min-h-11 items-center border border-primary-foreground bg-primary-foreground px-4 text-sm font-medium text-primary transition-colors duration-200 ease-[cubic-bezier(.22,1,.36,1)] hover:bg-transparent hover:text-primary-foreground"
+            className="inline-flex min-h-12 items-center border border-primary-foreground bg-primary-foreground px-6 text-base font-medium text-primary transition-colors duration-200 ease-[cubic-bezier(.22,1,.36,1)] hover:bg-transparent hover:text-primary-foreground"
           >
             {content.ui.contact}
           </Link>

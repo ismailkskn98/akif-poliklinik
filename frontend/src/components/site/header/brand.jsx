@@ -17,15 +17,15 @@ export default function Brand({ variant = "compact" }) {
         alt=""
         className={`h-auto object-contain transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-0.5 ${
           isDisplay
-            ? "w-48 sm:w-[13.5rem] lg:w-56 xl:w-60"
-            : "w-32 sm:w-36"
+            ? "w-52 sm:w-56 lg:w-60 xl:w-64"
+            : "w-36 sm:w-40"
         }`}
         height={468}
         priority
         sizes={
           isDisplay
-            ? "(min-width: 1280px) 240px, (min-width: 1024px) 224px, (min-width: 640px) 216px, 192px"
-            : "(min-width: 640px) 144px, 128px"
+            ? "(min-width: 1280px) 256px, (min-width: 1024px) 240px, (min-width: 640px) 224px, 208px"
+            : "(min-width: 640px) 160px, 144px"
         }
         src={siteTheme.logos.header}
         width={953}

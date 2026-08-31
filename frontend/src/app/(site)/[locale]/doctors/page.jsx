@@ -27,7 +27,7 @@ export default async function DoctorsPage({ params }) {
   return (
     <article className="grid-container min-h-[34rem] py-12 sm:py-16 lg:py-20">
       <header data-motion-intro className="max-w-3xl border-b border-ink/12 pb-9 sm:pb-11">
-        <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
+        <p className="text-sm font-semibold tracking-[0.16em] text-primary uppercase">
           {translations("eyebrow")}
         </p>
         <h1 className="mt-4 text-balance text-4xl font-semibold tracking-[-0.045em] text-ink sm:text-5xl">
@@ -71,7 +71,7 @@ export default async function DoctorsPage({ params }) {
           ))}
         </section>
       ) : (
-        <p data-motion-intro className="mt-10 max-w-xl text-sm leading-6 text-ink/55">
+        <p data-motion-intro className="mt-10 max-w-xl text-base leading-7 text-ink/60">
           {translations("empty")}
         </p>
       )}

@@ -28,14 +28,14 @@ export default async function TreatmentsPage({ params }) {
   return (
     <div className="pb-16 sm:pb-20">
       <header data-motion-intro className="grid-container grid gap-6 pb-12 pt-10 sm:pb-16 sm:pt-14 lg:grid-cols-[.45fr_1.55fr] lg:pt-18">
-        <p className="text-[0.68rem] font-semibold tracking-[0.18em] text-primary uppercase">
+        <p className="text-xs font-semibold tracking-[0.16em] text-primary uppercase">
           {content.ui.treatmentsEyebrow}
         </p>
         <div>
           <h1 className="max-w-5xl text-balance text-[clamp(2.75rem,6vw,5.4rem)] leading-[0.93] font-medium tracking-[-0.064em] text-ink">
             {content.ui.treatmentsTitle}
           </h1>
-          <p className="mt-6 max-w-2xl text-sm leading-6 text-ink/55 sm:text-base sm:leading-7">
+          <p className="mt-6 max-w-2xl text-base leading-7 text-ink/60">
             {content.ui.treatmentsIntro}
           </p>
         </div>
@@ -55,7 +55,7 @@ export default async function TreatmentsPage({ params }) {
                 >
                   {title}
                 </h2>
-                <p className="max-w-xl text-sm leading-6 text-ink/52">
+                <p className="max-w-xl text-base leading-7 text-ink/58">
                   {description}
                 </p>
               </header>

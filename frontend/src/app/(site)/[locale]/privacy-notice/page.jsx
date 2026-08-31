@@ -29,7 +29,7 @@ export default async function PrivacyNoticePage({ params }) {
             <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
               {translations("eyebrow")}
             </p>
-            <p className="text-xs text-ink/44">{notice.effectiveDate}</p>
+            <p className="text-xs text-ink/58">{notice.effectiveDate}</p>
           </div>
           <h1 className="mt-5 max-w-3xl text-balance text-4xl font-semibold tracking-[-0.045em] sm:text-5xl">
             {translations("title")}
@@ -38,7 +38,7 @@ export default async function PrivacyNoticePage({ params }) {
             {notice.intro}
           </p>
           <dl className="mt-7 grid max-w-xl grid-cols-[auto_1fr] gap-x-4 border-t border-ink/12 pt-4 text-sm">
-            <dt className="text-ink/46">{notice.controllerLabel}</dt>
+            <dt className="text-ink/60">{notice.controllerLabel}</dt>
             <dd className="font-medium text-ink">{notice.controllerName}</dd>
           </dl>
         </header>
@@ -83,7 +83,7 @@ export default async function PrivacyNoticePage({ params }) {
               <p key={paragraph}>{paragraph}</p>
             ))}
             <address className="mt-2 border-t border-white/14 pt-4 not-italic">
-              <span className="block text-xs font-semibold tracking-[0.12em] text-white/38 uppercase">
+              <span className="block text-xs font-semibold tracking-[0.12em] text-white/58 uppercase">
                 {notice.application.addressLabel}
               </span>
               <span className="mt-2 block text-white/78">{settings.address}</span>
@@ -91,7 +91,7 @@ export default async function PrivacyNoticePage({ params }) {
           </div>
         </section>
 
-        <p className="mt-5 text-xs leading-5 text-ink/42">
+        <p className="mt-5 text-xs leading-5 text-ink/58">
           {notice.translationNotice}
         </p>
       </div>

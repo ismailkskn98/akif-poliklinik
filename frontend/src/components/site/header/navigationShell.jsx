@@ -42,9 +42,9 @@ export default function NavigationShell({ currentLocale, labels, settings }) {
             <LanguageMenu currentLocale={currentLocale} label={labels.languages} />
             <a
               href={settings.phones[0].href}
-              className="flex h-full items-center gap-2 border-s border-ink/10 bg-primary px-4 text-[0.7rem] font-medium text-primary-foreground transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:bg-primary-dark"
+              className="flex h-full items-center gap-2.5 border-s border-ink/10 bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:bg-primary-dark"
             >
-              <Phone aria-hidden="true" className="size-3.5" weight="light" />
+              <Phone aria-hidden="true" className="size-4" weight="light" />
               {labels.call}
             </a>
           </div>

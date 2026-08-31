@@ -20,9 +20,9 @@ export default function LanguageMenu({
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger
-        className={`group flex min-h-10 items-center gap-2 text-[0.68rem] font-medium tracking-[0.08em] text-ink/62 uppercase transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:text-ink data-[popup-open]:text-primary ${
+        className={`group flex min-h-11 items-center gap-2.5 text-xs font-medium tracking-[0.08em] text-ink/62 uppercase transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:text-ink data-[popup-open]:text-primary ${
           variant === "mobile"
-            ? "h-11 px-0"
+            ? "h-12 px-0"
             : variant === "mobile-header"
               ? "h-full w-[4.5rem] justify-start"
               : "h-full border-s border-ink/12 px-3"
@@ -43,10 +43,10 @@ export default function LanguageMenu({
         className="w-[min(22rem,calc(100vw-2rem))] p-0"
       >
         <div className="flex items-center justify-between border-b border-ink/12 px-5 py-4">
-          <p className="text-[0.66rem] font-semibold tracking-[0.16em] text-ink/48 uppercase">
+          <p className="text-xs font-semibold tracking-[0.14em] text-ink/58 uppercase">
             {label}
           </p>
-          <span className="text-[0.62rem] tracking-[0.12em] text-primary uppercase">
+          <span className="text-xs tracking-[0.1em] text-primary uppercase">
             {currentLocale}
           </span>
         </div>
@@ -59,7 +59,7 @@ export default function LanguageMenu({
               hrefLang={locale}
               aria-current={locale === currentLocale ? "page" : undefined}
               onClick={() => setOpen(false)}
-              className="flex min-h-11 items-center justify-between border-b border-transparent px-3 text-sm text-ink/62 transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:border-primary/40 hover:text-ink aria-[current=page]:border-primary aria-[current=page]:text-primary"
+              className="flex min-h-12 items-center justify-between border-b border-transparent px-3 text-sm text-ink/62 transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:border-primary/40 hover:text-ink aria-[current=page]:border-primary aria-[current=page]:text-primary"
             >
               <span>{localeLabels[locale]}</span>
               {locale === currentLocale ? (

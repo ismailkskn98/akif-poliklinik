@@ -4,6 +4,13 @@
     "title": "Akif Poliklinik | Salute e medicina estetica",
     "description": "Consulta i recapiti di Akif Poliklinik e invia la tua richiesta di consulenza sanitaria."
   },
+  "NotFound": {
+    "label": "Pagina non trovata",
+    "title": "Non abbiamo trovato questa pagina.",
+    "description": "Il collegamento potrebbe essere cambiato o la pagina potrebbe essere stata rimossa. Torna alla home per continuare.",
+    "home": "Torna alla home",
+    "doctors": "Scopri i nostri medici"
+  },
   "Navigation": {
     "ariaLabel": "Navigazione principale",
     "home": "Home",
@@ -73,7 +80,6 @@
     "mapTitle": "Sede British Esthetic a Nişantaşı"
   },
   "Footer": {
-    "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
     "updatedAt": "Ultimo aggiornamento: aprile 2026",
     "legalTitle": "Link",
     "healthTourism": "Turismo sanitario internazionale",
@@ -116,7 +122,8 @@
     "doctors": {
       "eyebrow": "Team medico",
       "title": "I nostri medici",
-      "description": "Le informazioni sui nostri medici saranno pubblicate qui a breve."
+      "description": "Conosci il team medico di Akif Poliklinik.",
+      "empty": "Le informazioni sui nostri medici saranno pubblicate qui a breve."
     },
     "privacy": {
       "eyebrow": "Protezione dei dati personali",
@@ -126,10 +133,10 @@
     },
     "authorization": {
       "eyebrow": "Documenti aziendali",
-      "title": "Autorizzazione al turismo sanitario internazionale",
-      "description": "Puoi consultare il documento di autorizzazione al turismo sanitario internazionale n. AK-0995.",
+      "title": "Documento di autorizzazione di Akif Poliklinik",
+      "description": "Puoi consultare il documento di autorizzazione aggiornato di Akif Poliklinik.",
       "openDocument": "Apri il documento in una nuova scheda",
-      "imageAlt": "Autorizzazione al turismo sanitario internazionale, documento AK-0995"
+      "imageAlt": "Documento di autorizzazione di Akif Poliklinik"
     }
   }
 }

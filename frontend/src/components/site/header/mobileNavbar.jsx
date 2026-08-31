@@ -59,7 +59,12 @@ function MenuGlyph({ open }) {
   );
 }
 
-export default function MobileNavbar({ currentLocale, labels, phone }) {
+export default function MobileNavbar({
+  currentLocale,
+  hasAuthorizationDocument,
+  labels,
+  phone,
+}) {
   const router = useRouter();
   const pendingHrefRef = useRef(null);
   const [open, setOpen] = useState(false);
@@ -159,18 +164,20 @@ export default function MobileNavbar({ currentLocale, labels, phone }) {
                   weight="light"
                 />
               </Link>
-              <Link
-                href="/authorization-document"
-                onClick={(event) => closeThenNavigate(event, "/authorization-document")}
-                className="group flex min-h-14 items-center justify-between border-b border-ink/12 text-xl font-medium tracking-[-0.04em] transition-colors duration-200 hover:text-primary sm:text-2xl"
-              >
-                {labels.authorization}
-                <ArrowUpRight
-                  aria-hidden="true"
-                  className="size-4 text-ink/30 transition-[transform,color] duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
-                  weight="light"
-                />
-              </Link>
+              {hasAuthorizationDocument ? (
+                <Link
+                  href="/authorization-document"
+                  onClick={(event) => closeThenNavigate(event, "/authorization-document")}
+                  className="group flex min-h-14 items-center justify-between border-b border-ink/12 text-xl font-medium tracking-[-0.04em] transition-colors duration-200 hover:text-primary sm:text-2xl"
+                >
+                  {labels.authorization}
+                  <ArrowUpRight
+                    aria-hidden="true"
+                    className="size-4 text-ink/30 transition-[transform,color] duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
+                    weight="light"
+                  />
+                </Link>
+              ) : null}
             </div>
 
           </div>

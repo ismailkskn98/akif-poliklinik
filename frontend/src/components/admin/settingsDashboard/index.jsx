@@ -1,14 +1,31 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
+import { useAdminSession } from "@/components/admin/adminShell";
 import PasswordChangeForm from "@/components/admin/passwordChangeForm";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { toast } from "@/components/ui/toast";
-import { adminApiRequest, adminSessionKey } from "@/lib/adminApi";
+import { adminApiRequest } from "@/lib/adminApi";
+import {
+  resolveBackendAssetUrl,
+  shouldBypassImageOptimization,
+} from "@/lib/imageSource";
 
 const MAX_PHONE_NUMBERS = 8;
+const MAX_DOCUMENT_SIZE = 8 * 1024 * 1024;
+const DOCUMENT_IMAGE_TYPES = new Set([
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+]);
 const SAVED_FEEDBACK_DURATION = 2000;
 const inputClassName =
   "mt-2 min-h-10 w-full rounded-md border border-black/12 bg-white px-3 text-sm outline-none transition-colors focus:border-[#516fc9] focus:ring-2 focus:ring-[#516fc9]/12";
@@ -22,48 +39,41 @@ const emptySettings = {
   updatedAt: null,
 };
 
+function formatFileSize(bytes) {
+  return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+}
+
 export default function SettingsDashboard() {
-  const router = useRouter();
-  const sessionRef = useRef(null);
+  const { logout, token } = useAdminSession();
+  const documentInputRef = useRef(null);
+  const documentPreviewUrlRef = useRef("");
   const savedFeedbackTimeoutRef = useRef(null);
   const [settings, setSettings] = useState(emptySettings);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [isRemovingDocument, setIsRemovingDocument] = useState(false);
+  const [isRemoveDocumentDialogOpen, setIsRemoveDocumentDialogOpen] =
+    useState(false);
   const [isSaved, setIsSaved] = useState(false);
-  const [sessionToken, setSessionToken] = useState("");
   const [selectedDocument, setSelectedDocument] = useState(null);
+  const [selectedDocumentPreviewUrl, setSelectedDocumentPreviewUrl] =
+    useState("");
   const [status, setStatus] = useState({ type: "", message: "" });
+  const publishedDocumentUrl = resolveBackendAssetUrl(
+    settings.authorizationDocumentUrl,
+  );
+  const documentPreviewUrl =
+    selectedDocumentPreviewUrl || publishedDocumentUrl;
 
   useEffect(() => {
-    const storedSession = sessionStorage.getItem(adminSessionKey);
-
-    if (!storedSession) {
-      router.replace("/admin/login");
-      return;
-    }
-
-    let parsedSession;
-
-    try {
-      parsedSession = JSON.parse(storedSession);
-    } catch {
-      sessionStorage.removeItem(adminSessionKey);
-      router.replace("/admin/login");
-      return;
-    }
-
-    sessionRef.current = parsedSession;
-
-    adminApiRequest("/site-settings", { token: parsedSession.token })
+    adminApiRequest("/site-settings", { token })
       .then((siteSettings) => {
-        setSessionToken(parsedSession.token);
         setSettings(siteSettings);
       })
       .catch((error) => {
         if (error.status === 401) {
-          sessionStorage.removeItem(adminSessionKey);
-          router.replace("/admin/login");
+          logout();
           return;
         }
 
@@ -75,16 +85,65 @@ export default function SettingsDashboard() {
         });
       })
       .finally(() => setIsLoading(false));
-  }, [router]);
+  }, [logout, token]);
 
   useEffect(
     () => () => {
       if (savedFeedbackTimeoutRef.current) {
         clearTimeout(savedFeedbackTimeoutRef.current);
       }
+
+      if (documentPreviewUrlRef.current) {
+        URL.revokeObjectURL(documentPreviewUrlRef.current);
+      }
     },
     [],
   );
+
+  function clearSelectedDocument() {
+    if (documentPreviewUrlRef.current) {
+      URL.revokeObjectURL(documentPreviewUrlRef.current);
+      documentPreviewUrlRef.current = "";
+    }
+
+    setSelectedDocument(null);
+    setSelectedDocumentPreviewUrl("");
+
+    if (documentInputRef.current) {
+      documentInputRef.current.value = "";
+    }
+  }
+
+  function selectDocument(file) {
+    if (!file) {
+      clearSelectedDocument();
+      return;
+    }
+
+    if (!DOCUMENT_IMAGE_TYPES.has(file.type) || file.size > MAX_DOCUMENT_SIZE) {
+      const message = "JPG, PNG veya WebP biçiminde, en fazla 8 MB bir görsel seçin.";
+
+      if (documentInputRef.current) {
+        documentInputRef.current.value = "";
+      }
+
+      setStatus({ type: "error", message });
+      toast.add({
+        title: "Belge görselini kontrol edin",
+        description: message,
+        type: "error",
+      });
+      return;
+    }
+
+    clearSelectedDocument();
+    setStatus({ type: "", message: "" });
+
+    const previewUrl = URL.createObjectURL(file);
+    documentPreviewUrlRef.current = previewUrl;
+    setSelectedDocument(file);
+    setSelectedDocumentPreviewUrl(previewUrl);
+  }
 
   function updatePhone(index, value) {
     setSettings((currentSettings) => ({
@@ -150,7 +209,7 @@ export default function SettingsDashboard() {
     try {
       const updatedSettings = await adminApiRequest("/site-settings/update", {
         method: "PUT",
-        token: sessionRef.current?.token,
+        token,
         body: {
           instagramUrl: settings.instagramUrl,
           phoneNumbers: settings.phoneNumbers,
@@ -210,10 +269,10 @@ export default function SettingsDashboard() {
     try {
       const updatedSettings = await adminApiRequest(
         "/site-settings/authorization-document",
-        { method: "POST", token: sessionRef.current?.token, body: formData },
+        { method: "POST", token, body: formData },
       );
       setSettings(updatedSettings);
-      setSelectedDocument(null);
+      clearSelectedDocument();
       form.reset();
       setStatus({ type: "success", message: "Yetki belgesi güncellendi." });
       toast.add({
@@ -233,40 +292,49 @@ export default function SettingsDashboard() {
     }
   }
 
-  function logout() {
-    sessionStorage.removeItem(adminSessionKey);
-    router.replace("/admin/login");
+  async function removeDocument() {
+    setIsRemovingDocument(true);
+    setStatus({ type: "", message: "" });
+
+    try {
+      const updatedSettings = await adminApiRequest(
+        "/site-settings/authorization-document",
+        { method: "DELETE", token },
+      );
+
+      setSettings(updatedSettings);
+      setIsRemoveDocumentDialogOpen(false);
+      setStatus({
+        type: "success",
+        message: "Yetki belgesi kaldırıldı. Yeni belge yüklenene kadar sitede gösterilmeyecek.",
+      });
+      toast.add({
+        title: "Yetki belgesi kaldırıldı",
+        description: "Belge bağlantısı ve sayfası siteden gizlendi.",
+        type: "success",
+      });
+    } catch (error) {
+      setStatus({ type: "error", message: error.message });
+      toast.add({
+        title: "Belge kaldırılamadı",
+        description: error.message,
+        type: "error",
+      });
+    } finally {
+      setIsRemovingDocument(false);
+    }
   }
 
   if (isLoading) {
     return (
-      <main className="grid min-h-screen place-items-center px-5 text-sm text-black/50">
+      <main className="grid min-h-[24rem] place-items-center px-5 text-sm text-black/50">
         Site ayarları yükleniyor…
       </main>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#fafafa]">
-      <header className="border-b border-black/8 bg-white">
-        <div className="mx-auto flex min-h-14 max-w-6xl items-center justify-between gap-4 px-5">
-          <div>
-            <p className="text-sm font-semibold">Akif Poliklinik</p>
-            <p className="text-xs text-black/45">Site yönetimi</p>
-          </div>
-          <div className="flex items-center gap-3">
-            <button
-              className="rounded-md border border-black/10 bg-white px-3 py-2 text-xs font-medium transition-colors hover:bg-black/[.04]"
-              onClick={logout}
-              type="button"
-            >
-              Çıkış yap
-            </button>
-          </div>
-        </div>
-      </header>
-
-      <main className="mx-auto max-w-6xl px-5 py-8 sm:py-12">
+    <main className="mx-auto max-w-6xl px-5 py-8 sm:py-12">
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-xs font-medium tracking-[0.14em] text-black/42 uppercase">
@@ -280,14 +348,6 @@ export default function SettingsDashboard() {
               yönetilir. Çeviriler ve sayfa içerikleri kod içinde statik kalır.
             </p>
           </div>
-          <a
-            className="text-xs font-medium text-[#516fc9] hover:underline"
-            href="/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Siteyi görüntüle ↗
-          </a>
         </div>
 
         <div className="grid gap-5 lg:grid-cols-[1.15fr_.85fr]">
@@ -440,47 +500,113 @@ export default function SettingsDashboard() {
             </div>
 
             <div className="relative mt-6 aspect-[4/3] overflow-hidden rounded-md border border-black/8 bg-black/[.025]">
-              {settings.authorizationDocumentUrl ? (
+              {documentPreviewUrl ? (
                 <Image
-                  alt="Mevcut yetki belgesi"
+                  alt={
+                    selectedDocumentPreviewUrl
+                      ? "Seçilen yetki belgesi önizlemesi"
+                      : "Yayındaki yetki belgesi"
+                  }
                   className="object-contain p-3"
                   fill
                   sizes="(max-width: 1024px) 100vw, 35vw"
-                  src={settings.authorizationDocumentUrl}
+                  src={documentPreviewUrl}
+                  unoptimized={
+                    Boolean(selectedDocumentPreviewUrl) ||
+                    shouldBypassImageOptimization(documentPreviewUrl)
+                  }
                 />
+              ) : (
+                <div className="absolute inset-0 grid place-items-center px-6 text-center">
+                  <div>
+                    <p className="text-sm font-medium text-black/58">
+                      Yayında bir yetki belgesi yok
+                    </p>
+                    <p className="mt-1 text-xs leading-5 text-black/38">
+                      Belge yüklenene kadar site menüsünde ve belge sayfasında gösterilmez.
+                    </p>
+                  </div>
+                </div>
+              )}
+              {selectedDocumentPreviewUrl ? (
+                <span className="absolute start-3 top-3 rounded-sm border border-[#516fc9]/20 bg-white/95 px-2.5 py-1 text-[0.65rem] font-semibold tracking-[0.08em] text-[#516fc9] uppercase shadow-[0_1px_3px_rgba(0,0,0,.06)]">
+                  Yeni belge önizlemesi
+                </span>
+              ) : settings.authorizationDocumentUrl ? (
+                <span className="absolute start-3 top-3 rounded-sm border border-black/8 bg-white/95 px-2.5 py-1 text-[0.65rem] font-semibold tracking-[0.08em] text-black/48 uppercase shadow-[0_1px_3px_rgba(0,0,0,.06)]">
+                  Yayındaki belge
+                </span>
               ) : null}
             </div>
 
             <form className="mt-5" onSubmit={uploadDocument}>
-              <label
-                className="text-xs font-medium text-black/58"
-                htmlFor="document"
-              >
+              <p className="text-xs font-medium text-black/58">
                 Yeni belge görseli
-              </label>
+              </p>
               <input
                 accept="image/jpeg,image/png,image/webp"
-                className="mt-2 block w-full rounded-md border border-black/10 bg-white p-2 text-xs file:me-3 file:rounded file:border-0 file:bg-black/[.06] file:px-3 file:py-2 file:text-xs file:font-medium"
+                className="sr-only"
                 id="document"
-                onChange={(event) =>
-                  setSelectedDocument(event.target.files?.[0] || null)
-                }
+                onChange={(event) => selectDocument(event.target.files?.[0] || null)}
+                ref={documentInputRef}
                 type="file"
               />
-              <button
-                className="mt-4 min-h-10 rounded-md border border-black/12 bg-white px-4 text-sm font-medium transition-colors hover:border-[#516fc9] hover:text-[#516fc9] disabled:cursor-not-allowed disabled:opacity-50"
-                disabled={isUploading}
-                type="submit"
-              >
-                {isUploading ? "Yükleniyor…" : "Belgeyi yükle"}
-              </button>
+              <div className="mt-2 flex min-h-16 flex-col gap-3 rounded-md border border-black/10 bg-white px-3.5 py-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-medium text-black/72">
+                    {selectedDocument
+                      ? selectedDocument.name
+                      : "Yüklenecek belgeyi seçin"}
+                  </p>
+                  <p className="mt-1 text-xs text-black/38">
+                    {selectedDocument
+                      ? `${formatFileSize(selectedDocument.size)} · Yüklemeden önce önizlemeyi kontrol edin`
+                      : "JPG, PNG veya WebP · en fazla 8 MB"}
+                  </p>
+                </div>
+                <label
+                  className="inline-flex min-h-9 shrink-0 cursor-pointer items-center justify-center rounded-md border border-black/12 bg-white px-3 text-xs font-medium text-black/68 transition-colors hover:border-[#516fc9] hover:text-[#516fc9]"
+                  htmlFor="document"
+                >
+                  {selectedDocument ? "Dosyayı değiştir" : "Dosya seç"}
+                </label>
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <button
+                  className="min-h-10 rounded-md bg-[#1f1f1f] px-4 text-sm font-medium text-white transition-colors hover:bg-[#516fc9] disabled:cursor-not-allowed disabled:bg-black/8 disabled:text-black/32"
+                  disabled={!selectedDocument || isUploading || isRemovingDocument}
+                  type="submit"
+                >
+                  {isUploading ? "Yükleniyor…" : "Belgeyi yükle"}
+                </button>
+                {selectedDocument ? (
+                  <button
+                    className="min-h-10 rounded-md border border-black/12 bg-white px-4 text-sm font-medium text-black/58 transition-colors hover:border-black/24 hover:text-black"
+                    disabled={isUploading}
+                    onClick={clearSelectedDocument}
+                    type="button"
+                  >
+                    Seçimi iptal et
+                  </button>
+                ) : null}
+                {settings.authorizationDocumentUrl ? (
+                  <button
+                    className="min-h-10 rounded-md border border-red-200 bg-white px-4 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
+                    disabled={isUploading || isRemovingDocument}
+                    onClick={() => setIsRemoveDocumentDialogOpen(true)}
+                    type="button"
+                  >
+                    Belgeyi kaldır
+                  </button>
+                ) : null}
+              </div>
             </form>
           </section>
         </div>
 
         <PasswordChangeForm
           onSessionEnded={logout}
-          token={sessionToken}
+          token={token}
         />
 
         <div
@@ -495,7 +621,37 @@ export default function SettingsDashboard() {
         >
           {status.message}
         </div>
-      </main>
-    </div>
+
+        <Dialog
+          onOpenChange={setIsRemoveDocumentDialogOpen}
+          open={isRemoveDocumentDialogOpen}
+        >
+          <DialogContent
+            className="bg-white p-5 sm:rounded-xl sm:p-6"
+            variant="responsive"
+          >
+            <DialogTitle className="text-lg font-semibold tracking-[-0.02em]">
+              Yetki belgesi kaldırılsın mı?
+            </DialogTitle>
+            <DialogDescription className="mt-2 text-sm leading-6 text-black/52">
+              Belge, site menüsünden ve belge sayfasından hemen gizlenir. Daha sonra
+              yeni belgeyi bu alandan tekrar yükleyebilirsiniz.
+            </DialogDescription>
+            <div className="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+              <DialogClose className="min-h-10 rounded-lg border border-black/10 px-4 text-sm font-medium text-black/68 transition-colors hover:bg-black/[.025]">
+                Vazgeç
+              </DialogClose>
+              <button
+                className="min-h-10 rounded-lg bg-red-600 px-4 text-sm font-medium text-white transition-colors hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-50"
+                disabled={isRemovingDocument}
+                onClick={removeDocument}
+                type="button"
+              >
+                {isRemovingDocument ? "Kaldırılıyor…" : "Belgeyi kaldır"}
+              </button>
+            </div>
+          </DialogContent>
+        </Dialog>
+    </main>
   );
 }

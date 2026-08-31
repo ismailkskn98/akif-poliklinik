@@ -4,6 +4,13 @@
     "title": "Akif Poliklinik | Sağlık ve Estetik Hizmetleri",
     "description": "Akif Poliklinik iletişim bilgilerine ulaşın ve sağlık danışmanlığı talebinizi iletin."
   },
+  "NotFound": {
+    "label": "Sayfa bulunamadı",
+    "title": "Aradığınız sayfa bulunamadı.",
+    "description": "Bağlantı değişmiş veya sayfa kaldırılmış olabilir. Ana sayfaya dönerek devam edebilirsiniz.",
+    "home": "Ana sayfaya dön",
+    "doctors": "Doktorlarımızı incele"
+  },
   "Navigation": {
     "ariaLabel": "Ana navigasyon",
     "home": "Anasayfa",
@@ -73,7 +80,6 @@
     "mapTitle": "British Esthetic Nişantaşı konumu"
   },
   "Footer": {
-    "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
     "updatedAt": "Güncellenme Tarihi: Nisan 2026",
     "legalTitle": "Bağlantılar",
     "healthTourism": "Uluslararası sağlık turizmi",
@@ -116,7 +122,8 @@
     "doctors": {
       "eyebrow": "Hekim kadromuz",
       "title": "Doktorlarımız",
-      "description": "Doktor kadromuza ilişkin bilgiler yakında burada paylaşılacaktır."
+      "description": "Akif Poliklinik'te hizmet veren hekim kadromuzu tanıyın.",
+      "empty": "Doktor kadromuza ilişkin bilgiler yakında burada paylaşılacaktır."
     },
     "privacy": {
       "eyebrow": "Kişisel verilerin korunması",
@@ -126,10 +133,10 @@
     },
     "authorization": {
       "eyebrow": "Kurumsal belgeler",
-      "title": "Uluslararası Sağlık Turizmi Yetki Belgesi",
-      "description": "AK-0995 belge numaralı Uluslararası Sağlık Turizmi Yetki Belgesi’ni inceleyebilirsiniz.",
+      "title": "Akif Poliklinik Yetki Belgesi",
+      "description": "Akif Poliklinik’in güncel yetki belgesini inceleyebilirsiniz.",
       "openDocument": "Belgeyi yeni sekmede aç",
-      "imageAlt": "Uluslararası Sağlık Turizmi Yetki Belgesi, belge numarası AK-0995"
+      "imageAlt": "Akif Poliklinik yetki belgesi"
     }
   }
 }

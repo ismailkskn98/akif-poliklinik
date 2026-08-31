@@ -20,7 +20,19 @@
     "invalidMapUrl": "Geçerli bir Google Maps paylaşım bağlantısı girin. Konumu Google Maps'te açıp Paylaş > Bağlantıyı kopyala adımlarını kullanın.",
     "tooManyPhoneNumbers": "En fazla 8 telefon numarası kaydedebilirsiniz.",
     "invalidDocument": "Yetki belgesi JPG, PNG veya WebP biçiminde ve en fazla 8 MB olmalıdır.",
-    "documentUploaded": "Yetki belgesi güncellendi."
+    "documentUploaded": "Yetki belgesi güncellendi.",
+    "documentRemoved": "Yetki belgesi kaldırıldı."
+  },
+  "doctors": {
+    "publicListed": "Doktor kadrosu getirildi.",
+    "listed": "Doktorlar listelendi.",
+    "created": "Doktor eklendi.",
+    "updated": "Doktor güncellendi.",
+    "deleted": "Doktor silindi.",
+    "notFound": "Doktor bulunamadı.",
+    "invalidFields": "Unvan, ad soyad, sıra ve yayın durumunu kontrol edin.",
+    "imageRequired": "Doktor fotoğrafı zorunludur.",
+    "invalidImage": "Doktor fotoğrafı JPG, PNG veya WebP biçiminde ve en fazla 8 MB olmalıdır."
   },
   "auth": {
     "loggedIn": "Giriş başarılı.",

@@ -1,6 +1,6 @@
 import { Link } from "@/i18n/navigation";
 
-export default function DesktopNavbar({ labels }) {
+export default function DesktopNavbar({ hasAuthorizationDocument, labels }) {
   return (
     <nav aria-label={labels.ariaLabel} className="hidden items-center lg:flex">
       <Link className="nav-link" href="/">
@@ -12,9 +12,11 @@ export default function DesktopNavbar({ labels }) {
       <Link className="nav-link" href="/privacy-notice">
         {labels.privacy}
       </Link>
-      <Link className="nav-link" href="/authorization-document">
-        {labels.authorization}
-      </Link>
+      {hasAuthorizationDocument ? (
+        <Link className="nav-link" href="/authorization-document">
+          {labels.authorization}
+        </Link>
+      ) : null}
     </nav>
   );
 }

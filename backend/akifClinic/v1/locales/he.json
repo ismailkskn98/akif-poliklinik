@@ -22,6 +22,17 @@
     "invalidDocument": "מסמך ההרשאה חייב להיות תמונת JPG, PNG או WebP בגודל של עד 8 MB.",
     "documentUploaded": "מסמך ההרשאה עודכן."
   },
+  "doctors": {
+    "publicListed": "הצוות הרפואי נטען.",
+    "listed": "רשימת הרופאים נטענה.",
+    "created": "הרופא נוסף.",
+    "updated": "פרטי הרופא עודכנו.",
+    "deleted": "הרופא נמחק.",
+    "notFound": "הרופא לא נמצא.",
+    "invalidFields": "יש לבדוק את התואר, השם המלא, הסדר וסטטוס הפרסום.",
+    "imageRequired": "נדרשת תמונת רופא.",
+    "invalidImage": "התמונה חייבת להיות JPG, PNG או WebP ובגודל של עד 8 MB."
+  },
   "auth": {
     "loggedIn": "ההתחברות הצליחה.",
     "missingCredentials": "דוא״ל וסיסמה הם שדות חובה.",

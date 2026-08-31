@@ -1,7 +1,9 @@
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { createPageMetadata } from "@/lib/seo";
+import { shouldBypassImageOptimization } from "@/lib/imageSource";
 import { getPublicSiteSettings } from "@/lib/siteSettings";
 
 export async function generateMetadata({ params }) {
@@ -22,6 +24,10 @@ export default async function AuthorizationDocumentPage({ params }) {
     namespace: "Pages.authorization",
   });
   const settings = await getPublicSiteSettings();
+
+  if (!settings.authorizationDocumentUrl) {
+    notFound();
+  }
 
   return (
     <article data-motion-intro className="grid-container max-w-5xl py-12 sm:py-16">
@@ -49,6 +55,9 @@ export default async function AuthorizationDocumentPage({ params }) {
           height={1126}
           priority
           src={settings.authorizationDocumentUrl}
+          unoptimized={shouldBypassImageOptimization(
+            settings.authorizationDocumentUrl,
+          )}
           width={1500}
         />
       </div>

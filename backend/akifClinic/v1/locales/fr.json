@@ -22,6 +22,17 @@
     "invalidDocument": "Le document d’autorisation doit être une image JPG, PNG ou WebP de 8 Mo maximum.",
     "documentUploaded": "Le document d’autorisation a été mis à jour."
   },
+  "doctors": {
+    "publicListed": "L’équipe médicale a été chargée.",
+    "listed": "Les médecins ont été listés.",
+    "created": "Le médecin a été ajouté.",
+    "updated": "Le médecin a été mis à jour.",
+    "deleted": "Le médecin a été supprimé.",
+    "notFound": "Médecin introuvable.",
+    "invalidFields": "Vérifiez le titre, le nom complet, l’ordre et le statut de publication.",
+    "imageRequired": "Une photo du médecin est requise.",
+    "invalidImage": "La photo doit être au format JPG, PNG ou WebP et ne pas dépasser 8 Mo."
+  },
   "auth": {
     "loggedIn": "Connexion réussie.",
     "missingCredentials": "L'e-mail et le mot de passe sont obligatoires.",

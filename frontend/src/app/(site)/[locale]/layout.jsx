@@ -24,6 +24,7 @@ const openGraphLocales = {
   es: "es_ES",
   zh: "zh_CN",
 };
+const siteMotionBootScript = `document.documentElement.dataset.motion = "enabled";`;
 const geistSans = localFont({
   src: "../../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
   variable: "--font-geist-sans",
@@ -47,16 +48,8 @@ export async function generateMetadata({ params }) {
   const translations = await getTranslations({ locale, namespace: "Metadata" });
   const siteUrl = siteConfig.siteUrl.replace(/\/$/, "");
   const canonical = locale === routing.defaultLocale ? siteUrl : `${siteUrl}/${locale}`;
-  const socialImageUrl = new URL(
-    "/images/social/akif-poliklinik-og.png",
-    siteUrl,
-  ).toString();
-  const languages = Object.fromEntries(
-    routing.locales.map((language) => [
-      language,
-      language === routing.defaultLocale ? siteUrl : `${siteUrl}/${language}`,
-    ]),
-  );
+  const socialImageUrl = new URL("/images/social/akif-poliklinik-og-v2.png", siteUrl).toString();
+  const languages = Object.fromEntries(routing.locales.map((language) => [language, language === routing.defaultLocale ? siteUrl : `${siteUrl}/${language}`]));
   const title = translations("title");
   const description = translations("description");
 
@@ -83,9 +76,7 @@ export async function generateMetadata({ params }) {
       description,
       url: canonical,
       locale: openGraphLocales[locale],
-      alternateLocale: routing.locales
-        .filter((language) => language !== locale)
-        .map((language) => openGraphLocales[language]),
+      alternateLocale: routing.locales.filter((language) => language !== locale).map((language) => openGraphLocales[language]),
       images: [
         {
           url: socialImageUrl,
@@ -150,7 +141,10 @@ export default async function SiteLayout({ children, params }) {
   };
 
   return (
-    <html lang={locale} dir={rtlLocales.has(locale) ? "rtl" : "ltr"} className={geistSans.variable} data-scroll-behavior="smooth">
+    <html lang={locale} dir={rtlLocales.has(locale) ? "rtl" : "ltr"} className={geistSans.variable} data-scroll-behavior="smooth" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: siteMotionBootScript }} />
+      </head>
       <body
         className="
     relative

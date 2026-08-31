@@ -39,6 +39,25 @@ function isValidInstagramUrl(value) {
   }
 }
 
+function normalizeAuthorizationDocumentUrl(value) {
+  if (!value) {
+    return "";
+  }
+
+  try {
+    const parsedUrl = new URL(
+      value,
+      process.env.PUBLIC_API_URL || "http://localhost:4000",
+    );
+
+    return parsedUrl.pathname.startsWith("/uploads/authorization/")
+      ? parsedUrl.pathname
+      : value;
+  } catch {
+    return value;
+  }
+}
+
 function isValidPhoneNumber(value) {
   const digitCount = value.replace(/\D/g, "").length;
 
@@ -48,6 +67,40 @@ function isValidPhoneNumber(value) {
     digitCount <= 15 &&
     /^[+\d().\s-]+$/.test(value)
   );
+}
+
+async function removeManagedAuthorizationDocument(documentUrl) {
+  if (typeof documentUrl !== "string" || !documentUrl) {
+    return;
+  }
+
+  let parsedUrl;
+
+  try {
+    parsedUrl = new URL(
+      documentUrl,
+      process.env.PUBLIC_API_URL || "http://localhost:4000",
+    );
+  } catch {
+    return;
+  }
+
+  if (!parsedUrl.pathname.startsWith("/uploads/authorization/")) {
+    return;
+  }
+
+  const uploadDirectory = path.resolve(
+    process.cwd(),
+    process.env.UPLOAD_DIR || "uploads",
+    "authorization",
+  );
+  const filePath = path.resolve(uploadDirectory, path.basename(parsedUrl.pathname));
+
+  if (path.dirname(filePath) !== uploadDirectory) {
+    return;
+  }
+
+  await fs.unlink(filePath).catch(() => {});
 }
 
 async function hasValidImageSignature(file) {
@@ -77,10 +130,11 @@ function validateSettings(body) {
   const address = typeof body.address === "string" ? body.address.trim() : "";
   const mapShareUrl =
     typeof body.mapShareUrl === "string" ? body.mapShareUrl.trim() : "";
-  const authorizationDocumentUrl =
+  const authorizationDocumentUrl = normalizeAuthorizationDocumentUrl(
     typeof body.authorizationDocumentUrl === "string"
       ? body.authorizationDocumentUrl.trim()
-      : "";
+      : "",
+  );
   const phoneNumbers = Array.isArray(body.phoneNumbers)
     ? body.phoneNumbers.map((phoneNumber) => String(phoneNumber).trim()).filter(Boolean)
     : [];
@@ -90,9 +144,13 @@ function validateSettings(body) {
   const hasTooManyPhoneNumbers = phoneNumbers.length > MAX_PHONE_NUMBERS;
   const hasValidMapShareUrl =
     mapShareUrl.length <= 1000 && isAllowedGoogleMapsUrl(mapShareUrl);
-  let isValidDocumentUrl = authorizationDocumentUrl.startsWith("/");
+  let isValidDocumentUrl = authorizationDocumentUrl === "";
 
-  if (!isValidDocumentUrl) {
+  if (authorizationDocumentUrl && !isValidDocumentUrl) {
+    isValidDocumentUrl = authorizationDocumentUrl.startsWith("/");
+  }
+
+  if (authorizationDocumentUrl && !isValidDocumentUrl) {
     try {
       isValidDocumentUrl = new URL(authorizationDocumentUrl).origin === publicApiOrigin;
     } catch {
@@ -110,7 +168,8 @@ function validateSettings(body) {
     phoneNumbers.length <= MAX_PHONE_NUMBERS &&
     phoneNumbers.every(isValidPhoneNumber) &&
     authorizationDocumentUrl.length <= 500 &&
-    isValidUrl(authorizationDocumentUrl, { allowRelative: true }) &&
+    (authorizationDocumentUrl === "" ||
+      isValidUrl(authorizationDocumentUrl, { allowRelative: true })) &&
     isValidDocumentUrl;
 
   return {
@@ -194,15 +253,18 @@ async function uploadAuthorizationDocument(request, response) {
     });
   }
 
-  const publicApiUrl = process.env.PUBLIC_API_URL || "http://localhost:4000";
   const relativePath = path.posix.join(
     "/uploads/authorization",
     request.file.filename,
   );
-  const authorizationDocumentUrl = new URL(relativePath, publicApiUrl).toString();
+  const previousSettings = await siteSettingsService.getSiteSettings();
   const settings = await siteSettingsService.updateSiteSettings(
-    { authorizationDocumentUrl },
+    { authorizationDocumentUrl: relativePath },
     request.user.id,
+  );
+
+  await removeManagedAuthorizationDocument(
+    previousSettings.authorizationDocumentUrl,
   );
 
   return sendSuccess(response, {
@@ -212,4 +274,26 @@ async function uploadAuthorizationDocument(request, response) {
   });
 }
 
-module.exports = { get, update, uploadAuthorizationDocument };
+async function removeAuthorizationDocument(request, response) {
+  const previousSettings = await siteSettingsService.getSiteSettings();
+  const settings = await siteSettingsService.updateSiteSettings(
+    { authorizationDocumentUrl: "" },
+    request.user.id,
+  );
+
+  await removeManagedAuthorizationDocument(
+    previousSettings.authorizationDocumentUrl,
+  );
+
+  return sendSuccess(response, {
+    message: request.t("settings.documentRemoved"),
+    data: settings,
+  });
+}
+
+module.exports = {
+  get,
+  removeAuthorizationDocument,
+  update,
+  uploadAuthorizationDocument,
+};

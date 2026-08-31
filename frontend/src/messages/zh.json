@@ -4,6 +4,13 @@
     "title": "Akif Poliklinik | 健康与医美服务",
     "description": "查看 Akif Poliklinik 的联系方式并提交医疗咨询申请。"
   },
+  "NotFound": {
+    "label": "页面未找到",
+    "title": "未找到您要访问的页面。",
+    "description": "链接可能已更改，或页面已被移除。您可以返回首页继续浏览。",
+    "home": "返回首页",
+    "doctors": "了解我们的医生"
+  },
   "Navigation": {
     "ariaLabel": "主导航",
     "home": "首页",
@@ -73,7 +80,6 @@
     "mapTitle": "British Esthetic Nişantaşı 位置"
   },
   "Footer": {
-    "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
     "updatedAt": "最后更新：2026年4月",
     "legalTitle": "链接",
     "healthTourism": "国际医疗旅游",
@@ -116,7 +122,8 @@
     "doctors": {
       "eyebrow": "医疗团队",
       "title": "医生团队",
-      "description": "医生团队信息即将在此发布。"
+      "description": "了解 Akif Poliklinik 的医疗团队。",
+      "empty": "医生团队信息即将在此发布。"
     },
     "privacy": {
       "eyebrow": "个人数据保护",
@@ -126,10 +133,10 @@
     },
     "authorization": {
       "eyebrow": "机构文件",
-      "title": "国际健康旅游授权证书",
-      "description": "您可以查看编号为 AK-0995 的国际医疗旅游授权文件。",
+      "title": "Akif Poliklinik 授权文件",
+      "description": "您可以查看 Akif Poliklinik 的最新授权文件。",
       "openDocument": "在新标签页打开文件",
-      "imageAlt": "国际健康旅游授权证书，文件编号 AK-0995"
+      "imageAlt": "Akif Poliklinik 授权文件"
     }
   }
 }

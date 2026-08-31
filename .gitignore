@@ -1,4 +1,6 @@
 node_modules/
+package-lock.json
+yarn.lock
 frontend/.next/
 frontend/out/
 backend/uploads/*
@@ -7,10 +9,7 @@ backend/uploads/authorization/*
 !backend/uploads/authorization/.gitkeep
 coverage/
 
-.env
-.env.*
-!frontend/.env.example
-!backend/.env.example
+
 
 *.log
 .DS_Store

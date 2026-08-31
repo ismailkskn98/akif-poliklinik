@@ -4,6 +4,13 @@
     "title": "Akif Poliklinik | Health and Aesthetic Services",
     "description": "Find Akif Poliklinik contact details and submit your healthcare consultation request."
   },
+  "NotFound": {
+    "label": "Page not found",
+    "title": "We could not find that page.",
+    "description": "The link may have changed or the page may have been removed. Return to the home page to continue.",
+    "home": "Return home",
+    "doctors": "Meet our doctors"
+  },
   "Navigation": {
     "ariaLabel": "Main navigation",
     "home": "Home",
@@ -73,7 +80,6 @@
     "mapTitle": "British Esthetic Nişantaşı location"
   },
   "Footer": {
-    "travelAgency": "Akif Özgüller Turizm Seyahat Acentası",
     "updatedAt": "Last updated: April 2026",
     "legalTitle": "Links",
     "healthTourism": "International health tourism",
@@ -116,7 +122,8 @@
     "doctors": {
       "eyebrow": "Medical team",
       "title": "Our Doctors",
-      "description": "Information about our doctors will be shared here soon."
+      "description": "Meet the medical team at Akif Poliklinik.",
+      "empty": "Information about our doctors will be shared here soon."
     },
     "privacy": {
       "eyebrow": "Personal data protection",
@@ -126,10 +133,10 @@
     },
     "authorization": {
       "eyebrow": "Corporate documents",
-      "title": "International Health Tourism Authorization",
-      "description": "You can review the International Health Tourism Authorization document numbered AK-0995.",
+      "title": "Akif Clinic Authorization Document",
+      "description": "You can review Akif Clinic’s current authorization document.",
       "openDocument": "Open document in a new tab",
-      "imageAlt": "International Health Tourism Authorization, document number AK-0995"
+      "imageAlt": "Akif Clinic authorization document"
     }
   }
 }

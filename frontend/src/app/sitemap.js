@@ -1,6 +1,7 @@
 import { siteConfig } from "@/config/site";
 import { getPathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
+import { getPublicSiteSettings } from "@/lib/siteSettings";
 
 const routes = [
   { href: "/", changeFrequency: "weekly", priority: 1 },
@@ -13,8 +14,12 @@ function getUrl(locale, href) {
   return new URL(getPathname({ locale, href }), siteConfig.siteUrl).toString();
 }
 
-export default function sitemap() {
-  const staticEntries = routes.flatMap((route) => {
+export default async function sitemap() {
+  const settings = await getPublicSiteSettings();
+  const visibleRoutes = settings.authorizationDocumentUrl
+    ? routes
+    : routes.filter(({ href }) => href !== "/authorization-document");
+  const staticEntries = visibleRoutes.flatMap((route) => {
     const languages = Object.fromEntries(
       routing.locales.map((locale) => [locale, getUrl(locale, route.href)]),
     );

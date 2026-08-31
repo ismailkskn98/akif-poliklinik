@@ -65,9 +65,11 @@ export default async function Footer({ locale }) {
                 <Link className="py-1.5 transition-colors duration-200 hover:text-white" href="/privacy-notice">
                   {translations("privacy")}
                 </Link>
-                <Link className="py-1.5 transition-colors duration-200 hover:text-white" href="/authorization-document">
-                  {translations("authorization")}
-                </Link>
+                {settings.authorizationDocumentUrl ? (
+                  <Link className="py-1.5 transition-colors duration-200 hover:text-white" href="/authorization-document">
+                    {translations("authorization")}
+                  </Link>
+                ) : null}
                 <CookieSettingsButton label={translations("cookieSettings")} />
               </div>
             </nav>
@@ -99,10 +101,7 @@ export default async function Footer({ locale }) {
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. {translations("rights")}
           </p>
-          <div className="flex flex-col gap-1 sm:items-end">
-            <p>{translations("travelAgency")}</p>
-            <p>{translations("updatedAt")}</p>
-          </div>
+          <p>{translations("updatedAt")}</p>
         </div>
       </div>
     </footer>

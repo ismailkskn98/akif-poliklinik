@@ -1,4 +1,9 @@
+const { URL } = require("node:url");
+
 const { getPool } = require("../models/db");
+
+const LEGACY_AUTHORIZATION_DOCUMENT_PATH =
+  "/documents/international-health-tourism-authorization.jpg";
 
 const settingDefinitions = {
   instagramUrl: { key: "instagram_url", type: "text" },
@@ -25,9 +30,21 @@ const defaultSettings = {
   mapShareUrl: "https://maps.app.goo.gl/1GC2b1vs46bE8nZz9",
   mapEmbedUrl:
     "https://maps.google.com/maps?q=British+Esthetic&ll=41.0516039%2C28.987723&t=m&z=17&output=embed&iwloc=A",
-  authorizationDocumentUrl:
-    "/documents/international-health-tourism-authorization.jpg",
+  authorizationDocumentUrl: "",
 };
+
+function isLegacyAuthorizationDocument(value) {
+  if (typeof value !== "string" || !value) {
+    return false;
+  }
+
+  try {
+    const url = new URL(value, "http://localhost");
+    return url.pathname === LEGACY_AUTHORIZATION_DOCUMENT_PATH;
+  } catch {
+    return false;
+  }
+}
 
 function parseSettingValue(value, type) {
   if (type !== "json") {
@@ -62,7 +79,13 @@ async function getSiteSettings() {
 
     const parsedValue = parseSettingValue(row.setting_value, row.value_type);
 
-    if (parsedValue !== null && parsedValue !== "") {
+    if (propertyName === "authorizationDocumentUrl") {
+      settings[propertyName] = isLegacyAuthorizationDocument(parsedValue)
+        ? ""
+        : typeof parsedValue === "string"
+          ? parsedValue
+          : "";
+    } else if (parsedValue !== null && parsedValue !== "") {
       settings[propertyName] = parsedValue;
     }
 

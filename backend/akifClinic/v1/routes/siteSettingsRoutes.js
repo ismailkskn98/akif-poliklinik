@@ -12,5 +12,9 @@ router.post(
   uploadAuthorizationDocument,
   siteSettingsController.uploadAuthorizationDocument,
 );
+router.delete(
+  "/authorization-document",
+  siteSettingsController.removeAuthorizationDocument,
+);
 
 module.exports = router;

@@ -1,5 +1,6 @@
 "use client";
 
+import { Eye, EyeSlash } from "@phosphor-icons/react";
 import { useState } from "react";
 
 import { toast } from "@/components/ui/toast";
@@ -10,6 +11,9 @@ const inputClassName =
 
 export default function PasswordChangeForm({ onSessionEnded, token }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false);
   const [status, setStatus] = useState({ type: "", message: "" });
 
   async function handleSubmit(event) {
@@ -94,31 +98,63 @@ export default function PasswordChangeForm({ onSessionEnded, token }) {
             >
               Mevcut parola
             </label>
-            <input
-              autoComplete="current-password"
-              className={inputClassName}
-              id="currentPassword"
-              maxLength="128"
-              name="currentPassword"
-              required
-              type="password"
-            />
+            <div className="relative">
+              <input
+                autoComplete="current-password"
+                className={`${inputClassName} pe-12`}
+                id="currentPassword"
+                maxLength="128"
+                name="currentPassword"
+                required
+                type={showCurrentPassword ? "text" : "password"}
+              />
+              <button
+                aria-label={
+                  showCurrentPassword ? "Mevcut parolayı gizle" : "Mevcut parolayı göster"
+                }
+                aria-pressed={showCurrentPassword}
+                className="absolute end-1 top-2 grid size-10 place-items-center rounded text-black/42 transition-colors hover:bg-black/[.04] hover:text-black/70"
+                onClick={() => setShowCurrentPassword((currentValue) => !currentValue)}
+                type="button"
+              >
+                {showCurrentPassword ? (
+                  <EyeSlash aria-hidden="true" className="size-4" weight="light" />
+                ) : (
+                  <Eye aria-hidden="true" className="size-4" weight="light" />
+                )}
+              </button>
+            </div>
           </div>
 
           <div>
             <label className="text-xs font-medium text-black/58" htmlFor="newPassword">
               Yeni parola
             </label>
-            <input
-              autoComplete="new-password"
-              className={inputClassName}
-              id="newPassword"
-              maxLength="128"
-              minLength="12"
-              name="newPassword"
-              required
-              type="password"
-            />
+            <div className="relative">
+              <input
+                autoComplete="new-password"
+                className={`${inputClassName} pe-12`}
+                id="newPassword"
+                maxLength="128"
+                minLength="12"
+                name="newPassword"
+                required
+                type={showNewPassword ? "text" : "password"}
+              />
+              <button
+                aria-label={showNewPassword ? "Yeni parolayı gizle" : "Yeni parolayı göster"}
+                aria-pressed={showNewPassword}
+                className="absolute end-1 top-2 grid size-10 place-items-center rounded text-black/42 transition-colors hover:bg-black/[.04] hover:text-black/70"
+                onClick={() => setShowNewPassword((currentValue) => !currentValue)}
+                type="button"
+              >
+                {showNewPassword ? (
+                  <EyeSlash aria-hidden="true" className="size-4" weight="light" />
+                ) : (
+                  <Eye aria-hidden="true" className="size-4" weight="light" />
+                )}
+              </button>
+            </div>
             <p className="mt-2 text-xs leading-5 text-black/42">
               En az 12, en fazla 128 karakter kullanın.
             </p>
@@ -131,16 +167,37 @@ export default function PasswordChangeForm({ onSessionEnded, token }) {
             >
               Yeni parola tekrar
             </label>
-            <input
-              autoComplete="new-password"
-              className={inputClassName}
-              id="passwordConfirmation"
-              maxLength="128"
-              minLength="12"
-              name="passwordConfirmation"
-              required
-              type="password"
-            />
+            <div className="relative">
+              <input
+                autoComplete="new-password"
+                className={`${inputClassName} pe-12`}
+                id="passwordConfirmation"
+                maxLength="128"
+                minLength="12"
+                name="passwordConfirmation"
+                required
+                type={showPasswordConfirmation ? "text" : "password"}
+              />
+              <button
+                aria-label={
+                  showPasswordConfirmation
+                    ? "Parola tekrarını gizle"
+                    : "Parola tekrarını göster"
+                }
+                aria-pressed={showPasswordConfirmation}
+                className="absolute end-1 top-2 grid size-10 place-items-center rounded text-black/42 transition-colors hover:bg-black/[.04] hover:text-black/70"
+                onClick={() =>
+                  setShowPasswordConfirmation((currentValue) => !currentValue)
+                }
+                type="button"
+              >
+                {showPasswordConfirmation ? (
+                  <EyeSlash aria-hidden="true" className="size-4" weight="light" />
+                ) : (
+                  <Eye aria-hidden="true" className="size-4" weight="light" />
+                )}
+              </button>
+            </div>
           </div>
 
           <div className="flex flex-col gap-3 sm:col-span-2 sm:flex-row sm:items-center">

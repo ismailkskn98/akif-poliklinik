@@ -1,16 +1,23 @@
 "use client";
 
+import { Eye, EyeSlash } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useState } from "react";
 
+import {
+  authInputClassName,
+  authLabelClassName,
+  authPasswordButtonClassName,
+  authPrimaryButtonClassName,
+  authSecondaryLinkClassName,
+} from "@/components/admin/authFormStyles";
 import { adminApiRequest } from "@/lib/adminApi";
-
-const inputClassName =
-  "mt-2 min-h-11 w-full rounded-md border border-black/12 bg-white px-3 text-sm outline-none transition-colors focus:border-[#516fc9] focus:ring-2 focus:ring-[#516fc9]/12";
 
 export default function ResetPasswordForm({ token }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false);
   const [status, setStatus] = useState({ type: "", message: "" });
 
   async function handleSubmit(event) {
@@ -47,24 +54,40 @@ export default function ResetPasswordForm({ token }) {
   const tokenIsMissing = !token;
 
   return (
-    <form className="mt-7 grid gap-5" onSubmit={handleSubmit}>
+    <form className="mt-7 grid gap-5 text-start" onSubmit={handleSubmit}>
       {!isComplete ? (
         <>
           <div>
-            <label className="text-xs font-medium text-black/58" htmlFor="password">
+            <label className={authLabelClassName} htmlFor="password">
               Yeni parola
             </label>
-            <input
-              autoComplete="new-password"
-              className={inputClassName}
-              disabled={tokenIsMissing}
-              id="password"
-              maxLength="128"
-              minLength="12"
-              name="password"
-              required
-              type="password"
-            />
+            <div className="relative">
+              <input
+                autoComplete="new-password"
+                className={`${authInputClassName} pe-12`}
+                disabled={tokenIsMissing}
+                id="password"
+                maxLength="128"
+                minLength="12"
+                name="password"
+                required
+                type={showPassword ? "text" : "password"}
+              />
+              <button
+                aria-label={showPassword ? "Parolayı gizle" : "Parolayı göster"}
+                aria-pressed={showPassword}
+                className={authPasswordButtonClassName}
+                disabled={tokenIsMissing}
+                onClick={() => setShowPassword((currentValue) => !currentValue)}
+                type="button"
+              >
+                {showPassword ? (
+                  <EyeSlash aria-hidden="true" className="size-4" weight="light" />
+                ) : (
+                  <Eye aria-hidden="true" className="size-4" weight="light" />
+                )}
+              </button>
+            </div>
             <p className="mt-2 text-xs leading-5 text-black/42">
               En az 12 karakter kullanın.
             </p>
@@ -72,26 +95,48 @@ export default function ResetPasswordForm({ token }) {
 
           <div>
             <label
-              className="text-xs font-medium text-black/58"
+              className={authLabelClassName}
               htmlFor="passwordConfirmation"
             >
               Yeni parola tekrar
             </label>
-            <input
-              autoComplete="new-password"
-              className={inputClassName}
-              disabled={tokenIsMissing}
-              id="passwordConfirmation"
-              maxLength="128"
-              minLength="12"
-              name="passwordConfirmation"
-              required
-              type="password"
-            />
+            <div className="relative">
+              <input
+                autoComplete="new-password"
+                className={`${authInputClassName} pe-12`}
+                disabled={tokenIsMissing}
+                id="passwordConfirmation"
+                maxLength="128"
+                minLength="12"
+                name="passwordConfirmation"
+                required
+                type={showPasswordConfirmation ? "text" : "password"}
+              />
+              <button
+                aria-label={
+                  showPasswordConfirmation
+                    ? "Parola tekrarını gizle"
+                    : "Parola tekrarını göster"
+                }
+                aria-pressed={showPasswordConfirmation}
+                className={authPasswordButtonClassName}
+                disabled={tokenIsMissing}
+                onClick={() =>
+                  setShowPasswordConfirmation((currentValue) => !currentValue)
+                }
+                type="button"
+              >
+                {showPasswordConfirmation ? (
+                  <EyeSlash aria-hidden="true" className="size-4" weight="light" />
+                ) : (
+                  <Eye aria-hidden="true" className="size-4" weight="light" />
+                )}
+              </button>
+            </div>
           </div>
 
           <button
-            className="min-h-11 rounded-md bg-[#1f1f1f] px-4 text-sm font-medium text-white transition-colors hover:bg-[#516fc9] disabled:cursor-not-allowed disabled:opacity-50"
+            className={authPrimaryButtonClassName}
             disabled={isSubmitting || tokenIsMissing}
             type="submit"
           >
@@ -102,7 +147,7 @@ export default function ResetPasswordForm({ token }) {
 
       <p
         aria-live="polite"
-        className={`min-h-5 text-xs ${
+        className={`min-h-5 text-xs leading-5 ${
           status.type === "success" ? "text-emerald-700" : "text-red-600"
         }`}
       >
@@ -112,7 +157,7 @@ export default function ResetPasswordForm({ token }) {
       </p>
 
       <Link
-        className="text-center text-xs font-medium text-black/52 transition-colors hover:text-[#516fc9]"
+        className={`${authSecondaryLinkClassName} justify-self-center text-center`}
         href={isComplete ? "/admin/login" : "/admin/forgot-password"}
       >
         {isComplete ? "Giriş yap" : "Yeni bağlantı iste"}

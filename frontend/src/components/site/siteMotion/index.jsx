@@ -8,11 +8,8 @@ import { useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const motionTargets = "[data-motion-header], [data-motion-intro], [data-motion-reveal]";
-
 export default function SiteMotion({ children }) {
   const pathname = usePathname();
-  const headerHasAnimated = useRef(false);
   const scope = useRef(null);
 
   useGSAP(
@@ -22,58 +19,56 @@ export default function SiteMotion({ children }) {
 
       media.add("(prefers-reduced-motion: no-preference)", () => {
         const header = select("[data-motion-header]");
-        const introElements = select("[data-motion-intro]");
-        const shouldAnimateHeader = !headerHasAnimated.current && header.length;
-        const introTimeline = gsap.timeline({
-          defaults: { ease: "power3.out" },
-        });
 
-        if (shouldAnimateHeader) {
-          introTimeline.fromTo(
-            header,
-            { autoAlpha: 0, y: -12 },
-            {
-              autoAlpha: 1,
-              y: 0,
-              duration: 0.7,
-              clearProps: "opacity,transform,visibility",
-            },
-          );
-          headerHasAnimated.current = true;
+        if (header.length) {
+          gsap.to(header, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.7,
+            ease: "power3.out",
+          });
         }
+      });
+
+      media.add("(prefers-reduced-motion: reduce)", () => {
+        gsap.set(select("[data-motion-header]"), { clearProps: "all" });
+      });
+
+      return () => media.revert();
+    },
+    { scope },
+  );
+
+  useGSAP(
+    () => {
+      const media = gsap.matchMedia();
+      const select = gsap.utils.selector(scope);
+
+      media.add("(prefers-reduced-motion: no-preference)", () => {
+        const introElements = select("[data-motion-intro]");
 
         if (introElements.length) {
-          introTimeline.fromTo(
-            introElements,
-            { autoAlpha: 0, y: 16 },
-            {
-              autoAlpha: 1,
-              y: 0,
-              duration: 0.68,
-              stagger: 0.07,
-              clearProps: "opacity,transform,visibility",
-            },
-            shouldAnimateHeader ? "-=0.36" : 0,
-          );
+          gsap.to(introElements, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.68,
+            stagger: 0.07,
+            ease: "power3.out",
+          });
         }
 
         select("[data-motion-reveal]").forEach((element) => {
-          gsap.fromTo(
-            element,
-            { autoAlpha: 0, y: 20 },
-            {
-              autoAlpha: 1,
-              y: 0,
-              duration: 0.72,
-              ease: "power3.out",
-              clearProps: "opacity,transform,visibility",
-              scrollTrigger: {
-                trigger: element,
-                start: "top 88%",
-                once: true,
-              },
+          gsap.to(element, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.72,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: element,
+              start: "top 88%",
+              once: true,
             },
-          );
+          });
         });
 
         const refreshFrame = requestAnimationFrame(() => ScrollTrigger.refresh());
@@ -82,7 +77,7 @@ export default function SiteMotion({ children }) {
       });
 
       media.add("(prefers-reduced-motion: reduce)", () => {
-        const targets = select(motionTargets);
+        const targets = select("[data-motion-intro], [data-motion-reveal]");
 
         if (targets.length) {
           gsap.set(targets, { clearProps: "all" });

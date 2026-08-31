@@ -1,18 +1,17 @@
+import AuthPage from "@/components/admin/authPage";
 import AdminLoginForm from "@/components/admin/loginForm";
+
+export const metadata = {
+  title: "Yönetim paneli girişi | Akif Poliklinik",
+};
 
 export default function AdminLoginPage() {
   return (
-    <main className="grid min-h-screen place-items-center px-5 py-12">
-      <section className="w-full max-w-sm rounded-xl border border-black/8 bg-white p-6 shadow-[0_8px_30px_rgba(0,0,0,0.05)]">
-        <p className="text-xs font-medium tracking-[0.16em] text-black/45 uppercase">
-          Akif Poliklinik
-        </p>
-        <h1 className="mt-3 text-2xl font-semibold tracking-tight">Admin girişi</h1>
-        <p className="mt-2 text-sm leading-6 text-black/50">
-          Site ayarlarını yönetmek için hesabınızla giriş yapın.
-        </p>
-        <AdminLoginForm />
-      </section>
-    </main>
+    <AuthPage
+      description="Site ayarlarını yönetmek için yönetici hesabınızla giriş yapın."
+      title="Yönetim paneline giriş"
+    >
+      <AdminLoginForm />
+    </AuthPage>
   );
 }

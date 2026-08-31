@@ -14,7 +14,12 @@ export default function NavigationShell({ currentLocale, labels, settings }) {
             <div className="flex items-center gap-2">
               <LanguageMenu currentLocale={currentLocale} label={labels.languages} align="start" variant="mobile-header" />
             </div>
-            <MobileNavbar currentLocale={currentLocale} labels={labels} phone={settings.phones[0]} />
+          <MobileNavbar
+            currentLocale={currentLocale}
+            hasAuthorizationDocument={Boolean(settings.authorizationDocumentUrl)}
+            labels={labels}
+            phone={settings.phones[0]}
+          />
           </div>
           <div className="flex justify-center py-5 sm:py-6">
             <Brand variant="display" />
@@ -28,7 +33,10 @@ export default function NavigationShell({ currentLocale, labels, settings }) {
         <div className="hidden min-h-14 w-full grid-cols-[1fr_auto_1fr] items-stretch border-t border-ink/10 lg:grid">
           <div aria-hidden="true" />
 
-          <DesktopNavbar labels={labels} />
+          <DesktopNavbar
+            hasAuthorizationDocument={Boolean(settings.authorizationDocumentUrl)}
+            labels={labels}
+          />
 
           <div className="hidden items-stretch justify-self-end lg:flex">
             <LanguageMenu currentLocale={currentLocale} label={labels.languages} />

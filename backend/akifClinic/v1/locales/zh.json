@@ -22,6 +22,17 @@
     "invalidDocument": "授权文件必须是 JPG、PNG 或 WebP 图片，且不超过 8 MB。",
     "documentUploaded": "授权文件已更新。"
   },
+  "doctors": {
+    "publicListed": "医生团队已加载。",
+    "listed": "医生列表已加载。",
+    "created": "医生已添加。",
+    "updated": "医生信息已更新。",
+    "deleted": "医生已删除。",
+    "notFound": "未找到该医生。",
+    "invalidFields": "请检查职称、姓名、排序和发布状态。",
+    "imageRequired": "必须上传医生照片。",
+    "invalidImage": "医生照片必须为 JPG、PNG 或 WebP 格式，且不超过 8 MB。"
+  },
   "auth": {
     "loggedIn": "登录成功。",
     "missingCredentials": "电子邮箱和密码为必填项。",

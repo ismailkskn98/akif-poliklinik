@@ -20,7 +20,19 @@
     "invalidMapUrl": "Enter a valid Google Maps share link. Open the location in Google Maps and use Share > Copy link.",
     "tooManyPhoneNumbers": "You can save up to 8 phone numbers.",
     "invalidDocument": "The authorization document must be a JPG, PNG or WebP image up to 8 MB.",
-    "documentUploaded": "The authorization document was updated."
+    "documentUploaded": "The authorization document was updated.",
+    "documentRemoved": "The authorization document was removed."
+  },
+  "doctors": {
+    "publicListed": "The medical team was retrieved.",
+    "listed": "Doctors were listed.",
+    "created": "Doctor added.",
+    "updated": "Doctor updated.",
+    "deleted": "Doctor deleted.",
+    "notFound": "Doctor not found.",
+    "invalidFields": "Check the title, full name, order and publication status.",
+    "imageRequired": "A doctor photo is required.",
+    "invalidImage": "The doctor photo must be JPG, PNG or WebP and no larger than 8 MB."
   },
   "auth": {
     "loggedIn": "Login successful.",

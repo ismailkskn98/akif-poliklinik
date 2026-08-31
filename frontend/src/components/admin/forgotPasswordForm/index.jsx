@@ -3,10 +3,13 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import {
+  authInputClassName,
+  authLabelClassName,
+  authPrimaryButtonClassName,
+  authSecondaryLinkClassName,
+} from "@/components/admin/authFormStyles";
 import { adminApiRequest } from "@/lib/adminApi";
-
-const inputClassName =
-  "mt-2 min-h-11 w-full rounded-md border border-black/12 bg-white px-3 text-sm outline-none transition-colors focus:border-[#516fc9] focus:ring-2 focus:ring-[#516fc9]/12";
 
 export default function ForgotPasswordForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,14 +39,14 @@ export default function ForgotPasswordForm() {
   }
 
   return (
-    <form className="mt-7 grid gap-5" onSubmit={handleSubmit}>
+    <form className="mt-7 grid gap-5 text-start" onSubmit={handleSubmit}>
       <div>
-        <label className="text-xs font-medium text-black/58" htmlFor="email">
+        <label className={authLabelClassName} htmlFor="email">
           Yönetici e-postası
         </label>
         <input
           autoComplete="email"
-          className={inputClassName}
+          className={authInputClassName}
           id="email"
           maxLength="190"
           name="email"
@@ -53,7 +56,7 @@ export default function ForgotPasswordForm() {
       </div>
 
       <button
-        className="min-h-11 rounded-md bg-[#1f1f1f] px-4 text-sm font-medium text-white transition-colors hover:bg-[#516fc9] disabled:cursor-not-allowed disabled:opacity-50"
+        className={authPrimaryButtonClassName}
         disabled={isSubmitting}
         type="submit"
       >
@@ -62,7 +65,7 @@ export default function ForgotPasswordForm() {
 
       <p
         aria-live="polite"
-        className={`min-h-5 text-xs ${
+        className={`min-h-5 text-xs leading-5 ${
           status.type === "success" ? "text-emerald-700" : "text-red-600"
         }`}
       >
@@ -70,7 +73,7 @@ export default function ForgotPasswordForm() {
       </p>
 
       <Link
-        className="text-center text-xs font-medium text-black/52 transition-colors hover:text-[#516fc9]"
+        className={`${authSecondaryLinkClassName} justify-self-center text-center`}
         href="/admin/login"
       >
         Giriş ekranına dön

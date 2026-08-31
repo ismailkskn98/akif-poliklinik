@@ -1,4 +1,5 @@
 const { sendSuccess } = require("../../../general_helpers/response");
+const doctorService = require("../services/doctorService");
 const siteSettingsService = require("../services/siteSettingsService");
 
 function getHealth(request, response) {
@@ -20,4 +21,13 @@ async function getSiteSettings(request, response) {
   });
 }
 
-module.exports = { getHealth, getSiteSettings };
+async function getDoctors(request, response) {
+  const doctors = await doctorService.listPublicDoctors();
+
+  return sendSuccess(response, {
+    message: request.t("doctors.publicListed"),
+    data: { doctors },
+  });
+}
+
+module.exports = { getDoctors, getHealth, getSiteSettings };

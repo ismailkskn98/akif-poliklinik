@@ -1,6 +1,7 @@
 import "../globals.css";
 import localFont from "next/font/local";
 
+import AdminShell from "@/components/admin/adminShell";
 import { Toaster } from "@/components/ui/toast";
 import { siteConfig } from "@/config/site";
 
@@ -26,7 +27,7 @@ export default function AdminRootLayout({ children }) {
   return (
     <html className={geistSans.variable} lang="tr">
       <body className="bg-[#fafafa] text-[#1f1f1f]">
-        {children}
+        <AdminShell>{children}</AdminShell>
         <Toaster />
       </body>
     </html>

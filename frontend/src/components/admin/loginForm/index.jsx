@@ -5,10 +5,14 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import {
+  authInputClassName,
+  authLabelClassName,
+  authPasswordButtonClassName,
+  authPrimaryButtonClassName,
+  authSecondaryLinkClassName,
+} from "@/components/admin/authFormStyles";
 import { adminApiRequest, adminSessionKey } from "@/lib/adminApi";
-
-const inputClassName =
-  "mt-2 min-h-11 w-full rounded-md border border-black/12 bg-white px-3 text-sm outline-none transition-colors focus:border-[#516fc9] focus:ring-2 focus:ring-[#516fc9]/12";
 
 export default function AdminLoginForm() {
   const router = useRouter();
@@ -42,14 +46,14 @@ export default function AdminLoginForm() {
   }
 
   return (
-    <form className="mt-7 grid gap-5" onSubmit={handleSubmit}>
+    <form className="mt-7 grid gap-5 text-start" onSubmit={handleSubmit}>
       <div>
-        <label className="text-xs font-medium text-black/58" htmlFor="email">
+        <label className={authLabelClassName} htmlFor="email">
           E-posta
         </label>
         <input
           autoComplete="email"
-          className={inputClassName}
+          className={authInputClassName}
           id="email"
           name="email"
           required
@@ -58,13 +62,13 @@ export default function AdminLoginForm() {
       </div>
 
       <div>
-        <label className="text-xs font-medium text-black/58" htmlFor="password">
+        <label className={authLabelClassName} htmlFor="password">
           Parola
         </label>
         <div className="relative">
           <input
             autoComplete="current-password"
-            className={`${inputClassName} pe-12`}
+            className={`${authInputClassName} pe-12`}
             id="password"
             minLength="12"
             name="password"
@@ -74,7 +78,7 @@ export default function AdminLoginForm() {
           <button
             aria-label={showPassword ? "Parolayı gizle" : "Parolayı göster"}
             aria-pressed={showPassword}
-            className="absolute end-1 top-3 grid size-10 place-items-center rounded text-black/42 transition-colors hover:bg-black/[.04] hover:text-black/70"
+            className={authPasswordButtonClassName}
             onClick={() => setShowPassword((currentValue) => !currentValue)}
             type="button"
           >
@@ -89,7 +93,7 @@ export default function AdminLoginForm() {
 
       <div className="-mt-2 flex justify-end">
         <Link
-          className="text-xs font-medium text-[#516fc9] transition-colors hover:text-[#3f5cb5]"
+          className={authSecondaryLinkClassName}
           href="/admin/forgot-password"
         >
           Parolamı unuttum
@@ -97,14 +101,14 @@ export default function AdminLoginForm() {
       </div>
 
       <button
-        className="min-h-11 rounded-md bg-[#1f1f1f] px-4 text-sm font-medium text-white transition-colors hover:bg-[#516fc9] disabled:cursor-not-allowed disabled:opacity-50"
+        className={authPrimaryButtonClassName}
         disabled={isSubmitting}
         type="submit"
       >
         {isSubmitting ? "Giriş yapılıyor…" : "Giriş yap"}
       </button>
 
-      <p aria-live="polite" className="min-h-5 text-xs text-red-600">
+      <p aria-live="polite" className="min-h-5 text-xs leading-5 text-red-600">
         {errorMessage}
       </p>
     </form>

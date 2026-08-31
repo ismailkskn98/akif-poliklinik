@@ -1,3 +1,5 @@
+const { URL } = require("node:url");
+
 const CORS_ORIGIN_DENIED_CODE = "CORS_ORIGIN_DENIED";
 
 function normalizeOrigin(origin, settingName = "CORS origin") {

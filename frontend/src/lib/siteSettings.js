@@ -4,6 +4,7 @@ import {
   createPhoneHref,
   siteConfig,
 } from "@/config/site";
+import { resolveBackendAssetUrl } from "@/lib/imageSource";
 
 const fallbackSettings = {
   instagramUrl: siteConfig.instagramUrl,
@@ -49,9 +50,8 @@ function normalizeSettings(settings) {
     address,
     mapShareUrl,
     authorizationDocumentUrl:
-      typeof settings.authorizationDocumentUrl === "string" &&
-      settings.authorizationDocumentUrl.trim()
-        ? settings.authorizationDocumentUrl.trim()
+      typeof settings.authorizationDocumentUrl === "string"
+        ? resolveBackendAssetUrl(settings.authorizationDocumentUrl.trim())
         : fallbackSettings.authorizationDocumentUrl,
     mapEmbedUrl,
     updatedAt: settings.updatedAt || null,

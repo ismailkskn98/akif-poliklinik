@@ -5,54 +5,62 @@ export default function ContactDetails({ labels, settings, tone = "light" }) {
 
   return (
     <div className="mt-5 sm:mt-6">
-      <div
-        className={`grid border-t ${
-          isDark ? "border-white/14" : "border-ink/12"
-        }`}
-      >
+      <div className="grid gap-1 sm:gap-0">
         {settings.phones.map((phone) => (
           <a
             key={phone.href}
-            className={`flex min-h-14 items-center gap-3 border-b px-0 text-[1.05rem] font-medium tracking-[-0.025em] transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] sm:min-h-16 sm:text-[1.12rem] lg:min-h-[3.75rem] lg:text-[1.08rem] xl:text-[1.18rem] ${
+            className={`flex min-h-24 flex-col items-center justify-center gap-2.5 px-0 text-center text-[1.18rem] font-medium tracking-[-0.025em] transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] sm:min-h-16 sm:flex-row sm:justify-start sm:gap-3 sm:text-start sm:text-[1.12rem] lg:min-h-[3.75rem] lg:text-[1.08rem] xl:text-[1.18rem] ${
               isDark
-                ? "border-white/14 text-white/72 hover:text-white"
-                : "border-ink/12 text-ink/82 hover:text-primary"
+                ? "text-white/72 hover:text-white"
+                : "text-ink/82 hover:text-primary"
             }`}
             href={phone.href}
           >
-            <Phone
-              aria-hidden="true"
-              className={`size-5 shrink-0 sm:size-[1.35rem] ${isDark ? "text-white/42" : "text-primary"}`}
-              weight="regular"
-            />
-            {phone.label}
+            <span
+              className={`grid size-11 shrink-0 place-items-center rounded-full border sm:size-auto sm:border-0 ${
+                isDark ? "border-white/36" : "border-primary/42"
+              }`}
+            >
+              <Phone
+                aria-hidden="true"
+                className={`size-5 sm:size-[1.35rem] ${isDark ? "text-white/62" : "text-primary"}`}
+                weight="regular"
+              />
+            </span>
+            <span className="whitespace-nowrap">{phone.label}</span>
           </a>
         ))}
       </div>
 
       <div
-        className={`mt-8 border-t pt-6 sm:mt-10 sm:pt-7 ${
+        className={`mt-8 pt-6 sm:mt-10 sm:border-t sm:pt-7 ${
           isDark ? "border-white/14" : "border-ink/12"
         }`}
       >
         <h3
-          className={`text-[0.68rem] font-semibold tracking-[0.16em] uppercase ${
+          className={`text-center text-[0.68rem] font-semibold tracking-[0.16em] uppercase sm:text-start ${
             isDark ? "text-white/36" : "text-primary"
           }`}
         >
           {labels.addressTitle}
         </h3>
         <p
-          className={`mt-4 flex max-w-xl items-start gap-3 text-base leading-6.5 sm:text-[1.08rem] sm:leading-7 lg:text-base xl:text-[1.06rem] ${
+          className={`mx-auto mt-4 flex max-w-xl flex-col items-center gap-3 text-center text-base leading-6.5 sm:mx-0 sm:flex-row sm:items-start sm:text-start sm:text-[1.08rem] sm:leading-7 lg:text-base xl:text-[1.06rem] ${
             isDark ? "text-white/64" : "text-ink/68"
           }`}
         >
-          <MapPin
-            aria-hidden="true"
-            className={`mt-0.5 size-5 shrink-0 ${isDark ? "text-white/42" : "text-primary"}`}
-            weight="regular"
-          />
-          {settings.address}
+          <span
+            className={`grid size-11 shrink-0 place-items-center rounded-full border sm:size-auto sm:border-0 ${
+              isDark ? "border-white/36" : "border-primary/42"
+            }`}
+          >
+            <MapPin
+              aria-hidden="true"
+              className={`size-5 sm:mt-0.5 ${isDark ? "text-white/62" : "text-primary"}`}
+              weight="regular"
+            />
+          </span>
+          <span>{settings.address}</span>
         </p>
       </div>
     </div>

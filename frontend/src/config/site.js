@@ -30,8 +30,7 @@ export const siteConfig = {
     href: createPhoneHref(phoneNumber),
   })),
   instagramUrl: "https://www.instagram.com/akif_poliklinik/",
-  authorizationDocumentPath:
-    "/documents/international-health-tourism-authorization.jpg",
+  authorizationDocumentPath: "",
   mapEmbedUrl,
 };
 

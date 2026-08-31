@@ -13,7 +13,7 @@ export default async function NotFoundPage() {
           <span
             className="select-none whitespace-nowrap font-semibold"
             style={{
-              color: "rgb(81 111 201 / 0.08)",
+              color: "color-mix(in srgb, var(--primary) 8%, transparent)",
               fontSize: "clamp(15rem, 52vw, 42rem)",
               letterSpacing: "-0.1em",
               lineHeight: 0.72,
@@ -31,7 +31,7 @@ export default async function NotFoundPage() {
           <div className="mt-9 flex w-full flex-col items-center gap-4">
             <Link
               href="/"
-              className="inline-flex min-h-12 w-full items-center justify-center gap-2 bg-primary px-5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-primary-dark sm:w-auto"
+              className="inline-flex min-h-12 w-full items-center justify-center gap-2 bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors duration-200 hover:bg-primary-dark sm:w-auto"
             >
               <ArrowLeft aria-hidden="true" className="size-4 rtl:rotate-180" weight="regular" />
               {translations("home")}

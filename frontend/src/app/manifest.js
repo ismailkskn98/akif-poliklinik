@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site";
+import { siteTheme } from "@/config/theme";
 
 export default function manifest() {
   return {
@@ -10,8 +11,8 @@ export default function manifest() {
     start_url: "/",
     scope: "/",
     display: "standalone",
-    background_color: "#f4f6fd",
-    theme_color: siteConfig.primaryColor,
+    background_color: siteTheme.colors.background,
+    theme_color: siteTheme.colors.primary,
     lang: "tr",
     categories: ["health", "medical"],
     icons: [

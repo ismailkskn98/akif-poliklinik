@@ -33,9 +33,9 @@ export default function PrivacyNoticeDialog({
 
       <DialogContent
         variant="responsive"
-        className="flex flex-col bg-[#f8f9fd]"
+        className="flex flex-col bg-surface-overlay"
       >
-        <header className="flex shrink-0 items-start justify-between gap-5 border-b border-ink/12 bg-[#f8f9fd] px-5 py-5 sm:px-8 sm:py-6">
+        <header className="flex shrink-0 items-start justify-between gap-5 border-b border-ink/12 bg-surface-overlay px-5 py-5 sm:px-8 sm:py-6">
           <div>
             <p className="text-[0.62rem] font-semibold tracking-[0.17em] text-primary uppercase">
               {labels.eyebrow}
@@ -108,7 +108,7 @@ export default function PrivacyNoticeDialog({
           </p>
         </div>
 
-        <div className="shrink-0 border-t border-ink/12 bg-[#f8f9fd] p-4 sm:flex sm:justify-end sm:px-8">
+        <div className="shrink-0 border-t border-ink/12 bg-surface-overlay p-4 sm:flex sm:justify-end sm:px-8">
           <DialogClose className="min-h-11 w-full border border-ink/18 px-5 text-sm font-medium text-ink transition-[border-color,color,transform] duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:border-primary/45 hover:text-primary active:scale-[.99] sm:w-auto">
             {labels.close}
           </DialogClose>

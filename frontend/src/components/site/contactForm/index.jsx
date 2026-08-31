@@ -51,7 +51,7 @@ function createContactSchema(labels) {
 }
 
 const fieldClassName =
-  "min-h-11 w-full rounded-none border-0 border-b border-[#172038]/16 bg-transparent px-0 text-sm text-[#172038] outline-none transition-colors placeholder:text-[#172038]/30 focus:border-primary focus:ring-0 aria-invalid:border-destructive";
+  "min-h-11 w-full rounded-none border-0 border-b border-ink/16 bg-transparent px-0 text-sm text-ink outline-none transition-colors placeholder:text-ink/30 focus:border-primary focus:ring-0 aria-invalid:border-destructive";
 
 export default function ContactForm({ labels, locale, privacyNotice }) {
   const [submissionState, setSubmissionState] = useState("idle");
@@ -125,7 +125,7 @@ export default function ContactForm({ labels, locale, privacyNotice }) {
       onSubmit={handleSubmit(submitContactRequest, handleInvalidSubmit)}
     >
       <div>
-        <label className="mb-1 block text-xs font-medium text-[#172038]/52" htmlFor="fullName">
+        <label className="mb-1 block text-xs font-medium text-ink/52" htmlFor="fullName">
           {labels.fullName}
         </label>
         <input
@@ -146,7 +146,7 @@ export default function ContactForm({ labels, locale, privacyNotice }) {
       </div>
 
       <div>
-        <label className="mb-1 block text-xs font-medium text-[#172038]/52" htmlFor="email">
+        <label className="mb-1 block text-xs font-medium text-ink/52" htmlFor="email">
           {labels.email}
         </label>
         <input
@@ -167,7 +167,7 @@ export default function ContactForm({ labels, locale, privacyNotice }) {
       </div>
 
       <div>
-        <label className="mb-1 block text-xs font-medium text-[#172038]/52" htmlFor="phone">
+        <label className="mb-1 block text-xs font-medium text-ink/52" htmlFor="phone">
           {labels.phone}
         </label>
         <PhoneNumberInput
@@ -189,7 +189,7 @@ export default function ContactForm({ labels, locale, privacyNotice }) {
       </div>
 
       <div>
-        <label className="mb-1 block text-xs font-medium text-[#172038]/52" htmlFor="message">
+        <label className="mb-1 block text-xs font-medium text-ink/52" htmlFor="message">
           {labels.message}
         </label>
         <textarea
@@ -227,7 +227,7 @@ export default function ContactForm({ labels, locale, privacyNotice }) {
             />
             <Check
               aria-hidden="true"
-              className="pointer-events-none absolute size-2.5 text-white opacity-0 transition-opacity duration-150 peer-checked:opacity-100"
+              className="pointer-events-none absolute size-2.5 text-primary-foreground opacity-0 transition-opacity duration-150 peer-checked:opacity-100"
               weight="bold"
             />
           </span>
@@ -251,7 +251,7 @@ export default function ContactForm({ labels, locale, privacyNotice }) {
       </div>
 
       <button
-        className="mt-2 min-h-11 border border-primary bg-primary px-5 text-[0.82rem] font-medium text-white transition-[transform,background-color] duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:bg-primary-dark active:scale-[.99] disabled:cursor-not-allowed disabled:opacity-60"
+        className="mt-2 min-h-11 border border-primary bg-primary px-5 text-[0.82rem] font-medium text-primary-foreground transition-[transform,background-color] duration-180 ease-[cubic-bezier(.22,1,.36,1)] hover:bg-primary-dark active:scale-[.99] disabled:cursor-not-allowed disabled:opacity-60"
         disabled={isSubmitting}
         type="submit"
       >

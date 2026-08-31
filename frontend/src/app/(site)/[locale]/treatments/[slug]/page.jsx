@@ -133,7 +133,7 @@ export default async function TreatmentPage({ params }) {
       <JsonLd data={schema} />
 
       <header data-motion-intro className="grid-container pb-9 pt-8 sm:pb-11 sm:pt-12 lg:pt-16">
-        <nav aria-label={content.ui.breadcrumb} className="flex flex-wrap items-center gap-2 text-xs text-[#172038]/45">
+        <nav aria-label={content.ui.breadcrumb} className="flex flex-wrap items-center gap-2 text-xs text-ink/45">
           <Link href="/" className="hover:text-primary">{content.ui.home}</Link>
           <span aria-hidden="true">/</span>
           <Link href="/treatments" className="hover:text-primary">{content.ui.treatments}</Link>
@@ -146,11 +146,11 @@ export default async function TreatmentPage({ params }) {
             <p className="text-[0.68rem] font-semibold tracking-[0.18em] text-primary uppercase">
               {categoryTitle}
             </p>
-            <h1 className="mt-4 max-w-5xl text-balance text-[clamp(2.8rem,7vw,6.25rem)] leading-[0.9] font-medium tracking-[-0.068em] text-[#172038]">
+            <h1 className="mt-4 max-w-5xl text-balance text-[clamp(2.8rem,7vw,6.25rem)] leading-[0.9] font-medium tracking-[-0.068em] text-ink">
               {title}
             </h1>
           </div>
-          <p className="border-s border-[#172038]/12 ps-5 text-sm leading-6 text-[#172038]/58">
+          <p className="border-s border-ink/12 ps-5 text-sm leading-6 text-ink/58">
             {description}
           </p>
         </div>
@@ -180,16 +180,16 @@ export default async function TreatmentPage({ params }) {
           </h2>
         </div>
 
-        <ol className="border-t border-[#172038]/12">
+        <ol className="border-t border-ink/12">
           {content.profiles[treatment.profile].map((point) => (
             <li
               key={point}
-              className="grid grid-cols-[auto_1fr] gap-5 border-b border-[#172038]/12 py-5 sm:gap-7 sm:py-6"
+              className="grid grid-cols-[auto_1fr] gap-5 border-b border-ink/12 py-5 sm:gap-7 sm:py-6"
             >
               <span className="grid size-8 place-items-center border border-primary/24 text-primary">
                 <Check aria-hidden="true" className="size-4" weight="light" />
               </span>
-              <p className="max-w-2xl text-sm leading-6 text-[#172038]/68 sm:text-base sm:leading-7">
+              <p className="max-w-2xl text-sm leading-6 text-ink/68 sm:text-base sm:leading-7">
                 {point}
               </p>
             </li>
@@ -204,7 +204,7 @@ export default async function TreatmentPage({ params }) {
               {content.ui.disclaimerTitle}
             </h2>
             <div>
-              <p className="text-sm leading-7 text-[#172038]/58">
+              <p className="text-sm leading-7 text-ink/58">
                 {content.ui.disclaimer}
               </p>
             </div>
@@ -214,10 +214,10 @@ export default async function TreatmentPage({ params }) {
 
       {relatedTreatments.length ? (
         <section data-motion-reveal className="grid-container pt-14 sm:pt-20">
-          <h2 className="border-b border-[#172038]/12 pb-4 text-2xl font-medium tracking-[-0.04em]">
+          <h2 className="border-b border-ink/12 pb-4 text-2xl font-medium tracking-[-0.04em]">
             {content.ui.otherTreatments}
           </h2>
-          <div className="grid divide-y divide-[#172038]/10">
+          <div className="grid divide-y divide-ink/10">
             {relatedTreatments.map((related) => (
               <Link
                 key={related.key}
@@ -237,13 +237,13 @@ export default async function TreatmentPage({ params }) {
       ) : null}
 
       <section data-motion-reveal className="grid-container pt-14 sm:pt-20">
-        <div className="flex flex-col items-start justify-between gap-7 border border-primary bg-primary px-6 py-7 text-white sm:flex-row sm:items-center sm:px-9 sm:py-8">
+        <div className="flex flex-col items-start justify-between gap-7 border border-primary bg-primary px-6 py-7 text-primary-foreground sm:flex-row sm:items-center sm:px-9 sm:py-8">
           <p className="max-w-2xl text-xl leading-tight font-medium tracking-[-0.035em] sm:text-2xl">
             {content.ui.contactTitle}
           </p>
           <Link
             href={{ pathname: "/", hash: "contact" }}
-            className="inline-flex min-h-11 items-center border border-white bg-white px-4 text-sm font-medium text-primary transition-colors duration-200 ease-[cubic-bezier(.22,1,.36,1)] hover:bg-transparent hover:text-white"
+            className="inline-flex min-h-11 items-center border border-primary-foreground bg-primary-foreground px-4 text-sm font-medium text-primary transition-colors duration-200 ease-[cubic-bezier(.22,1,.36,1)] hover:bg-transparent hover:text-primary-foreground"
           >
             {content.ui.contact}
           </Link>

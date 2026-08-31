@@ -40,7 +40,7 @@ function ConsentOption({ checked, description, disabled = false, onChange, statu
           role="switch"
           type="button"
         >
-          <span className="absolute start-0.5 top-0.5 grid size-4.5 translate-x-0 place-items-center bg-white text-primary shadow-[0_2px_8px_rgb(23_32_56_/_0.12)] transition-transform duration-260 ease-[cubic-bezier(.22,.68,.28,1)] rtl:aria-checked:-translate-x-5 ltr:aria-checked:translate-x-5">
+          <span className="absolute start-0.5 top-0.5 grid size-4.5 translate-x-0 place-items-center bg-white text-primary shadow-[0_2px_8px_rgb(var(--shadow-rgb)_/_0.12)] transition-transform duration-260 ease-[cubic-bezier(.22,.68,.28,1)] rtl:aria-checked:-translate-x-5 ltr:aria-checked:translate-x-5">
             {disabled ? <Check aria-hidden="true" className="size-2.5" weight="bold" /> : null}
           </span>
         </button>
@@ -93,7 +93,7 @@ export default function CookieConsent({ labels }) {
       {showBanner ? (
         <section
           aria-labelledby="cookie-consent-title"
-          className="fixed inset-x-0 bottom-0 z-30 border-t border-ink/14 bg-[#f8f9fd] px-5 py-5 shadow-[0_-18px_60px_rgb(23_32_56_/_0.08)] sm:inset-x-auto sm:bottom-5 sm:start-5 sm:w-[min(42rem,calc(100vw-2.5rem))] sm:border"
+          className="fixed inset-x-0 bottom-0 z-30 border-t border-ink/14 bg-surface-overlay px-5 py-5 shadow-[0_-18px_60px_rgb(var(--shadow-rgb)_/_0.08)] sm:inset-x-auto sm:bottom-5 sm:start-5 sm:w-[min(42rem,calc(100vw-2.5rem))] sm:border"
           role="region"
         >
           <div className="flex items-start gap-4">
@@ -122,7 +122,7 @@ export default function CookieConsent({ labels }) {
       ) : null}
 
       <Dialog open={settingsOpen} onOpenChange={setSettingsOpen}>
-        <DialogContent variant="responsive" className="flex flex-col bg-[#f8f9fd] sm:max-w-[40rem]">
+        <DialogContent variant="responsive" className="flex flex-col bg-surface-overlay sm:max-w-[40rem]">
           <header className="flex shrink-0 items-start justify-between gap-5 border-b border-ink/12 px-5 py-5 sm:px-7 sm:py-6">
             <div>
               <p className="text-[0.62rem] font-semibold tracking-[0.17em] text-primary uppercase">

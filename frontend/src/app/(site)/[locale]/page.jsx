@@ -4,6 +4,7 @@ import Contact from "@/components/site/contact";
 import JsonLd from "@/components/site/jsonLd";
 import LocationMap from "@/components/site/locationMap";
 import { siteConfig } from "@/config/site";
+import { siteTheme } from "@/config/theme";
 import { getPrivacyNotice, privacyNoticeVersion } from "@/content/privacyNotice";
 import { getPublicSiteSettings } from "@/lib/siteSettings";
 
@@ -15,7 +16,7 @@ export default async function HomePage({ params }) {
   const consentTranslations = await getTranslations({ locale, namespace: "CookieConsent" });
   const settings = await getPublicSiteSettings();
   const privacyNotice = getPrivacyNotice(locale);
-  const logoUrl = new URL("/images/logo/main-logo.png", siteConfig.siteUrl).toString();
+  const logoUrl = new URL(siteTheme.logos.structuredData, siteConfig.siteUrl).toString();
 
   const contact = {
     callTitle: translations("contact.callTitle"),

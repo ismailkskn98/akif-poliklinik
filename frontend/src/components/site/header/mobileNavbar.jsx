@@ -190,7 +190,7 @@ export default function MobileNavbar({
             </div>
             <div className="flex items-center justify-between gap-3">
               <LanguageMenu currentLocale={currentLocale} label={labels.languages} align="start" variant="mobile" />
-              <a href={phone.href} className="group inline-flex min-h-11 items-center gap-3 bg-primary px-4 text-sm font-medium text-white">
+              <a href={phone.href} className="group inline-flex min-h-11 items-center gap-3 bg-primary px-4 text-sm font-medium text-primary-foreground">
                 {labels.call}
                 <ArrowUpRight
                   aria-hidden="true"

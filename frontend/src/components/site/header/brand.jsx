@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { siteConfig } from "@/config/site";
+import { siteTheme } from "@/config/theme";
 import { Link } from "@/i18n/navigation";
 
 export default function Brand({ variant = "compact" }) {
@@ -26,7 +27,7 @@ export default function Brand({ variant = "compact" }) {
             ? "(min-width: 1280px) 240px, (min-width: 1024px) 224px, (min-width: 640px) 216px, 192px"
             : "(min-width: 640px) 144px, 128px"
         }
-        src="/images/logo/akif-wordmark-primary.png"
+        src={siteTheme.logos.header}
         width={953}
       />
     </Link>

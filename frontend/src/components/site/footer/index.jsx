@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 
 import CookieSettingsButton from "@/components/site/cookieConsent/settingsButton";
 import { siteConfig } from "@/config/site";
+import { siteTheme } from "@/config/theme";
 import { getTreatmentCopy } from "@/content/treatmentCopy";
 import { Link } from "@/i18n/navigation";
 import { getPublicSiteSettings } from "@/lib/siteSettings";
@@ -14,7 +15,7 @@ export default async function Footer({ locale }) {
   const settings = await getPublicSiteSettings();
 
   return (
-    <footer data-motion-reveal className="bg-ink-deep text-[#f7f9ff]">
+    <footer data-motion-reveal className="bg-ink-deep text-white">
       <div className="grid-container">
         <div className="flex items-center justify-end border-b border-white/12 py-5 text-[0.65rem] font-semibold tracking-[0.16em] text-white/46 uppercase">
           <a className="group inline-flex items-center gap-2 transition-colors duration-200 hover:text-white" href={settings.instagramUrl} target="_blank" rel="noreferrer">
@@ -37,7 +38,7 @@ export default async function Footer({ locale }) {
                 className="h-auto w-36 object-contain sm:w-44 lg:w-48"
                 height={468}
                 sizes="(min-width: 1024px) 192px, (min-width: 640px) 176px, 144px"
-                src="/images/logo/akif-wordmark-white.png"
+                src={siteTheme.logos.footer}
                 width={953}
               />
             </Link>

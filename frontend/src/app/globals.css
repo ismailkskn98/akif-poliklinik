@@ -37,6 +37,7 @@
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
   --color-surface-soft: var(--surface-soft);
+  --color-surface-overlay: var(--surface-overlay);
   --color-surface: var(--surface);
   --color-media: var(--media);
   --color-ink: var(--ink);
@@ -59,6 +60,7 @@
   --foreground: #172038;
   --surface: #fafbfe;
   --surface-soft: #eef2fa;
+  --surface-overlay: #f8f9fd;
   --media: #e6ebf6;
   --ink: #202943;
   --ink-deep: #252d46;
@@ -79,6 +81,7 @@
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: #516fc9;
+  --shadow-rgb: 23 32 56;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -197,15 +200,15 @@ html[data-motion="enabled"] [data-motion-reveal] {
   font-weight: 600;
   letter-spacing: 0.055em;
   text-transform: uppercase;
-  color: rgb(23 32 56 / 0.64);
+  color: color-mix(in srgb, var(--ink) 64%, transparent);
   transition: color 180ms cubic-bezier(0.22, 1, 0.36, 1),
     border-color 180ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @utility nav-link {
   &:hover {
-    color: #516fc9;
-    border-bottom-color: #516fc9;
+    color: var(--primary);
+    border-bottom-color: var(--primary);
   }
 }
 

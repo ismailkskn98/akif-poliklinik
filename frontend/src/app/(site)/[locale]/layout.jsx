@@ -8,6 +8,7 @@ import Header from "@/components/site/header";
 import CookieConsent from "@/components/site/cookieConsent";
 import SiteMotion from "@/components/site/siteMotion";
 import { siteConfig } from "@/config/site";
+import { siteTheme } from "@/config/theme";
 import { routing } from "@/i18n/routing";
 
 import "../../globals.css";
@@ -40,7 +41,7 @@ export function generateStaticParams() {
 
 export const viewport = {
   colorScheme: "light",
-  themeColor: siteConfig.primaryColor,
+  themeColor: siteTheme.colors.primary,
 };
 
 export async function generateMetadata({ params }) {
@@ -141,7 +142,15 @@ export default async function SiteLayout({ children, params }) {
   };
 
   return (
-    <html lang={locale} dir={rtlLocales.has(locale) ? "rtl" : "ltr"} className={geistSans.variable} data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html
+      lang={locale}
+      dir={rtlLocales.has(locale) ? "rtl" : "ltr"}
+      className={geistSans.variable}
+      data-scroll-behavior="smooth"
+      data-site-theme={siteTheme.name}
+      style={siteTheme.style}
+      suppressHydrationWarning
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: siteMotionBootScript }} />
       </head>
@@ -149,7 +158,7 @@ export default async function SiteLayout({ children, params }) {
         className="
     relative
     min-h-dvh
-    bg-[#f4f6fd]
+    bg-background
     before:content-['']
     before:absolute
     before:inset-0

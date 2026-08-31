@@ -42,7 +42,7 @@ function Toast({ className, ...props }) {
     <ToastPrimitive.Root
       data-slot="toast"
       className={cn(
-        "group/toast pointer-events-auto absolute right-0 bottom-0 z-[calc(1000-var(--toast-index))] w-full origin-bottom rounded-md border border-black/8 bg-white text-ink shadow-[0_18px_55px_rgba(23,32,56,.14)] will-change-transform outline-none select-none focus-visible:border-primary/40 focus-visible:ring-3 focus-visible:ring-primary/12",
+        "group/toast pointer-events-auto absolute right-0 bottom-0 z-[calc(1000-var(--toast-index))] w-full origin-bottom rounded-md border border-black/8 bg-white text-ink shadow-[0_18px_55px_rgb(var(--shadow-rgb)_/_0.14)] will-change-transform outline-none select-none focus-visible:border-primary/40 focus-visible:ring-3 focus-visible:ring-primary/12",
         "[--gap:0.65rem] [--height:var(--toast-frontmost-height,var(--toast-height))] [--offset-y:calc(var(--toast-offset-y)*-1+calc(var(--toast-index)*var(--gap)*-1)+var(--toast-swipe-movement-y))] [--peek:0.65rem] [--scale:calc(max(0,1-(var(--toast-index)*0.08)))] [--shrink:calc(1-var(--scale))]",
         "h-(--height) [transform:translateX(var(--toast-swipe-movement-x))_translateY(calc(var(--toast-swipe-movement-y)-(var(--toast-index)*var(--peek))-(var(--shrink)*var(--height))))_scale(var(--scale))] [transition:transform_420ms_cubic-bezier(.33,1,.68,1),opacity_320ms_cubic-bezier(.33,1,.68,1),height_150ms]",
         "after:absolute after:top-full after:left-0 after:h-[calc(var(--gap)+1px)] after:w-full after:content-['']",

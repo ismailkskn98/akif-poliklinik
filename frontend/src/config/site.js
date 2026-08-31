@@ -21,7 +21,6 @@ const phoneNumbers = [
 
 export const siteConfig = {
   name: "Akif Poliklinik",
-  primaryColor: "#516FC9",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   address,
   mapShareUrl,

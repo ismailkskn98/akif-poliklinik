@@ -199,7 +199,7 @@ export default function PhoneNumberInput({
       addInternationalOption={false}
       className={cn(
         "flex min-h-11 w-full border-b bg-transparent transition-colors duration-180 ease-[cubic-bezier(.22,1,.36,1)] focus-within:border-primary",
-        error ? "border-destructive" : "border-[#172038]/16",
+        error ? "border-destructive" : "border-ink/16",
       )}
       control={control}
       countrySelectComponent={CountrySelect}

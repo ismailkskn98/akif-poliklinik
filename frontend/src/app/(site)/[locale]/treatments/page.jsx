@@ -32,10 +32,10 @@ export default async function TreatmentsPage({ params }) {
           {content.ui.treatmentsEyebrow}
         </p>
         <div>
-          <h1 className="max-w-5xl text-balance text-[clamp(2.75rem,6vw,5.4rem)] leading-[0.93] font-medium tracking-[-0.064em] text-[#172038]">
+          <h1 className="max-w-5xl text-balance text-[clamp(2.75rem,6vw,5.4rem)] leading-[0.93] font-medium tracking-[-0.064em] text-ink">
             {content.ui.treatmentsTitle}
           </h1>
-          <p className="mt-6 max-w-2xl text-sm leading-6 text-[#172038]/55 sm:text-base sm:leading-7">
+          <p className="mt-6 max-w-2xl text-sm leading-6 text-ink/55 sm:text-base sm:leading-7">
             {content.ui.treatmentsIntro}
           </p>
         </div>
@@ -48,14 +48,14 @@ export default async function TreatmentsPage({ params }) {
 
           return (
             <section data-motion-reveal key={category} aria-labelledby={`category-${category}`}>
-              <header className="grid gap-3 border-t border-[#172038]/12 pb-7 pt-4 sm:grid-cols-[.8fr_1.2fr]">
+              <header className="grid gap-3 border-t border-ink/12 pb-7 pt-4 sm:grid-cols-[.8fr_1.2fr]">
                 <h2
                   id={`category-${category}`}
-                  className="text-xl font-medium tracking-[-0.035em] text-[#172038]"
+                  className="text-xl font-medium tracking-[-0.035em] text-ink"
                 >
                   {title}
                 </h2>
-                <p className="max-w-xl text-sm leading-6 text-[#172038]/52">
+                <p className="max-w-xl text-sm leading-6 text-ink/52">
                   {description}
                 </p>
               </header>

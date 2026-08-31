@@ -41,7 +41,7 @@ export default async function AuthorizationDocumentPage({ params }) {
         {translations("description")}
       </p>
       <a
-        className="mt-8 inline-flex min-h-11 items-center border border-primary bg-primary px-5 text-sm font-semibold text-white transition-colors duration-200 ease-[cubic-bezier(.22,1,.36,1)] hover:bg-transparent hover:text-primary"
+        className="mt-8 inline-flex min-h-11 items-center border border-primary bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors duration-200 ease-[cubic-bezier(.22,1,.36,1)] hover:bg-transparent hover:text-primary"
         href={settings.authorizationDocumentUrl}
         target="_blank"
         rel="noreferrer"
